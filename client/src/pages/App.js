@@ -27,6 +27,9 @@ const ContentWrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr;
+  max-height: 70vh;
+  box-sizing: border-box;
+  margin-right: 2rem;
 `;
 
 const StyledSidebar = styled(Sidebar)`
@@ -44,7 +47,7 @@ class App extends Component {
           <NavBar />
           <Hero />
           <ContentWrapper>
-            <StyledSidebar />
+            <StyledSidebar ref={this.scrollRef} />
             <StyledPortfolio />
           </ContentWrapper>
         </Container>
