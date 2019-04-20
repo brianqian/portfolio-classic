@@ -2,18 +2,26 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: auto;
+  width: 100%;
   height: 65vh;
   position: relative;
   z-index: 1;
+  overflow: visible;
+  border-bottom: 1px solid lightgray;
+`;
+
+const BackgroundImage = styled.div`
+  width: 100%;
+  height: 100%;
   background-size: 100% auto;
   background-position: top;
-  background-image: url(./img/sf-city.jpg);
-  overflow: visible;
+  background-repeat: no-repeat;
+  background-image: url(./img/blank-comp.jpg);
+  z-index: 0;
 `;
 
 const ProfilePic = styled.div`
-  position: relative;
+  position: absolute;
   top: 55%;
   left: 8%;
   box-shadow: -2px 2px 20px;
@@ -22,6 +30,7 @@ const ProfilePic = styled.div`
   width: 35vh;
   border: 5px solid white;
   background-color: green;
+  z-index: 1;
 `;
 
 const HeroText = styled.div`
@@ -35,7 +44,7 @@ const HeroText = styled.div`
   grid-template-rows: repeat(3, 1fr);
   font-size: 2em;
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: black;
   align-items: center;
   > h1 {
     margin: 0;
@@ -53,10 +62,10 @@ class Hero extends Component {
   render() {
     return (
       <Container>
+        <BackgroundImage />
         <ProfilePic />
         <HeroText>
-          <h1>Hi, my name is Brian</h1>
-          <h1>and I'm a web developer.</h1>
+          <h3>Brian Qian</h3>
         </HeroText>
       </Container>
     );
