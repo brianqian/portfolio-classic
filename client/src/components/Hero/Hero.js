@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  height: 65vh;
+  height: 500px;
   position: relative;
   z-index: 1;
   overflow: visible;
@@ -43,8 +43,6 @@ const HeroText = styled.div`
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(3, 1fr);
   font-size: 2em;
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
   align-items: center;
   > h1 {
     margin: 0;
@@ -56,6 +54,10 @@ const HeroText = styled.div`
   & :nth-child(2) {
     grid-row: 3;
     grid-column: 6/-1;
+  }
+  > h3 {
+    color: white;
+    ::-webkit-font-smoothing: antialiased;
   }
 `;
 class Hero extends Component {
