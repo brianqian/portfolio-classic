@@ -28,7 +28,7 @@ const ContentWrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  max-height: 70vh;
+  max-height: 75vh;
   box-sizing: border-box;
   margin-right: 2rem;
 `;

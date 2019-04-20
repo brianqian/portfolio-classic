@@ -29,7 +29,10 @@ const ProfilePic = styled.div`
   height: 35vh;
   width: 35vh;
   border: 5px solid white;
-  background-color: green;
+  background-image: url(./img/BrianQian.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 1;
 `;
 
@@ -57,7 +60,7 @@ const HeroText = styled.div`
   }
   > h3 {
     color: white;
-    ::-webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
   }
 `;
 class Hero extends Component {
