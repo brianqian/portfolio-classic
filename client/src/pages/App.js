@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import Hero from "../components/Hero/Hero";
-import ContentContainer from "./Content/ContentContainer";
+import Sidebar from "./Content/Sidebar";
+import PortfolioContainer from "./Content/PortfolioContainer";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../data/cssTheme";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Economica|Markazi+Text');
+@import url('https://fonts.googleapis.com/css?family=Karla|Mukta');
 body, html{
   margin: 0;
   min-height: 100vh;
@@ -19,9 +20,21 @@ body, html{
 `;
 
 const Container = styled.div`
-  height: 100%;
+  min-height: 100vh;
 `;
 
+const ContentWrapper = styled.div`
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+`;
+
+const StyledSidebar = styled(Sidebar)`
+  grid-column: 1;
+`;
+const StyledPortfolio = styled(PortfolioContainer)`
+  grid-column: 2;
+`;
 class App extends Component {
   render() {
     return (
@@ -30,7 +43,10 @@ class App extends Component {
           <GlobalStyle />
           <NavBar />
           <Hero />
-          <ContentContainer />
+          <ContentWrapper>
+            <StyledSidebar />
+            <StyledPortfolio />
+          </ContentWrapper>
         </Container>
       </ThemeProvider>
     );

@@ -1,12 +1,23 @@
 import React from "react";
+import styled from "styled-components";
 
-function AboutMe() {
+const Container = styled.div`
+  font-family: "Karla";
+  background-color: white;
+  padding: 1rem;
+  box-shadow: -2px 2px 5px gray;
+  > h2 {
+    margin: 0;
+  }
+`;
+function AboutMe({ className }) {
   return (
-    <div>
-      <p>From: bay area</p>
-      <p>Currently: bay area</p>
-      <p>more stuff: bay area</p>
-    </div>
+    <Container className={className}>
+      <h2>About</h2>
+      <p>From: San Francisco Bay Area</p>
+      <p>Went to: Santa Clara University</p>
+      <p>Job Status: Single, but looking for love</p>
+    </Container>
   );
 }
 
