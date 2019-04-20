@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const ContentContainer = styled.div`
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   max-height: 80vh;
   padding: 1rem;
   display: grid;
