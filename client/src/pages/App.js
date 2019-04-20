@@ -12,6 +12,7 @@ body, html{
   margin: 0;
   min-height: 100vh;
   background-color: #eaeaea;
+  font-family: 'Karla';
 }
 ::-webkit-scrollbar{
   width: 0;

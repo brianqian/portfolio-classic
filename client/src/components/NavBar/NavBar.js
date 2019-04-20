@@ -6,9 +6,10 @@ const Container = styled.div`
   position: fixed;
   width: 100vw;
   height: 7vh;
-  background-color: #4267b2;
+  background-color: ${props => props.theme.accent};
   color: white;
   z-index: 2;
+  border-bottom: 1px solid darkgray;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 `;
 const Image = styled.div`
@@ -26,6 +27,9 @@ const NavContent = styled.div`
   > p {
     margin: 0 1rem;
   }
+  > a {
+    margin: 0 1rem;
+  }
 `;
 
 class NavBar extends Component {
@@ -37,8 +41,16 @@ class NavBar extends Component {
           <p>About</p>
           <p>Portfolio</p>
           <p>Contact</p>
-          <p>Github</p>
-          <p>LinkedIn</p>
+          <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
+            <img src="./img/social_icons/GitHub-Light-64px.png" height="25px" alt="" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/brian-qian/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img src="./img/social_icons/In-White-41px.png" height="25px" alt="" />
+          </a>
         </NavContent>
       </Container>
     );

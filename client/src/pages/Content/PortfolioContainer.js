@@ -42,7 +42,7 @@ class PortfolioContainer extends Component {
   render() {
     return (
       <Container>
-        <h1>Portfolio stuff</h1>
+        <h1>Portfolio</h1>
         <ContentContainer
           onScroll={this.scrollAgain}
           overflow={this.state.overflow}
