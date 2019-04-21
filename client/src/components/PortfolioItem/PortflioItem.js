@@ -20,15 +20,19 @@ const TitleText = styled.div`
   box-sizing: border-box;
 `;
 const HoverButton = styled.div`
-  border: 1px solid white;
+  border: 1px solid lightgray;
   padding: 2px 6px;
-  color: white;
+  color: gray;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
   align-self: center;
   user-select: none;
+  :hover {
+    color: white;
+    border: 1px solid white;
+  }
   :active {
     background-color: white;
     color: black;
@@ -37,14 +41,11 @@ const HoverButton = styled.div`
 
 const Img = styled.div`
   background-image: url(${props => props.img});
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  /* position: absolute;
-  top:0;
-  left: 0;*/
-  width: 100%;
-  height: 75vh;
+  /* width: 100%;
+  height: 75vh; */
 `;
 
 const Overlay = styled.div`
@@ -57,6 +58,7 @@ const Overlay = styled.div`
   height: 75vh;
   color: white;
   font-size: 1.3em;
+  font-family: "Noto Sans";
   display: flex;
   padding: 2rem;
   box-sizing: border-box;
@@ -80,12 +82,17 @@ const Icons = styled.div`
   display: flex;
   justify-content: flex-end;
   flex: 1;
+  > * {
+    margin: 0 1rem;
+  }
   > a {
-    color: white;
+    color: gray;
     text-decoration: none;
     display: flex;
     align-items: center;
-    margin: 0 0.5rem;
+    :hover {
+      color: white;
+    }
     > img {
       margin: 0 0.5rem;
     }
@@ -100,10 +107,19 @@ const Footer = styled.div`
   align-items: center;
   position: absolute;
   font-size: 0.7em;
+  color: #485263;
   bottom: -10%;
   transition: all 0.2s;
   ${Overlay}:hover & {
     transform: translateY(-100%);
+  }
+`;
+
+const ListItem = styled.li`
+  opacity: 0;
+  transition: opacity 0.4s ease-in ${props => props.time / 2}s;
+  ${Overlay}:hover & {
+    opacity: 1;
   }
 `;
 
@@ -112,16 +128,24 @@ class PortflioItem extends Component {
     showOverlay: false,
   };
 
-  showOverlay = e => {
+  showOverlay = () => {
     this.setState({ showOverlay: true });
+    const { updateSelected, index } = this.props;
+    updateSelected(index);
   };
 
   hideOverlay = () => {
     this.setState({ showOverlay: false });
+    this.props.updateSelected(null);
   };
 
   render() {
     const { title, description, gitURL, deployURL, stack, img1 } = this.props;
+    const bulletPoints = description.split(". ").map((line, i) => (
+      <ListItem key={`${title}-${i}`} time={i}>
+        {line}
+      </ListItem>
+    ));
     return (
       <Container>
         <Img onMouseEnter={this.showOverlay} onMouseLeave={this.hideOverlay} img={img1}>
@@ -131,7 +155,7 @@ class PortflioItem extends Component {
               <img src="./img/tag.svg" alt="tag" height="15px" />
               {stack.join(", ")}
             </p>
-            {/* <p>{description}</p> */}
+            {this.state.showOverlay && <ul>{bulletPoints}</ul>}
             <Footer>
               <Icons>
                 <a href={gitURL} rel="noopener noreferrer" target="_blank">
@@ -140,19 +164,13 @@ class PortflioItem extends Component {
                 </a>
                 <a href={deployURL} rel="noopener noreferrer" target="_blank">
                   <img src="./img/internet.svg" height="20px" alt="" />
-                  <p>deployment</p>
+                  <p>website</p>
                 </a>
                 <HoverButton onClick={this.hideOverlay}>Close</HoverButton>
               </Icons>
             </Footer>
           </Overlay>
         </Img>
-        {/* <TitleText>
-          <h1>{title}</h1>
-          <HoverButton onClick={this.hideOverlay}>
-            {this.state.showOverlay ? "Close" : "Hover for More Info"}
-          </HoverButton>
-        </TitleText> */}
       </Container>
     );
   }

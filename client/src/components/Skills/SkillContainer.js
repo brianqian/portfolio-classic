@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import SkillItem from "./SkillItem";
+import portfolioData from "../../data/PortfolioData";
 
 const Container = styled.div`
   height: 100%;
@@ -27,19 +28,40 @@ const currentSkills = [
   "SQL",
   "jQuery",
   "Jest",
-].map((skill, i) => (
-  <SkillItem img={`./img/skill_icons/${skill.toLowerCase()}.svg`} key={i}>
-    {skill}
-  </SkillItem>
-));
+];
 
-function SkillContainer({ className }) {
-  return (
-    <Container className={className}>
-      <h2>Skills</h2>
-      <Wrapper>{currentSkills}</Wrapper>
-    </Container>
-  );
+class SkillContainer extends Component {
+  render() {
+    const { portfolioIndex, className } = this.props;
+
+    const skills = currentSkills.map((skill, i) => {
+      let selected;
+      console.log(portfolioIndex);
+      if (portfolioIndex !== null) {
+        selected = portfolioData[portfolioIndex].stack.some(item => {
+          return item.substring(0, 3).toLowerCase() === skill.substring(0, 3).toLowerCase();
+        });
+      } else {
+        selected = false;
+      }
+      return (
+        <SkillItem
+          img={`./img/skill_icons/${skill.toLowerCase()}.svg`}
+          index={i}
+          key={`skillbox-${skill}`}
+          selected={selected}
+        >
+          {skill}
+        </SkillItem>
+      );
+    });
+    return (
+      <Container className={className}>
+        <h2>Skills</h2>
+        <Wrapper>{skills}</Wrapper>
+      </Container>
+    );
+  }
 }
 
 export default SkillContainer;
