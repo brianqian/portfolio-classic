@@ -24,7 +24,7 @@ class Sidebar extends Component {
     return (
       <Container className={this.props.className}>
         <StyledAboutMe />
-        <StyledSkillContainer />
+        <StyledSkillContainer portfolioIndex={this.props.portfolioIndex} />
       </Container>
     );
   }

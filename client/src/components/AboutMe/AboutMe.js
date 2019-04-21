@@ -17,7 +17,7 @@ function AboutMe({ className }) {
       <h2>About</h2>
       <p>From: San Francisco Bay Area</p>
       <p>Went to: Santa Clara University</p>
-      <p>S</p>
+      <p>Currently: Looking for my first junior dev position</p>
     </Container>
   );
 }

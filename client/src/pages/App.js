@@ -5,9 +5,10 @@ import Sidebar from "./Content/Sidebar";
 import PortfolioContainer from "./Content/PortfolioContainer";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../data/cssTheme";
+import portfolioData from "../data/PortfolioData";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Karla|Mukta');
+@import url('https://fonts.googleapis.com/css?family=Karla|Noto+Sans');
 body, html{
   margin: 0;
   min-height: 100vh;
@@ -40,6 +41,13 @@ const StyledPortfolio = styled(PortfolioContainer)`
   grid-column: 2;
 `;
 class App extends Component {
+  state = {
+    portfolioIndex: null,
+  };
+
+  updatePortfolioIndex = portfolioIndex => {
+    this.setState({ portfolioIndex });
+  };
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -48,8 +56,8 @@ class App extends Component {
           <NavBar />
           <Hero />
           <ContentWrapper>
-            <StyledSidebar ref={this.scrollRef} />
-            <StyledPortfolio />
+            <StyledSidebar portfolioIndex={this.state.portfolioIndex} />
+            <StyledPortfolio updateFn={this.updatePortfolioIndex} />
           </ContentWrapper>
         </Container>
       </ThemeProvider>
