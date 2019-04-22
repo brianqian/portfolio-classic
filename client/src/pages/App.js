@@ -5,7 +5,6 @@ import Sidebar from "./Content/Sidebar";
 import PortfolioContainer from "./Content/PortfolioContainer";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../data/cssTheme";
-import portfolioData from "../data/PortfolioData";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Karla|Noto+Sans');
@@ -14,6 +13,9 @@ body, html{
   min-height: 100vh;
   background-color: #eaeaea;
   font-family: 'Karla';
+}
+*{
+  box-sizing: border-box;
 }
 ::-webkit-scrollbar{
   width: 0;
@@ -26,12 +28,12 @@ const Container = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  height: 100%;
+  margin-top: 1rem;
+  min-height: 100%;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  max-width: 95%;
+  grid-template-columns: 1fr 4fr;
   max-height: 75vh;
-  box-sizing: border-box;
-  margin-right: 2rem;
 `;
 
 const StyledSidebar = styled(Sidebar)`

@@ -1,24 +1,19 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Container = styled.div`
   position: relative;
-  max-width: 115px;
   height: 100%;
-  box-sizing: border-box;
+  width: auto;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  background-color: ${props => (props.selected ? "lightgray" : "white")};
+  box-sizing: content-box;
   > img {
     height: 70px;
     width: 70px;
-  }
-  :hover {
-    box-shadow: -2px 2px 5px 5px lightgray;
   }
 `;
 

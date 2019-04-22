@@ -5,7 +5,7 @@ const Container = styled.div`
   display: flex;
   position: fixed;
   width: 100vw;
-  height: 7vh;
+  height: 50px;
   background-color: ${props => props.theme.accent};
   color: white;
   z-index: 2;
