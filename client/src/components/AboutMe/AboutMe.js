@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  max-height: 20vh;
   font-family: "Karla";
   background-color: white;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 2rem;
   box-shadow: -2px 2px 5px gray;
   > h2 {
     margin: 0;

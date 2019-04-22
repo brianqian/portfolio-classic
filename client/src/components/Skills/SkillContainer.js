@@ -4,19 +4,26 @@ import SkillItem from "./SkillItem";
 import portfolioData from "../../data/PortfolioData";
 
 const Container = styled.div`
-  height: 100%;
+  height: 500px;
   width: 100%;
   background-color: ${props => props.theme.text};
   box-shadow: -2px 2px 5px gray;
-  box-sizing: border-box;
   padding: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
 `;
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: auto repeat(3, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;
+  > h2 {
+    grid-row: 1;
+    grid-column: 1/-1;
+    margin: 0;
+    padding-left: 0.5rem;
+  }
 `;
 const currentSkills = [
   "HTML5",
@@ -36,13 +43,12 @@ class SkillContainer extends Component {
 
     const skills = currentSkills.map((skill, i) => {
       let selected;
-      console.log(portfolioIndex);
       if (portfolioIndex !== null) {
         selected = portfolioData[portfolioIndex].stack.some(item => {
           return item.substring(0, 3).toLowerCase() === skill.substring(0, 3).toLowerCase();
         });
       } else {
-        selected = false;
+        selected = null;
       }
       return (
         <SkillItem
@@ -57,8 +63,10 @@ class SkillContainer extends Component {
     });
     return (
       <Container className={className}>
-        <h2>Skills</h2>
-        <Wrapper>{skills}</Wrapper>
+        <Wrapper>
+          <h2>Skills</h2>
+          {skills}
+        </Wrapper>
       </Container>
     );
   }

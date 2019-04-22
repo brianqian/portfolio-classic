@@ -10,20 +10,18 @@ const Container = styled.div`
   border-bottom: 1px solid lightgray;
 `;
 
-const BackgroundImage = styled.div`
+const HeroImage = styled.img`
   width: 100%;
-  height: 100%;
-  background-size: 100% auto;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-image: url(./img/blank-comp.jpg);
-  z-index: 0;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: top;
 `;
 
 const ProfilePic = styled.div`
   position: absolute;
-  top: 55%;
-  left: 8%;
+  bottom: -5%;
+  left: 10%;
   box-shadow: -2px 2px 20px;
   border-radius: 50%;
   height: 35vh;
@@ -67,7 +65,7 @@ class Hero extends Component {
   render() {
     return (
       <Container>
-        <BackgroundImage />
+        <HeroImage src="./img/blank-comp.jpg" alt="" />
         <ProfilePic />
         <HeroText>
           <h3>Brian Qian</h3>
