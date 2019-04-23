@@ -8,14 +8,17 @@ const Container = styled.div`
   z-index: 1;
   overflow: visible;
   border-bottom: 1px solid lightgray;
+  @media all and (max-width: 900px) {
+    height: 200px;
+  }
 `;
 
 const HeroImage = styled.img`
-  width: 100%;
+  min-width: 100%;
   height: auto;
   max-height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
 `;
 
 const ProfilePic = styled.div`
@@ -34,42 +37,18 @@ const ProfilePic = styled.div`
   z-index: 1;
 `;
 
-const HeroText = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  font-size: 2em;
-  align-items: center;
-  > h1 {
-    margin: 0;
-  }
-  & :nth-child(1) {
-    grid-column: 5/-1;
-    grid-row: 2;
-  }
-  & :nth-child(2) {
-    grid-row: 3;
-    grid-column: 6/-1;
-  }
-  > h3 {
-    color: white;
-    -webkit-font-smoothing: antialiased;
-  }
-`;
 class Hero extends Component {
   render() {
     return (
       <Container>
-        <HeroImage src="./img/blank-comp.jpg" alt="" />
+        <HeroImage
+          src="./img/lost_coast.jpg"
+          alt="cover"
+          srcset="./img/blank-comp-1920.jpg 1920w, ./img/blank-comp-900.jpeg 900w"
+          sizes="(min-width: 1400px) 1920w, (min-width: 900px) 900w"
+        />
+
         <ProfilePic />
-        <HeroText>
-          <h3>Brian Qian</h3>
-        </HeroText>
       </Container>
     );
   }
