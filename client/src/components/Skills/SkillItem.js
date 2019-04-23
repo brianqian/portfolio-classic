@@ -11,6 +11,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   box-sizing: content-box;
+  transition: all 0.5s;
+  opacity: ${props => (props.selected ? "1" : ".1")};
   > img {
     height: 70px;
     width: 70px;

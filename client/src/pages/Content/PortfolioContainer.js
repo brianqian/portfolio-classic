@@ -5,8 +5,8 @@ import PortfolioItem from "../../components/PortfolioItem/PortflioItem";
 
 const Container = styled.div`
   padding: 2rem;
-  box-shadow: -2px 2px 5px lightgray;
-  background-color: white;
+  box-shadow: ${props => props.theme.cardShadow};
+  background-color: ${props => props.theme.cardBG};
   height: 100%;
   width: 100%;
   min-width: 780px;

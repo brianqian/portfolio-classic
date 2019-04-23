@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
   font-family: "Karla";
-  background-color: white;
+  background-color: ${props => props.theme.cardBG};
   padding: 1rem 1rem 1rem 2rem;
-  box-shadow: -2px 2px 5px gray;
+  box-shadow: ${props => props.theme.cardShadow};
   > h2 {
     margin: 0;
   }
