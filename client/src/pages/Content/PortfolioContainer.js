@@ -26,12 +26,17 @@ class PortfolioContainer extends Component {
   componentDidMount() {
     window.addEventListener("scroll", this.enablePortfolioScroll);
   }
+  componentWillUnmount() {
+    window.removeEventListener("scroll");
+  }
 
   enablePortfolioScroll = () => {
     const d = document.documentElement;
+    //if window is scrolled to the bottom, enable portfolio scrolling
     if (d.scrollHeight - d.scrollTop === d.clientHeight) {
       this.setState({ overflow: "auto" });
     }
+    //if d.scrollHeight-d.scrollTop === clientheight-
   };
 
   onScroll = e => {
@@ -40,7 +45,12 @@ class PortfolioContainer extends Component {
   };
   render() {
     const items = portfolioData.map((project, i) => (
-      <PortfolioItem updateSelected={this.props.updateFn} index={i} {...project} />
+      <PortfolioItem
+        updateSelected={this.props.updateFn}
+        key={`project-${i}`}
+        index={i}
+        {...project}
+      />
     ));
     return (
       <Container>
