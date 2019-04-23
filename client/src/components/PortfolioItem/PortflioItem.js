@@ -1,24 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-  /* min-height: 40vh;
-  max-width: 70vw; */
-  width: auto;
-  height: auto;
-  position: relative;
-  background-image: url(${props => props.img});
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-`;
-
 const Overlay = styled.div`
   background-color: #000000d7;
   line-height: 4vh;
   max-width: 70vw;
-  width: auto;
+  width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   color: white;
   font-size: 1vw;
   font-family: "Noto Sans";
@@ -64,6 +55,7 @@ const CloseButton = styled.div`
   border: 1px solid lightgray;
   padding: 2px 6px;
   color: gray;
+  max-height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,16 +72,28 @@ const CloseButton = styled.div`
   }
 `;
 
+const TopOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex: 1;
+  width: 100%;
+  ${Overlay} :hover & {
+    transform: translateY(100%);
+  }
+`;
+
 const Footer = styled.div`
   display: flex;
-  width: 92%;
+  width: 100%;
   margin: auto;
   justify-content: flex-end;
   align-items: center;
   position: absolute;
+  left: 0;
   font-size: 0.7em;
   color: #485263;
-  bottom: -30%;
+  bottom: -10%;
   transition: all 0.2s;
   ${Overlay}:hover & {
     transform: translateY(-100%);
@@ -116,7 +120,7 @@ class PortflioItem extends Component {
     showOverlay: false,
   };
 
-  showOverlay = () => {
+  showOverlay = e => {
     this.setState({ showOverlay: true });
     const { updateSelected, index } = this.props;
     updateSelected(index);
@@ -135,16 +139,16 @@ class PortflioItem extends Component {
       </ListItem>
     ));
     return (
-      <Temp>
-        <img src={img1} onMouseEnter={this.showOverlay} onMouseLeave={this.hideOverlay} alt="" />
-        {/* <Container onMouseEnter={this.showOverlay} onMouseLeave={this.hideOverlay} img={img1}> */}
-        {/* <Overlay show={this.state.showOverlay ? 1 : 0}>
+      <Temp onMouseEnter={this.showOverlay} onMouseLeave={this.hideOverlay}>
+        <img src={img1} alt="" />
+        <Overlay show={this.state.showOverlay ? 1 : 0}>
           <h2>{title}</h2>
           <p>
             <img src="./img/tag.svg" alt="tag" height="15px" />
             {stack.join(", ")}
           </p>
           {this.state.showOverlay && <ul>{bulletPoints}</ul>}
+
           <Footer>
             <Icons>
               <a href={gitURL} rel="noopener noreferrer" target="_blank">
@@ -158,8 +162,7 @@ class PortflioItem extends Component {
               <CloseButton onClick={this.hideOverlay}>Close</CloseButton>
             </Icons>
           </Footer>
-        </Overlay> */}
-        {/* </Container> */}
+        </Overlay>
       </Temp>
     );
   }

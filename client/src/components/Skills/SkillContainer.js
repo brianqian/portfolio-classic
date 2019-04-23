@@ -6,8 +6,8 @@ import portfolioData from "../../data/PortfolioData";
 const Container = styled.div`
   height: 500px;
   width: 100%;
-  background-color: ${props => props.theme.text};
-  box-shadow: -2px 2px 5px gray;
+  background-color: ${props => props.theme.cardBG};
+  box-shadow: ${props => props.theme.cardShadow};
   padding: 1rem;
   margin: 2rem 0;
 `;
@@ -48,7 +48,7 @@ class SkillContainer extends Component {
           return item.substring(0, 3).toLowerCase() === skill.substring(0, 3).toLowerCase();
         });
       } else {
-        selected = null;
+        selected = true;
       }
       return (
         <SkillItem
@@ -64,7 +64,7 @@ class SkillContainer extends Component {
     return (
       <Container className={className}>
         <Wrapper>
-          <h2>Skills</h2>
+          <h2>{`${portfolioIndex === null ? "Skills" : "Built With"}`}</h2>
           {skills}
         </Wrapper>
       </Container>
