@@ -14,6 +14,7 @@ function AboutMe({ className }) {
   return (
     <Container className={className}>
       <h2>About</h2>
+      <p>Name: Brian Qian</p>
       <p>From: San Francisco Bay Area</p>
       <p>Went to: Santa Clara University</p>
       <p>Currently: Looking for my first junior dev position</p>

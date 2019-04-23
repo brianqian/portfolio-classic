@@ -61,6 +61,7 @@ const TopOverlay = styled.div`
       font-size: 0.8em;
       display: flex;
       align-items: center;
+      margin: 0;
     }
     > h2 {
       text-decoration: underline;
@@ -109,7 +110,7 @@ const Icons = styled.div`
   }
 `;
 
-const CloseButton = styled.div`
+const InterfaceButton = styled.div`
   border: 1px solid lightgray;
   padding: 2px 6px;
   color: lightgray;
@@ -141,7 +142,7 @@ const ListItem = styled.li`
 class PortflioItem extends Component {
   state = {
     showOverlay: true,
-    showMoreInfo: true,
+    showMoreInfo: false,
   };
 
   showOverlay = e => {
@@ -189,7 +190,14 @@ class PortflioItem extends Component {
                   <img src="./img/internet.svg" height="20px" alt="" />
                   <p>website</p>
                 </a>
-                <CloseButton onClick={this.hideOverlay}>Close</CloseButton>
+                <InterfaceButton onClick={this.hideOverlay}>Close Overlay</InterfaceButton>
+                <InterfaceButton
+                  onClick={() => {
+                    this.setState({ showMoreInfo: !this.state.showMoreInfo });
+                  }}
+                >
+                  {this.state.showMoreInfo ? "Hide details" : "Show details"}
+                </InterfaceButton>
               </Icons>
             </Footer>
           </Overlay>
