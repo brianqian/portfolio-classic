@@ -14,13 +14,13 @@ body, html{
   background-color: #eaeaea;
   font-family: 'Karla';
 }
+a{
+  color: white;
+}
 *{
   box-sizing: border-box;
 }
-::-webkit-scrollbar{
-  width: 0;
-  background: transparent;
-}
+
 `;
 
 const Container = styled.div`
