@@ -4,7 +4,6 @@ import SkillContainer from "../../components/Skills/SkillContainer";
 import styled from "styled-components";
 
 const Container = styled.div`
-  /* max-width: 28vw; */
   min-width: 360px;
   max-width: 390px;
   max-height: 75vh;
