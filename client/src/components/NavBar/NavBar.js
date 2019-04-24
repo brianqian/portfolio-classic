@@ -24,22 +24,29 @@ const NavContent = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  > p {
+  > * {
+    display: flex;
+    align-items: center;
     margin: 0 1rem;
-  }
-  > a {
-    margin: 0 1rem;
+    height: 100%;
+    :hover {
+      border-bottom: 1px solid white;
+    }
   }
 `;
 
 class NavBar extends Component {
+  scrollTo = id => {
+    const target = document.getElementById(id);
+    target.scrollIntoView({ behavior: "smooth" });
+  };
   render() {
     return (
       <Container>
         <Image />
         <NavContent>
-          <p>About</p>
-          <p>Portfolio</p>
+          <p onClick={() => this.scrollTo("about")}>About</p>
+          <p onClick={() => this.scrollTo("portfolio")}>Portfolio</p>
           <p>Contact</p>
           <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
             <img src="./img/social_icons/GitHub-Light-64px.png" height="25px" alt="" />

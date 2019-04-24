@@ -41,14 +41,9 @@ class Hero extends Component {
   render() {
     return (
       <Container>
-        <HeroImage
-          src="./img/lost_coast.jpg"
-          alt="cover"
-          srcset="./img/blank-comp-1920.jpg 1920w, ./img/blank-comp-900.jpeg 900w"
-          sizes="(min-width: 1400px) 1920w, (min-width: 900px) 900w"
-        />
+        <HeroImage src="./img/lost_coast.jpg" alt="cover" />
 
-        <ProfilePic />
+        {/* <ProfilePic /> */}
       </Container>
     );
   }
