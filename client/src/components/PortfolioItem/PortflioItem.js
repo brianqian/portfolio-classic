@@ -63,7 +63,7 @@ const MainImage = styled.img`
 `;
 
 const TopOverlay = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
+  background: linear-gradient(rgba(0, 0, 0), transparent);
   position: absolute;
   top: -100px;
   left: 0;
@@ -88,7 +88,7 @@ const TopOverlay = styled.div`
 `;
 
 const Footer = styled.div`
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  background: linear-gradient(transparent, rgba(0, 0, 0));
   height: 100px;
   display: flex;
   width: 100%;
@@ -148,45 +148,51 @@ const InterfaceButton = styled.div`
   }
 `;
 const Details = styled.ul`
-  padding-top: 100px;
+  padding-top: 10%;
+  padding-right: 2rem;
   width: 100%;
   height: ${props => (props.show ? "100%" : "0")};
   overflow: hidden;
 `;
 const ListItem = styled.li`
-  opacity: ${props => (props.show ? 1 : 0)};
-  transition: opacity 0.4s ease-in ${props => props.time / 2}s;
+  opacity: ${props => props.opacity};
+  transition: opacity ${props => (props.show ? "0.4s" : "0s")} ease-in
+    ${props => (props.show ? props.time / 2 : 0)}s;
 `;
 
 class PortflioItem extends Component {
   state = {
-    showOverlay: true,
     showMoreInfo: false,
   };
 
-  showOverlay = () => {
-    this.setState({ showOverlay: true });
-    const { updateSelected, index } = this.props;
-    updateSelected(index);
+  showMoreInfo = () => {
+    this.setState({ showMoreInfo: !this.state.showMoreInfo });
   };
 
   hideOverlay = () => {
-    this.setState({ showOverlay: false, showMoreInfo: false });
+    this.setState({ showMoreInfo: false });
     this.props.updateSelected(null);
   };
 
   render() {
+    const { showMoreInfo, moreInfoOpacity } = this.state;
+    const { updateSelected, index } = this.props;
     const { title, description, gitURL, deployURL, stack, img1 } = this.props;
     const bulletPoints = description.split(". ").map((line, i) => (
-      <ListItem show={this.state.showMoreInfo} key={`${title}-${i}`} time={i}>
+      <ListItem show={showMoreInfo} opacity={showMoreInfo ? 1 : 0} key={`${title}-${i}`} time={i}>
         {line}
       </ListItem>
     ));
     return (
-      <Container>
+      <Container
+        onMouseEnter={() => {
+          updateSelected(index);
+        }}
+        onMouseLeave={this.hideOverlay}
+      >
         <ImagesDiv>
           <MainImage src={img1} alt={`${title}`} />
-          <Overlay showMore={this.state.showMoreInfo}>
+          <Overlay showMore={showMoreInfo}>
             <TopOverlay>
               <div>
                 <h2>{title}</h2>
@@ -197,7 +203,7 @@ class PortflioItem extends Component {
               </div>
             </TopOverlay>
 
-            <Details show={this.state.showMoreInfo}>{bulletPoints}</Details>
+            <Details show={showMoreInfo}>{bulletPoints}</Details>
 
             <Footer>
               <Icons>
@@ -210,13 +216,7 @@ class PortflioItem extends Component {
                   <p>website</p>
                 </a>
                 <InterfaceButton onClick={this.hideOverlay}>Close Overlay</InterfaceButton>
-                <InterfaceButton
-                  onClick={() => {
-                    this.setState({ showMoreInfo: !this.state.showMoreInfo });
-                  }}
-                >
-                  Details
-                </InterfaceButton>
+                <InterfaceButton onClick={this.showMoreInfo}>Details</InterfaceButton>
               </Icons>
             </Footer>
           </Overlay>
