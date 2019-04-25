@@ -3,46 +3,33 @@ import styled from "styled-components";
 import portfolioData from "../../data/PortfolioData";
 import PortfolioItem from "../../components/PortfolioItem/PortflioItem";
 
-const Container = styled.div`
-  padding: 2rem;
+const ContentContainer = styled.div`
   box-shadow: ${props => props.theme.cardShadow};
   background-color: ${props => props.theme.cardBG};
-  height: 100%;
   width: 100%;
-  min-width: 780px;
-`;
-
-const ContentContainer = styled.div`
-  width: 100%;
-  max-height: 80vh;
+  height: 90vh;
   padding: 1rem;
   overflow: ${props => props.overflow};
+  @media all and (max-width: 600px) {
+    text-align: center;
+    width: 100vw;
+    padding: 0;
+  }
 `;
 
 class PortfolioContainer extends Component {
   state = {
-    overflow: "hidden",
-  };
-  componentDidMount() {
-    window.addEventListener("scroll", this.enablePortfolioScroll);
-  }
-  componentWillUnmount() {
-    window.removeEventListener("scroll");
-  }
-
-  enablePortfolioScroll = () => {
-    const d = document.documentElement;
-    //if window is scrolled to the bottom, enable portfolio scrolling
-    if (d.scrollHeight - d.scrollTop === d.clientHeight) {
-      this.setState({ overflow: "auto" });
-    }
-    //if d.scrollHeight-d.scrollTop === clientheight-
+    scrollHeight: 0,
+    scrollTop: 0,
   };
 
   onScroll = e => {
-    const { scrollTop } = e.target;
-    if (scrollTop === 0) this.setState({ overflow: "hidden" });
+    e.stopPropagation();
+    // const { scrollTop, scrollHeight, clientHeight } = e.target;
+    // this.setState({ scrollTop });
+    // console.log(scrollTop, scrollHeight, clientHeight, scrollTop + clientHeight);
   };
+
   render() {
     const items = portfolioData.map((project, i) => (
       <PortfolioItem
@@ -53,16 +40,14 @@ class PortfolioContainer extends Component {
       />
     ));
     return (
-      <Container>
-        <h1>Portfolio</h1>
-        <ContentContainer
-          onScroll={this.onScroll}
-          overflow={this.state.overflow}
-          className={this.props.className}
-        >
-          {items}
-        </ContentContainer>
-      </Container>
+      <ContentContainer
+        onScroll={this.onScroll}
+        overflow={this.props.overflow}
+        className={this.props.className}
+      >
+        <h1 ref={this.props.innerRef}>Work</h1>
+        {items}
+      </ContentContainer>
     );
   }
 }

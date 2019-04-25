@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -24,37 +24,34 @@ const NavContent = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  > p {
+  > * {
+    display: flex;
+    align-items: center;
     margin: 0 1rem;
-  }
-  > a {
-    margin: 0 1rem;
+    height: 100%;
+    :hover {
+      border-bottom: 1px solid white;
+    }
   }
 `;
 
-class NavBar extends Component {
-  render() {
-    return (
-      <Container>
-        <Image />
-        <NavContent>
-          <p>About</p>
-          <p>Portfolio</p>
-          <p>Contact</p>
-          <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
-            <img src="./img/social_icons/GitHub-Light-64px.png" height="25px" alt="" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/brian-qian/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <img src="./img/social_icons/In-White-41px.png" height="25px" alt="" />
-          </a>
-        </NavContent>
-      </Container>
-    );
-  }
+function NavBar(props) {
+  return (
+    <Container>
+      <Image />
+      <NavContent>
+        <p onClick={() => props.scrollFn("aboutMeRef")}>About</p>
+        <p onClick={() => props.scrollFn("portfolioRef")}>Portfolio</p>
+        <p>Contact</p>
+        <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
+          <img src="./img/social_icons/GitHub-Light-64px.png" height="25px" alt="" />
+        </a>
+        <a href="https://www.linkedin.com/in/brian-qian/" rel="noopener noreferrer" target="_blank">
+          <img src="./img/social_icons/In-White-41px.png" height="25px" alt="" />
+        </a>
+      </NavContent>
+    </Container>
+  );
 }
 
 export default NavBar;

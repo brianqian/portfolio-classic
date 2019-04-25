@@ -7,41 +7,59 @@ const Container = styled.div`
   display: flex;
 `;
 
-const ImagesDiv = styled.div`
-  flex: 4;
-  position: relative;
-  transition: all 0.3s;
-  > img {
-    min-height: 100%;
-    width: 100%;
-  }
-`;
-
-const MoreInfo = styled.div`
-  flex: 1;
-  display: ${props => (props.showInfo ? "block" : "none")};
-`;
-
 const Overlay = styled.div`
-  flex: 4;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, ${props => (props.showMore ? 0.7 : 0)});
   line-height: 4vh;
   max-width: 70vw;
   width: 100%;
   height: 100%;
+  padding: 2rem;
   position: absolute;
   top: 0;
   left: 0;
   color: white;
-  font-size: 1vw;
+  font-size: 1.2em;
   font-family: "Noto Sans";
   display: flex;
-  padding: 2rem;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   overflow: hidden;
   transition: all 0.4s;
-  opacity: ${props => (props.show ? "1" : "0")};
-  z-index: ${props => (props.show ? "1" : "-1")};
+  z-index: -1;
+  opacity: 0;
+  ${Container}:hover & {
+    opacity: 1;
+    z-index: 1;
+  }
+  @media all and (max-width: 600px) {
+    min-width: 100vw;
+    min-height: 70vh;
+    font-size: 100%;
+  }
+`;
+
+const ImagesDiv = styled.div`
+  flex: 4;
+  position: relative;
+  width: 100%;
+
+  @media all and (max-width: 600px) {
+    width: 100vw;
+    height: 70vh;
+  }
+`;
+
+const MainImage = styled.img`
+  min-height: 100%;
+  width: 100%;
+  ${Container}:hover & {
+  }
+
+  @media all and (max-width: 600px) {
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
 const TopOverlay = styled.div`
@@ -49,10 +67,9 @@ const TopOverlay = styled.div`
   position: absolute;
   top: -100px;
   left: 0;
-  flex: 1;
   width: 100%;
   transition: all 0.2s;
-  ${Overlay}:hover & {
+  ${Container}:hover & {
     transform: translateY(100px);
   }
   > div {
@@ -83,7 +100,7 @@ const Footer = styled.div`
   font-size: 0.7em;
   bottom: -100px;
   transition: all 0.2s;
-  ${Overlay}:hover & {
+  ${Container}:hover & {
     transform: translateY(-100px);
   }
 `;
@@ -130,13 +147,15 @@ const InterfaceButton = styled.div`
     color: black;
   }
 `;
-
+const Details = styled.ul`
+  padding-top: 100px;
+  width: 100%;
+  height: ${props => (props.show ? "100%" : "0")};
+  overflow: hidden;
+`;
 const ListItem = styled.li`
-  opacity: 0;
+  opacity: ${props => (props.show ? 1 : 0)};
   transition: opacity 0.4s ease-in ${props => props.time / 2}s;
-  ${Overlay}:hover & {
-    opacity: 1;
-  }
 `;
 
 class PortflioItem extends Component {
@@ -145,29 +164,29 @@ class PortflioItem extends Component {
     showMoreInfo: false,
   };
 
-  showOverlay = e => {
+  showOverlay = () => {
     this.setState({ showOverlay: true });
     const { updateSelected, index } = this.props;
     updateSelected(index);
   };
 
   hideOverlay = () => {
-    this.setState({ showOverlay: false });
+    this.setState({ showOverlay: false, showMoreInfo: false });
     this.props.updateSelected(null);
   };
 
   render() {
     const { title, description, gitURL, deployURL, stack, img1 } = this.props;
     const bulletPoints = description.split(". ").map((line, i) => (
-      <ListItem key={`${title}-${i}`} time={i}>
+      <ListItem show={this.state.showMoreInfo} key={`${title}-${i}`} time={i}>
         {line}
       </ListItem>
     ));
     return (
       <Container>
-        <ImagesDiv onMouseEnter={this.showOverlay} onMouseLeave={this.hideOverlay}>
-          <img src={img1} alt={`${title}`} />
-          <Overlay show={this.state.showOverlay ? 1 : 0}>
+        <ImagesDiv>
+          <MainImage src={img1} alt={`${title}`} />
+          <Overlay showMore={this.state.showMoreInfo}>
             <TopOverlay>
               <div>
                 <h2>{title}</h2>
@@ -178,7 +197,7 @@ class PortflioItem extends Component {
               </div>
             </TopOverlay>
 
-            {/* {this.state.showOverlay && <ul>{bulletPoints}</ul>} */}
+            <Details show={this.state.showMoreInfo}>{bulletPoints}</Details>
 
             <Footer>
               <Icons>
@@ -196,20 +215,12 @@ class PortflioItem extends Component {
                     this.setState({ showMoreInfo: !this.state.showMoreInfo });
                   }}
                 >
-                  {this.state.showMoreInfo ? "Hide details" : "Show details"}
+                  Details
                 </InterfaceButton>
               </Icons>
             </Footer>
           </Overlay>
         </ImagesDiv>
-        <MoreInfo
-          onClick={() => {
-            this.setState({ showMoreInfo: false });
-          }}
-          showInfo={this.state.showMoreInfo}
-        >
-          {description}
-        </MoreInfo>
       </Container>
     );
   }

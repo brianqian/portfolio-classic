@@ -10,6 +10,9 @@ const Container = styled.div`
   box-shadow: ${props => props.theme.cardShadow};
   padding: 1rem;
   margin: 2rem 0;
+  @media all and (max-width: 600px) {
+    margin: 0;
+  }
 `;
 
 const Wrapper = styled.div`
