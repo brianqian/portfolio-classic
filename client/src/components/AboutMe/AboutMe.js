@@ -9,6 +9,9 @@ const Container = styled.div`
   > h2 {
     margin: 0;
   }
+  @media all and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const ProfilePic = styled.div`

@@ -10,6 +10,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 2rem;
+  @media all and (max-width: 600px) {
+    margin: 2rem 0;
+    min-width: 100vw;
+  }
 `;
 
 const StyledAboutMe = styled(AboutMe)`

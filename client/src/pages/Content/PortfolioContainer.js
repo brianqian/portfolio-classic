@@ -4,14 +4,17 @@ import portfolioData from "../../data/PortfolioData";
 import PortfolioItem from "../../components/PortfolioItem/PortflioItem";
 
 const ContentContainer = styled.div`
-  padding: 2rem;
   box-shadow: ${props => props.theme.cardShadow};
   background-color: ${props => props.theme.cardBG};
   width: 100%;
-  min-width: 780px;
   height: 90vh;
   padding: 1rem;
   overflow: ${props => props.overflow};
+  @media all and (max-width: 600px) {
+    text-align: center;
+    width: 100vw;
+    padding: 0;
+  }
 `;
 
 class PortfolioContainer extends Component {
@@ -19,6 +22,7 @@ class PortfolioContainer extends Component {
     scrollHeight: 0,
     scrollTop: 0,
   };
+
   onScroll = e => {
     e.stopPropagation();
     // const { scrollTop, scrollHeight, clientHeight } = e.target;
@@ -37,12 +41,11 @@ class PortfolioContainer extends Component {
     ));
     return (
       <ContentContainer
-        id="portfolio"
         onScroll={this.onScroll}
         overflow={this.props.overflow}
         className={this.props.className}
       >
-        <h1>Work</h1>
+        <h1 ref={this.props.innerRef}>Work</h1>
         {items}
       </ContentContainer>
     );

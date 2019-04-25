@@ -8,8 +8,8 @@ const Container = styled.div`
   z-index: 1;
   overflow: visible;
   border-bottom: 1px solid lightgray;
-  @media all and (max-width: 900px) {
-    height: 200px;
+  @media all and (max-width: 600px) {
+    height: 80vh;
   }
 `;
 
@@ -21,27 +21,16 @@ const HeroImage = styled.img`
   object-position: center;
 `;
 
-const ProfilePic = styled.div`
-  position: absolute;
-  bottom: -5%;
-  left: 10%;
-  box-shadow: -2px 2px 20px;
-  border-radius: 50%;
-  height: 35vh;
-  width: 35vh;
-  border: 5px solid white;
-  background-image: url(./img/BrianQian.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1;
-`;
-
 class Hero extends Component {
   render() {
     return (
       <Container>
-        <HeroImage src="./img/lost_coast.jpg" alt="cover" />
+        <HeroImage
+          src="./img/lost_coast.jpg"
+          alt="cover"
+          srcset="./img/blank-comp-1920.jpg 1920w, ./img/blank-comp-900.jpeg 900w"
+          sizes="(min-width: 1400px) 1920w, (min-width: 900px) 900w"
+        />
 
         {/* <ProfilePic /> */}
       </Container>

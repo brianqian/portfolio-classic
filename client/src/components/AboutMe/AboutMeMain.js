@@ -11,8 +11,15 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  @media all and (max-width: 600px) {
+    width: 100vw;
+  }
   > h1 {
     align-self: flex-start;
+    @media all and (max-width: 600px) {
+      align-self: center;
+    }
   }
 `;
 
@@ -28,21 +35,20 @@ const ProfilePic = styled.div`
   background-position: center;
 `;
 
-const AboutMeMain = () => (
-  <Container id="about">
-    <h1>About Me</h1>
+const AboutMeMain = props => (
+  <Container>
+    <h1 ref={props.innerRef}>About Me</h1>
     <ProfilePic />
     <h2>Developer. Problem Solver. Aspiring philanthropist. </h2>
     <p>
-      My dream in life is to have so much money that I could casually give away millions to cure
-      diseases at will. But baby steps. For now, Lorem ipsum dolor sit amet, consectetur adipisicing
-      elit. Doloremque hic ea sed quibusdam, magnam doloribus ad labore architecto, corrupti
-      consectetur, ipsam quae quia ipsum esse dicta aperiam tenetur unde reprehenderit!Lorem Lorem
-      ipsum dolor sit amet consectetur, adipisicing elit. Sit doloribus exercitationem voluptas
-      accusantium officia ad omnis blanditiis rerum facere natus consectetur ratione veritatis, eum
-      dicta praesentium quae sunt excepturi quaerat? Lorem ipsum dolor sit, amet consectetur
-      adipisicing elit. Doloremque modi amet quidem nobis quisquam nihil culpa magni dolore fugit?
-      Est eaque voluptate odit natus dicta voluptatibus culpa omnis, non quasi!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis harum temporibus eius
+      explicabo deleniti quo consectetur aut modi, ducimus ipsum non. Totam nulla quo velit optio
+      quia enim labore quibusdam. Voluptatum, quaerat esse nobis ipsam at consequuntur recusandae
+      sunt repellendus earum voluptas. Vero distinctio, fuga dignissimos animi natus sint veritatis
+      aut odit earum id numquam, alias quia commodi suscipit placeat. Expedita a maiores beatae
+      inventore distinctio! At sequi natus fugiat. Sequi, eum? Repellat, nesciunt voluptatem neque
+      rerum, eos autem dolorem eius vel possimus asperiores dolore inventore corporis consequuntur
+      quidem consectetur.
     </p>
   </Container>
 );

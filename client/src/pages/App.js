@@ -37,6 +37,7 @@ const Main = styled.main`
 
 const Container = styled.div`
   min-height: 100vh;
+  width: 100vw;
 `;
 
 const ContentWrapper = styled.div`
@@ -45,20 +46,29 @@ const ContentWrapper = styled.div`
   display: flex;
   max-width: 95%;
   max-height: 75vh;
+  @media all and (max-width: 600px) {
+    flex-direction: column;
+    max-height: 100%;
+    max-width: 100%;
+  }
 `;
 
 const StyledSidebar = styled(Sidebar)`
   flex: 1;
 `;
-const StyledPortfolio = styled(PortfolioContainer)`
-  flex: 4;
-`;
+// const StyledPortfolio = styled(PortfolioContainer)`
+//   flex: 4;
+// `;
+
 class App extends Component {
   state = {
     portfolioIndex: null,
     contentOverflow: "hidden",
     portfolioOverflow: "hidden",
   };
+
+  aboutMeRef = React.createRef();
+  portfolioRef = React.createRef();
 
   componentDidMount() {
     window.addEventListener("scroll", this.enableScrolling);
@@ -67,6 +77,9 @@ class App extends Component {
     window.removeEventListener("scroll");
   }
 
+  scrollTo = section => {
+    this[section].current.scrollIntoView({ behavior: "smooth" });
+  };
   enableScrolling = () => {
     const d = document.documentElement;
     //if window is scrolled to the bottom, enable portfolio scrolling
@@ -84,6 +97,7 @@ class App extends Component {
   onContentScroll = e => {
     const { scrollHeight, scrollTop, clientHeight } = e.target;
     // console.log("content scroll (height, top, client): ", scrollHeight, scrollTop, clientHeight);
+
     if (scrollHeight - scrollTop === clientHeight) {
       this.setState({ portfolioOverflow: "auto" });
     } else {
@@ -91,22 +105,21 @@ class App extends Component {
     }
   };
 
-  navBar;
-
   render() {
     return (
       <ThemeProvider theme={theme}>
         <Container>
           <GlobalStyle />
-          <NavBar />
+          <NavBar scrollFn={this.scrollTo} />
           <Hero />
           <ContentWrapper>
             <StyledSidebar portfolioIndex={this.state.portfolioIndex} />
             <Main overflow={this.state.contentOverflow} onScroll={this.onContentScroll}>
-              <AboutMeMain />
-              <StyledPortfolio
+              <AboutMeMain innerRef={this.aboutMeRef} />
+              <PortfolioContainer
                 overflow={this.state.portfolioOverflow}
                 updateFn={this.updatePortfolioIndex}
+                innerRef={this.portfolioRef}
               />
             </Main>
           </ContentWrapper>
