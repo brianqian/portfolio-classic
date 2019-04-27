@@ -1,66 +1,97 @@
 import React, { Component } from "react";
 import NavBar from "../components/NavBar/NavBar";
 import Hero from "../components/Hero/Hero";
-import Sidebar from "./Content/Sidebar";
 import PortfolioContainer from "./Content/PortfolioContainer";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../data/cssTheme";
+import AboutMeMain from "../components/AboutMe/AboutMeMain";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Karla|Noto+Sans');
 body, html{
   margin: 0;
-  min-height: 100vh;
   background-color: #eaeaea;
-  font-family: 'Karla';
+  font-family: 'Lato';
+
+}
+a{
+  color: white;
 }
 *{
   box-sizing: border-box;
+  color: ${props => props.theme.text}
+}
+
+figcaption{
+  color: ${props => props.theme.primary};
 }
 ::-webkit-scrollbar{
-  width: 0;
-  background: transparent;
+width: 0;
+display: none;  
 }
+
 `;
 
 const Container = styled.div`
-  min-height: 100vh;
+  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Open+Sans:800|Lato");
+  width: 100vw;
+  /* overflow: hidden; */
+  background-color: ${props => props.theme.primary};
 `;
 
-const ContentWrapper = styled.div`
-  margin-top: 1rem;
-  min-height: 100%;
-  display: grid;
-  max-width: 95%;
-  grid-template-columns: 1fr 4fr;
-  max-height: 75vh;
-`;
-
-const StyledSidebar = styled(Sidebar)`
-  grid-column: 1;
-`;
-const StyledPortfolio = styled(PortfolioContainer)`
-  grid-column: 2;
-`;
 class App extends Component {
   state = {
     portfolioIndex: null,
+    contentOverflow: "hidden",
+    portfolioOverflow: "hidden",
+    currentView: "hero",
   };
 
-  updatePortfolioIndex = portfolioIndex => {
-    this.setState({ portfolioIndex });
+  aboutMeRef = React.createRef();
+  portfolioRef = React.createRef();
+
+  componentDidMount = () => {
+    window.addEventListener("scroll", this.onScroll);
   };
+  componentWillUnmount() {
+    window.removeEventListener("scroll");
+  }
+
+  // shouldComponentUpdate = (nextProps, nextState) => {};
+
+  onScroll = async () => {
+    const about = this.aboutMeRef.current.getBoundingClientRect();
+    const portfolio = this.portfolioRef.current.getBoundingClientRect();
+    let currentView = "";
+    if (about.top > 0 && portfolio.top > 0) {
+      currentView = "hero";
+    } else if (about.top <= 0 && portfolio.top > 0) {
+      currentView = "about";
+    } else if (about.top <= 0 && portfolio.top <= 0) {
+      currentView = "portfolio";
+    }
+    if (currentView !== this.state.currentView) {
+      await this.setState({ currentView });
+      console.log(this.state.currentView);
+    }
+  };
+
+  scrollTo = section => {
+    this[section].current.scrollIntoView({ behavior: "smooth" });
+  };
+
   render() {
     return (
       <ThemeProvider theme={theme}>
         <Container>
           <GlobalStyle />
-          <NavBar />
+          <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
           <Hero />
-          <ContentWrapper>
-            <StyledSidebar portfolioIndex={this.state.portfolioIndex} />
-            <StyledPortfolio updateFn={this.updatePortfolioIndex} />
-          </ContentWrapper>
+          <AboutMeMain innerRef={this.aboutMeRef} />
+          <PortfolioContainer
+            overflow={this.state.portfolioOverflow}
+            updateFn={this.updatePortfolioIndex}
+            innerRef={this.portfolioRef}
+          />
         </Container>
       </ThemeProvider>
     );

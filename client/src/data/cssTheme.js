@@ -1,9 +1,12 @@
 const theme = {
-  text: "white",
-  accent: "#4267b2",
-  bg: "#263a47",
-  fg: "#0c1821",
-  pSize: "1.25em",
+  heroFont: "Playfair Display",
+  titleFont: "",
+  text: "#EFEFF9",
+  accent: "#02FCF8",
+  primary: "#292933",
+  secondary: "#676789",
+  tertiary: "#D3D3D3",
+  cardShadow: "-2px 2px 5px gray",
 };
 
 export default theme;

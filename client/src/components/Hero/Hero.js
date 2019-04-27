@@ -2,73 +2,54 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 100%;
-  height: 500px;
+  width: 100vw;
+  height: 90vh;
   position: relative;
   z-index: 1;
+  border-bottom: 1px solid gray;
   overflow: visible;
-  border-bottom: 1px solid lightgray;
-`;
-
-const HeroImage = styled.img`
-  width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: cover;
-  object-position: top;
-`;
-
-const ProfilePic = styled.div`
-  position: absolute;
-  bottom: -5%;
-  left: 10%;
-  box-shadow: -2px 2px 20px;
-  border-radius: 50%;
-  height: 35vh;
-  width: 35vh;
-  border: 5px solid white;
-  background-image: url(./img/BrianQian.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  z-index: 1;
+  @media all and (max-width: 600px) {
+    height: 80vh;
+  }
 `;
 
 const HeroText = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  justify-items: flex-start;
+  flex-direction: column;
+  /* grid-template-columns:  */
   position: absolute;
-  top: 0;
-  left: 0;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  font-family: ${props => props.theme.heroFont};
+  font-weight: 800;
+  top: 10%;
+  width: 100vw;
+  padding: 3rem;
+  text-align: right;
   font-size: 2em;
-  align-items: center;
-  > h1 {
-    margin: 0;
-  }
-  & :nth-child(1) {
-    grid-column: 5/-1;
-    grid-row: 2;
-  }
-  & :nth-child(2) {
-    grid-row: 3;
-    grid-column: 6/-1;
-  }
-  > h3 {
-    color: white;
-    -webkit-font-smoothing: antialiased;
+`;
+
+const HeroLine1 = styled.h1`
+  /* color: #e929e9; */
+  color: white;
+  width: 100%;
+  > span {
+    color: cyan;
   }
 `;
+
 class Hero extends Component {
   render() {
     return (
       <Container>
-        <HeroImage src="./img/blank-comp.jpg" alt="" />
-        <ProfilePic />
         <HeroText>
-          <h3>Brian Qian</h3>
+          <HeroLine1>
+            Hi I'm <span>Brian Qian</span>
+          </HeroLine1>
+          <HeroLine1>
+            and I'm a <span>Web Developer</span>
+          </HeroLine1>
         </HeroText>
       </Container>
     );
