@@ -1,5 +1,6 @@
 const theme = {
-  heroText: "Merriweather",
+  heroFont: "Merriweather",
+  titleFont: "",
   text: "#EFEFF9",
   accent: "#02FCF8",
   bg: "#292933",

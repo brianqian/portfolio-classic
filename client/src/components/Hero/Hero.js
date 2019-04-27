@@ -29,7 +29,7 @@ const HeroText = styled.div`
   flex-direction: column;
   /* grid-template-columns:  */
   position: absolute;
-  font-family: ${props => props.theme.heroText};
+  font-family: ${props => props.theme.heroFont};
   font-weight: 800;
   top: 10%;
   width: 100vw;

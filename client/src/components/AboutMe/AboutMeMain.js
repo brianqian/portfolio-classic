@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   background-color: ${props => props.theme.secondary};
-  margin-top: 50px;
-  padding: 1rem;
+  padding: 50px;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -32,8 +31,8 @@ const ProfilePic = styled.div`
 `;
 
 const AboutMeMain = props => (
-  <Container>
-    <h1 ref={props.innerRef}>About Me</h1>
+  <Container ref={props.innerRef}>
+    <h1>About Me</h1>
     <ProfilePic />
     <h2>Developer. Problem Solver. Aspiring philanthropist. </h2>
     <p>
