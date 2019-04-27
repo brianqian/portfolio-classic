@@ -2,19 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: ${props => props.theme.cardBG};
-  box-shadow: ${props => props.theme.cardShadow};
+  background-color: ${props => props.theme.secondary};
+  margin-top: 50px;
   padding: 1rem;
-  margin-bottom: 2rem;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  @media all and (max-width: 600px) {
-    width: 100vw;
-  }
   > h1 {
     align-self: flex-start;
     @media all and (max-width: 600px) {

@@ -175,7 +175,7 @@ class PortflioItem extends Component {
   };
 
   render() {
-    const { showMoreInfo, moreInfoOpacity } = this.state;
+    const { showMoreInfo } = this.state;
     const { updateSelected, index } = this.props;
     const { title, description, gitURL, deployURL, stack, img1 } = this.props;
     const bulletPoints = description.split(". ").map((line, i) => (
