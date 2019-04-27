@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 body, html{
   margin: 0;
   background-color: #eaeaea;
-  font-family: 'Open Sans';
+  font-family: 'Lato';
 
 }
 a{
@@ -22,7 +22,7 @@ a{
 }
 
 figcaption{
-  color: ${props => props.theme.bg};
+  color: ${props => props.theme.primary};
 }
 ::-webkit-scrollbar{
 width: 0;
@@ -32,10 +32,10 @@ display: none;
 `;
 
 const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css?family=Merriweather|Open+Sans:400,800");
+  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Open+Sans:800|Lato");
   width: 100vw;
   /* overflow: hidden; */
-  background-color: ${props => props.theme.bg};
+  background-color: ${props => props.theme.primary};
 `;
 
 class App extends Component {
@@ -43,6 +43,7 @@ class App extends Component {
     portfolioIndex: null,
     contentOverflow: "hidden",
     portfolioOverflow: "hidden",
+    currentView: "hero",
   };
 
   aboutMeRef = React.createRef();
@@ -55,7 +56,24 @@ class App extends Component {
     window.removeEventListener("scroll");
   }
 
-  onScroll = () => {};
+  // shouldComponentUpdate = (nextProps, nextState) => {};
+
+  onScroll = async () => {
+    const about = this.aboutMeRef.current.getBoundingClientRect();
+    const portfolio = this.portfolioRef.current.getBoundingClientRect();
+    let currentView = "";
+    if (about.top > 0 && portfolio.top > 0) {
+      currentView = "hero";
+    } else if (about.top <= 0 && portfolio.top > 0) {
+      currentView = "about";
+    } else if (about.top <= 0 && portfolio.top <= 0) {
+      currentView = "portfolio";
+    }
+    if (currentView !== this.state.currentView) {
+      await this.setState({ currentView });
+      console.log(this.state.currentView);
+    }
+  };
 
   scrollTo = section => {
     this[section].current.scrollIntoView({ behavior: "smooth" });
@@ -66,7 +84,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Container>
           <GlobalStyle />
-          <NavBar scrollFn={this.scrollTo} />
+          <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
           <Hero />
           <AboutMeMain innerRef={this.aboutMeRef} />
           <PortfolioContainer
