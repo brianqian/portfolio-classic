@@ -1,14 +1,12 @@
 const theme = {
-  heroFont: "Merriweather",
+  heroFont: "Playfair Display",
   titleFont: "",
   text: "#EFEFF9",
   accent: "#02FCF8",
-  bg: "#292933",
-  fg: "#0c1821",
+  primary: "#292933",
   secondary: "#676789",
-  pSize: "1.25em",
+  tertiary: "#D3D3D3",
   cardShadow: "-2px 2px 5px gray",
-  cardBG: "white",
 };
 
 export default theme;

@@ -15,14 +15,6 @@ const Container = styled.div`
   }
 `;
 
-const HeroImage = styled.img`
-  min-width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: cover;
-  object-position: center;
-`;
-
 const HeroText = styled.div`
   display: flex;
   justify-items: flex-start;
@@ -51,12 +43,6 @@ class Hero extends Component {
   render() {
     return (
       <Container>
-        {/* <HeroImage
-          src="./img/lost_coast.jpg"
-          alt="cover"
-          srcset="./img/blank-comp-1920.jpg 1920w, ./img/blank-comp-900.jpeg 900w"
-          sizes="(min-width: 1400px) 1920w, (min-width: 900px) 900w"
-        /> */}
         <HeroText>
           <HeroLine1>
             Hi I'm <span>Brian Qian</span>

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Container = styled.div`
   position: relative;
   width: 100%;
+  margin: 3rem 0;
   overflow: hidden;
   height: 80vh;
   display: flex;
@@ -18,7 +19,7 @@ const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   > * {
-    color: ${props => props.theme.bg};
+    color: ${props => props.theme.primary};
     font-size: 1.5em;
   }
 `;
@@ -35,13 +36,47 @@ const Figure = styled.figure`
 const Image = styled.img`
   max-height: 60vh;
   max-width: 100%;
-  /* box-shadow: -20px 20px 30px 5px #5f5f5f20, 10px -10px 30px 15px #5f5f5f20; */
+  box-shadow: -20px 20px 30px 5px #5f5f5f20, 10px -10px 30px 15px #5f5f5f20;
+`;
+const ButtonsDiv = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  margin: auto;
+`;
+const InterfaceButton = styled.div`
+  border: 1px solid lightgray;
+  background-color: #efefef;
+
+  font-size: 0.75em;
+  padding: 4px 8px;
+  width: 30%;
+  box-shadow: -5px 5px ${props => props.theme.primary};
+  user-select: none;
+  :hover {
+    background-color: white;
+  }
+  :active {
+    box-shadow: -5px 5px ${props => props.theme.accent};
+    background-color: white;
+    color: black;
+  }
+  > a {
+    color: ${props => props.theme.primary};
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 `;
 
 const Title = styled.h2`
   margin: 0;
   font-size: 2em;
   font-family: ${props => props.theme.heroFont};
+  width: auto;
+  margin: auto;
+  border-bottom: 3px solid ${props => props.theme.primary};
 `;
 
 export default class PortfolioItem extends Component {
@@ -58,7 +93,6 @@ export default class PortfolioItem extends Component {
 
   observerFn = entries => {
     if (this.state.scrolledIntoView === true) return;
-    console.log(this.props.title);
     entries.forEach(entry => this.setState({ scrolledIntoView: entry.isIntersecting }));
   };
 
@@ -74,6 +108,20 @@ export default class PortfolioItem extends Component {
         <DetailsContainer onClick={this.onClick} ref={this.projectRef}>
           <Title>{title}</Title>
           <p>{description}</p>
+          <ButtonsDiv>
+            <InterfaceButton>
+              <a href={gitURL} rel="noopener noreferrer" target="_blank">
+                <img src="./img/social_icons/GitHub-Dark-64px.png" height="20px" alt="" />
+                Code
+              </a>
+            </InterfaceButton>
+            <InterfaceButton>
+              <a href={deployURL} rel="noopener noreferrer" target="_blank">
+                <img src="./img/internet.svg" height="20px" alt="" />
+                Website
+              </a>
+            </InterfaceButton>
+          </ButtonsDiv>
         </DetailsContainer>
       </Container>
     );

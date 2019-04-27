@@ -1,14 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.div.attrs(({ view, theme }) => {
+  if (view === "hero") return { bgc: theme.primary };
+  if (view === "about") return { bgc: theme.secondary };
+  if (view === "portfolio") return { bgc: theme.tertiary };
+})`
   display: flex;
   position: fixed;
   width: 100vw;
   height: 50px;
+  border-bottom: 1px solid #ffffff22;
   top: 0;
-  background-color: ${props => props.theme.bg};
-  color: white;
+  right: 0;
+  background-color: ${({ bgc }) => bgc};
+  transition: all ease-in 0.2s;
   z-index: 2;
   font-family: "Open Sans", Geneva, Tahoma, sans-serif;
 `;
@@ -20,6 +26,7 @@ const NavContent = styled.div`
   align-items: center;
   font-weight: 800;
   > * {
+    color: ${({ theme, view }) => (view === "portfolio" ? theme.primary : "white")};
     user-select: none;
     cursor: pointer;
     display: flex;
@@ -27,24 +34,33 @@ const NavContent = styled.div`
     margin: 0 1rem;
     height: 100%;
     :hover {
-      border-bottom: 1px solid ${props => props.theme.accent};
+      border-bottom: 1px solid ${({ theme }) => theme.accent};
     }
   }
 `;
 
-function NavBar(props) {
+function NavBar({ currentView, scrollFn }) {
   return (
-    <Container>
-      {/* <Image /> */}
-      <NavContent>
-        <p onClick={() => props.scrollFn("aboutMeRef")}>About</p>
-        <p onClick={() => props.scrollFn("portfolioRef")}>Portfolio</p>
+    <Container view={currentView}>
+      <NavContent view={currentView}>
+        <p onClick={() => scrollFn("aboutMeRef")}>About</p>
+        <p onClick={() => scrollFn("portfolioRef")}>Portfolio</p>
         {/* <p>Contact</p> */}
         <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
-          <img src="./img/social_icons/GitHub-Light-64px.png" height="25px" alt="" />
+          <img
+            src={`./img/social_icons/GitHub-${
+              currentView === "portfolio" ? "Dark" : "Light"
+            }-64px.png`}
+            height="25px"
+            alt=""
+          />
         </a>
         <a href="https://www.linkedin.com/in/brian-qian/" rel="noopener noreferrer" target="_blank">
-          <img src="./img/social_icons/In-White-41px.png" height="25px" alt="" />
+          <img
+            src={`./img/social_icons/In-${currentView === "portfolio" ? "" : "White-"}41px.png`}
+            height="25px"
+            alt=""
+          />
         </a>
       </NavContent>
     </Container>
