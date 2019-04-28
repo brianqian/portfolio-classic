@@ -10,8 +10,12 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+  font-size: 1.2em;
   > h1 {
     align-self: flex-start;
+    margin: 1rem;
+    font-family: ${props => props.theme.heroFont};
+    font-size: 4em;
     @media all and (max-width: 600px) {
       align-self: center;
     }
@@ -34,16 +38,13 @@ const AboutMeMain = props => (
   <Container ref={props.innerRef}>
     <h1>About Me</h1>
     <ProfilePic />
-    <h2>Developer. Problem Solver. Aspiring philanthropist. </h2>
+    <h2>Developer. Problem Solver. Entertainment Industry Survivor. </h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis harum temporibus eius
-      explicabo deleniti quo consectetur aut modi, ducimus ipsum non. Totam nulla quo velit optio
-      quia enim labore quibusdam. Voluptatum, quaerat esse nobis ipsam at consequuntur recusandae
-      sunt repellendus earum voluptas. Vero distinctio, fuga dignissimos animi natus sint veritatis
-      aut odit earum id numquam, alias quia commodi suscipit placeat. Expedita a maiores beatae
-      inventore distinctio! At sequi natus fugiat. Sequi, eum? Repellat, nesciunt voluptatem neque
-      rerum, eos autem dolorem eius vel possimus asperiores dolore inventore corporis consequuntur
-      quidem consectetur.
+      I'm a full-stack dev originally from the Bay Area, now based in New York. Previously I worked
+      at a talent agency and realized I didn't have enough problem solving in my life. I attended a
+      bootcamp and I've been teaching myself everything about web development ever since. Outside of
+      coding I'm still a big movie nerd and when I'm with friends I love getting competitive over
+      some board games.
     </p>
   </Container>
 );

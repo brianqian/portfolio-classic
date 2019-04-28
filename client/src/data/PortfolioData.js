@@ -37,7 +37,7 @@ const PortfolioData = [
   },
   {
     title: "Google Books API",
-    stack: ["HTML", "CSS", "Javascript", "React", "HTML", "CSS", "Node"],
+    stack: ["HTML", "CSS", "Javascript", "React", "Node"],
     description:
       "A basic application that uses the Google Books API and cross references searches with Wikipedia. This project is built in React with a Node backend",
     img1: "./img/screenshots/books-full.png ",

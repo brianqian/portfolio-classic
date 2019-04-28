@@ -19,7 +19,6 @@ const HeroText = styled.div`
   display: flex;
   justify-items: flex-start;
   flex-direction: column;
-  /* grid-template-columns:  */
   position: absolute;
   font-family: ${props => props.theme.heroFont};
   font-weight: 800;
@@ -34,20 +33,31 @@ const HeroLine1 = styled.h1`
   /* color: #e929e9; */
   color: white;
   width: 100%;
+  opacity: ${props => (props.load ? "1" : "0")};
+  transition: all 1s linear ${props => props.delay}s;
   > span {
     color: cyan;
   }
 `;
 
 class Hero extends Component {
+  state = {
+    loaded: false,
+  };
+  componentDidMount = () => {
+    setTimeout(() => {
+      this.setState({ loaded: true });
+    }, 0);
+  };
+
   render() {
     return (
       <Container>
         <HeroText>
-          <HeroLine1>
+          <HeroLine1 load={this.state.loaded} delay="0.5">
             Hi I'm <span>Brian Qian</span>
           </HeroLine1>
-          <HeroLine1>
+          <HeroLine1 load={this.state.loaded} delay="1.5">
             and I'm a <span>Web Developer</span>
           </HeroLine1>
         </HeroText>
