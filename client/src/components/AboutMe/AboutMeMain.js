@@ -15,7 +15,7 @@ const Container = styled.div`
     align-self: flex-start;
     margin: 1rem;
     font-family: ${props => props.theme.heroFont};
-    font-size: 4em;
+    font-size: 70px;
     @media all and (max-width: 600px) {
       align-self: center;
     }

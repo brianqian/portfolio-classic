@@ -70,8 +70,7 @@ class App extends Component {
       currentView = "portfolio";
     }
     if (currentView !== this.state.currentView) {
-      await this.setState({ currentView });
-      console.log(this.state.currentView);
+      this.setState({ currentView });
     }
   };
 
