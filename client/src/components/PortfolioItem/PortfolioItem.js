@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
   width: 100%;
   margin: 3rem 0;
   overflow: hidden;
-  height: 80vh;
+  height: 70vh;
   display: flex;
   flex-direction: ${props => (props.reverse ? "row-reverse" : "row")};
   align-items: center;
@@ -18,8 +18,10 @@ const DetailsContainer = styled.div`
   flex: 4;
   display: flex;
   flex-direction: column;
+  line-height: 40px;
+  padding: 2rem;
   > * {
-    color: ${props => props.theme.primary};
+    color: ${props => props.theme.text};
     font-size: 1.5em;
   }
 `;
@@ -31,12 +33,17 @@ const Figure = styled.figure`
   position: relative;
   width: auto;
   transition: all linear 0.75s;
+  > * {
+    color: ${props => props.theme.text};
+  }
 `;
 
 const Image = styled.img`
   max-height: 60vh;
   max-width: 100%;
-  box-shadow: -20px 20px 30px 5px #5f5f5f20, 10px -10px 30px 15px #5f5f5f20;
+  border-radius: 8px;
+  box-shadow: -20px 20px 30px 5px ${props => props.theme.accent}22,
+    10px -10px 30px 15px ${props => props.theme.accent}11;
 `;
 const ButtonsDiv = styled.div`
   display: flex;
@@ -46,18 +53,17 @@ const ButtonsDiv = styled.div`
 `;
 const InterfaceButton = styled.div`
   border: 1px solid lightgray;
-  background-color: #efefef;
-
+  background-color: ${props => props.theme.text};
   font-size: 0.75em;
   padding: 4px 8px;
   width: 30%;
-  box-shadow: -5px 5px ${props => props.theme.primary};
+  box-shadow: 5px 5px ${props => props.theme.secondary};
   user-select: none;
   :hover {
     background-color: white;
   }
   :active {
-    box-shadow: -5px 5px ${props => props.theme.accent};
+    box-shadow: 5px 5px ${props => props.theme.accent};
     background-color: white;
     color: black;
   }
@@ -73,10 +79,11 @@ const InterfaceButton = styled.div`
 const Title = styled.h2`
   margin: 0;
   font-size: 2em;
+  color: ${props => props.theme.text};
   font-family: ${props => props.theme.heroFont};
   width: auto;
   margin: auto;
-  border-bottom: 3px solid ${props => props.theme.primary};
+  border-bottom: 3px solid ${props => props.theme.text};
 `;
 
 export default class PortfolioItem extends Component {
