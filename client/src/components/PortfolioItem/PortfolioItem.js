@@ -32,7 +32,7 @@ const Figure = styled.figure`
   opacity: ${props => (props.showImage ? 1 : 0)};
   position: relative;
   width: auto;
-  transition: all linear 0.75s;
+  transition: all ease-in 0.75s;
   > * {
     color: ${props => props.theme.text};
   }
@@ -43,7 +43,9 @@ const Image = styled.img`
   max-width: 100%;
   border-radius: 8px;
   box-shadow: -20px 20px 30px 5px ${props => props.theme.accent}22,
-    10px -10px 30px 15px ${props => props.theme.accent}11;
+    10px -10px 30px 15px ${props => props.theme.accent}11,
+    -10px -10px 30px 15px ${props => props.theme.accent}11,
+    10px 0px 30px 15px ${props => props.theme.accent}11;
 `;
 const ButtonsDiv = styled.div`
   display: flex;

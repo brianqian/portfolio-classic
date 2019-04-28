@@ -9,7 +9,7 @@ const Container = styled.div.attrs(({ view, theme }) => {
   display: flex;
   position: fixed;
   width: 100vw;
-  height: 50px;
+  height: ${props => props.theme.headerHeight};
   border-bottom: 1px solid #ffffff22;
   top: 0;
   right: 0;

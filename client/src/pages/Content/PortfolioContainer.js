@@ -13,7 +13,7 @@ const Container = styled.div`
   > h1 {
     color: ${props => props.theme.text};
     font-family: ${props => props.theme.heroFont};
-    font-size: 4em;
+    font-size: 70px;
     margin: 50px;
     align-self: flex-start;
     @media all and (max-width: 600px) {
