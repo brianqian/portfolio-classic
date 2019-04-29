@@ -21,7 +21,7 @@ const PortfolioData = [
     title: "DevLab",
     stack: ["HTML", "CSS", "Javascript", "jQuery", "Node/Express", "SQL"],
     description:
-      "DevLab is a collaborative resource dedicated to help people learn web development. Resources are pooled into a library where individual users can save content to their own library. Each time content is saved, it's ranked to provide easy access to the most popular resources. Responsible for: strategy and front end structure, API calls, database models. Test login: admin@example.org / password",
+      "Responsible for: strategy and front end structure, API calls, database models. DevLab is a collaborative resource dedicated to help people learn web development. Resources are pooled into a library where individual users can save content to their own library. Each time content is saved, it's ranked to provide easy access to the most popular resources. Test login: admin@example.org / password",
     img1: "./img/screenshots/devlab-full.png",
     gitURL: "https://github.com/sajeelmalik/Dev-Lab",
     deployURL: "http://devlab.herokuapp.com/",
@@ -30,7 +30,7 @@ const PortfolioData = [
     title: "EventSpotter",
     stack: ["HTML", "CSS", "Javascript", "jQuery"],
     description:
-      "EventSpotter uses both the Spotify API and SeatGeek API to provide upcoming tour dates for your favorite artists or to search by location. Spotify allows the user to listen to artists during your search. A calendar is also provided to help the user plan their dates. I was responsible for our front end design and our API calls. As a first project I wanted to use this opportunity to learn CSS Grid and get more exposure to jQuery",
+      "Responsible for strategy, front-end design, API calls. EventSpotter uses both the Spotify API and SeatGeek API to provide upcoming tour dates for your favorite artists or to search by location. Spotify allows the user to listen to artists during your search. A calendar is also provided to help the user plan their dates. As a first project I wanted to use this opportunity to learn CSS Grid and get more exposure to jQuery",
     img1: "./img/screenshots/eventspotter-full.png",
     gitURL: "https://github.com/brianqian/SpotifyEvents",
     deployURL: "https://brianqian.github.io/SpotifyEvents/",
