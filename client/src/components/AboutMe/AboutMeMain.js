@@ -7,20 +7,22 @@ const Container = styled.section`
   width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  align-items: center;
   font-size: 1.2em;
+  line-height: 2em;
   > h1 {
     border-bottom: 3px solid ${props => props.theme.tertiary};
-    padding-bottom: 0.5rem;
+    padding-bottom: 2rem;
     text-align: left;
     width: 100%;
     margin: 1rem;
+    color: ${props => props.theme.text};
     font-family: ${props => props.theme.heroFont};
     font-size: 4em;
     @media all and (max-width: 900px) {
       text-align: center;
+      border: none;
     }
   }
 `;
@@ -50,7 +52,8 @@ const AboutMeMain = props => (
       developer thanks to a bootcamp that got me started. All of my experience has been from
       building things from scratch, testing them, and learning from the process. Ever since learning
       React I've used it for every project and hopefully for my next job. <br />
-      Besides React, I'm comfortable using Node for backend
+      I'm also comfortable using jQuery, Redux, Node, SQL, MongoDB and testing frameworks like Jest
+      and Enzyme.
     </p>
   </Container>
 );

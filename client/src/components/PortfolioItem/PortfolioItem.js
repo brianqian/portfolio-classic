@@ -14,6 +14,7 @@ const Container = styled.div`
     flex-direction: column-reverse;
     font-size: 0.8em;
     height: 100vh;
+    text-align: center;
   }
 `;
 
@@ -38,6 +39,10 @@ const Image = styled.img`
     10px -5px 30px 10px ${props => props.theme.text}22;
   :hover {
     opacity: 1;
+  }
+  @media all and (max-width: 900px) {
+    /* object-fit: none;
+    object-position: 0% 0%; */
   }
 `;
 

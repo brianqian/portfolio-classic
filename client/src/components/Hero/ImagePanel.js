@@ -46,24 +46,24 @@ export default class ImagePanel extends Component {
   };
   render() {
     const { path, titles, order, alignment } = this.props;
-
+    const { showImage } = this.state;
     return (
       <Container alignment={alignment}>
         <Image
           delay={order / 3}
-          show={this.state.showImage[0]}
+          show={showImage[0]}
           src={`${path}/${titles[0] + order}.jpg`}
           alt="hero"
         />
         <Image
           delay={order / 3}
-          show={this.state.showImage[1]}
+          show={showImage[1]}
           src={`${path}/${titles[1] + order}.jpg`}
           alt="hero"
         />
         <Image
           delay={order / 3}
-          show={this.state.showImage[2]}
+          show={showImage[2]}
           src={`${path}/${titles[2] + order}.jpg`}
           alt="hero"
         />

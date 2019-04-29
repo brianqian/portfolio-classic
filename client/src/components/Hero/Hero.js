@@ -23,21 +23,18 @@ const HeroText = styled.div`
   display: flex;
   justify-items: flex-start;
   flex-direction: column;
-  position: absolute;
   font-family: ${props => props.theme.heroFont};
   font-weight: 800;
-  top: 10%;
-  width: 100vw;
-  min-width: 1600px;
-  padding: 3rem;
+  width: 100%;
+  padding-right: 3rem;
   text-align: right;
   font-size: 2em;
 `;
 
 const HeroLine = styled.h1`
-  /* color: #e929e9; */
   color: white;
   width: 100%;
+  white-space: nowrap;
   opacity: ${props => (props.load ? "1" : "0")};
   transition: all 1s linear ${props => props.delay};
   > span {
@@ -45,11 +42,16 @@ const HeroLine = styled.h1`
   }
 `;
 
+const NavButton = styled.div`
+  padding: 5px 8px;
+`;
+
 const ImageContainer = styled.div`
   display: flex;
   margin-top: ${props => props.theme.headerHeight};
   min-height: 90%;
   overflow: hidden;
+  width: 100%;
 `;
 
 class Hero extends Component {
@@ -63,26 +65,28 @@ class Hero extends Component {
   render() {
     return (
       <Container>
-        <ImageContainer>
-          <ImagePanel
-            order="1"
-            path="./img/HeroImages"
-            titles={["sf", "computer", "city"]}
-            alignment="flex-start"
-          />
-          <ImagePanel
-            order="2"
-            path="./img/HeroImages"
-            titles={["sf", "computer", "city"]}
-            alignment="center"
-          />
-          <ImagePanel
-            order="3"
-            path="./img/HeroImages"
-            titles={["sf", "computer", "city"]}
-            alignment="flex-end"
-          />
-        </ImageContainer>
+        {this.props.desktopView && (
+          <ImageContainer>
+            <ImagePanel
+              order="1"
+              path="./img/HeroImages"
+              titles={["sf", "computer", "city"]}
+              alignment="flex-start"
+            />
+            <ImagePanel
+              order="2"
+              path="./img/HeroImages"
+              titles={["sf", "computer", "city"]}
+              alignment="center"
+            />
+            <ImagePanel
+              order="3"
+              path="./img/HeroImages"
+              titles={["sf", "computer", "city"]}
+              alignment="flex-end"
+            />
+          </ImageContainer>
+        )}
         <HeroText>
           <HeroLine load={this.state.loaded} delay="0.5s">
             Hi I'm <span>Brian Qian</span>

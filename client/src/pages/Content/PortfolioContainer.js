@@ -10,7 +10,6 @@ const Container = styled.section`
   flex-direction: column;
   text-align: center;
   font-size: 1.2em;
-  /* align-items: flex-start; */
   padding: ${props => props.theme.headerHeight};
   @media all and (max-width: 900px) {
     text-align: center;
@@ -25,6 +24,7 @@ const Container = styled.section`
     margin: 1rem;
     @media all and (max-width: 900px) {
       text-align: center;
+      border: none;
     }
   }
 `;

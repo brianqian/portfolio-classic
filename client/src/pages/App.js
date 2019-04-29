@@ -36,9 +36,8 @@ const Container = styled.div`
 class App extends Component {
   state = {
     portfolioIndex: null,
-    contentOverflow: "hidden",
-    portfolioOverflow: "hidden",
     currentView: "hero",
+    desktopView: true,
   };
 
   aboutMeRef = React.createRef();
@@ -46,14 +45,20 @@ class App extends Component {
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
-    window.addEventListener("resize", this.onResize);
+    window.addEventListener("resize", this.updateViewport);
+    this.updateViewport();
   };
   componentWillUnmount() {
     window.removeEventListener("scroll");
     window.removeEventListener("resize");
   }
-  onResize = () => {
-    console.log(window.innerWidth);
+
+  updateViewport = () => {
+    if (window.innerWidth > 900 && !this.state.desktopView) {
+      this.setState({ desktopView: true });
+    } else if (window.innerWidth <= 900 && this.state.desktopView) {
+      this.setState({ desktopView: false });
+    }
   };
 
   onScroll = () => {
@@ -82,7 +87,7 @@ class App extends Component {
         <Container>
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
-          <Hero />
+          <Hero desktopView={this.state.desktopView} />
           <AboutMeMain innerRef={this.aboutMeRef} />
           <PortfolioContainer
             overflow={this.state.portfolioOverflow}
