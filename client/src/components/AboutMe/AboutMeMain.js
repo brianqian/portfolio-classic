@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.section`
   background-color: ${props => props.theme.secondary};
-  padding: 50px;
+  padding: ${props => props.theme.headerHeight};
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -12,22 +12,26 @@ const Container = styled.div`
   text-align: center;
   font-size: 1.2em;
   > h1 {
-    align-self: flex-start;
+    border-bottom: 3px solid ${props => props.theme.tertiary};
+    padding-bottom: 0.5rem;
+    text-align: left;
+    width: 100%;
     margin: 1rem;
     font-family: ${props => props.theme.heroFont};
-    font-size: 70px;
-    @media all and (max-width: 600px) {
-      align-self: center;
+    font-size: 4em;
+    @media all and (max-width: 900px) {
+      text-align: center;
     }
   }
 `;
 
 const ProfilePic = styled.div`
-  box-shadow: -2px 2px 20px;
+  box-shadow: -2px 2px 20px -3px darkgray;
   border-radius: 50%;
   height: 35vh;
   width: 35vh;
   border: 5px solid white;
+  margin-top: 3rem;
   background-image: url(./img/BrianQian.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -37,14 +41,16 @@ const ProfilePic = styled.div`
 const AboutMeMain = props => (
   <Container ref={props.innerRef}>
     <h1>About Me</h1>
+
     <ProfilePic />
     <h2>Developer. Problem Solver. Entertainment Industry Survivor. </h2>
     <p>
-      I'm a full-stack dev originally from the Bay Area, now based in New York. Previously I worked
-      at a talent agency and realized I didn't have enough problem solving in my life. I attended a
-      bootcamp and I've been teaching myself everything about web development ever since. Outside of
-      coding I'm still a big movie nerd and when I'm with friends I love getting competitive over
-      some board games.
+      I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life
+      I worked at a talent agency but made a sharp left turn into web development. I'm a self-taught
+      developer thanks to a bootcamp that got me started. All of my experience has been from
+      building things from scratch, testing them, and learning from the process. Ever since learning
+      React I've used it for every project and hopefully for my next job. <br />
+      Besides React, I'm comfortable using Node for backend
     </p>
   </Container>
 );

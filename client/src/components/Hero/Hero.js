@@ -28,19 +28,20 @@ const HeroText = styled.div`
   font-weight: 800;
   top: 10%;
   width: 100vw;
+  min-width: 1600px;
   padding: 3rem;
   text-align: right;
   font-size: 2em;
 `;
 
-const HeroLine1 = styled.h1`
+const HeroLine = styled.h1`
   /* color: #e929e9; */
   color: white;
   width: 100%;
   opacity: ${props => (props.load ? "1" : "0")};
   transition: all 1s linear ${props => props.delay};
   > span {
-    color: cyan;
+    color: ${props => props.theme.accent};
   }
 `;
 
@@ -56,13 +57,7 @@ class Hero extends Component {
     loaded: false,
   };
   componentDidMount = () => {
-    setTimeout(() => {
-      this.setState({ loaded: true });
-    }, 0);
-  };
-
-  componentWillUnmount = () => {
-    clearInterval(this.intervalID);
+    this.setState({ loaded: true });
   };
 
   render() {
@@ -89,12 +84,12 @@ class Hero extends Component {
           />
         </ImageContainer>
         <HeroText>
-          <HeroLine1 load={this.state.loaded} delay="0.5s">
+          <HeroLine load={this.state.loaded} delay="0.5s">
             Hi I'm <span>Brian Qian</span>
-          </HeroLine1>
-          <HeroLine1 load={this.state.loaded} delay="1.5s">
+          </HeroLine>
+          <HeroLine load={this.state.loaded} delay="1.5s">
             and I'm a <span>Web Developer</span>
-          </HeroLine1>
+          </HeroLine>
         </HeroText>
       </Container>
     );

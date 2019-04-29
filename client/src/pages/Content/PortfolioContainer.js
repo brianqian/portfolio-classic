@@ -3,21 +3,28 @@ import styled from "styled-components";
 import portfolioData from "../../data/PortfolioData";
 import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
 
-const Container = styled.div`
-  /* background-color: ${props => props.theme.primary}; */
+const Container = styled.section`
   background-color: ${props => props.theme.primary};
   width: 100vw;
   display: flex;
   flex-direction: column;
   text-align: center;
+  font-size: 1.2em;
+  /* align-items: flex-start; */
+  padding: ${props => props.theme.headerHeight};
+  @media all and (max-width: 900px) {
+    text-align: center;
+  }
   > h1 {
+    border-bottom: 3px solid ${props => props.theme.tertiary};
+    width: 100%;
+    text-align: left;
     color: ${props => props.theme.text};
     font-family: ${props => props.theme.heroFont};
-    font-size: 70px;
-    margin: 50px;
-    align-self: flex-start;
-    @media all and (max-width: 600px) {
-      align-self: center;
+    font-size: 4em;
+    margin: 1rem;
+    @media all and (max-width: 900px) {
+      text-align: center;
     }
   }
 `;
