@@ -10,7 +10,7 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   position: fixed;
   width: 100vw;
   height: ${props => props.theme.headerHeight};
-  border-bottom: 1px solid #ffffff22;
+  /* border-bottom: 1px solid #ffffff22; */
   top: 0;
   right: 0;
   background-color: ${({ bgc }) => bgc};
@@ -34,7 +34,8 @@ const NavContent = styled.div`
     margin: 0 1rem;
     height: 100%;
     :hover {
-      border-bottom: 1px solid ${({ theme }) => theme.accent};
+      border-bottom: 1px solid
+        ${({ theme, view }) => (view === "portfolio" ? theme.primary : theme.accent)};
     }
   }
 `;
