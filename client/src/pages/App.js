@@ -9,7 +9,6 @@ import AboutMeMain from "../components/AboutMe/AboutMeMain";
 const GlobalStyle = createGlobalStyle`
 body, html{
   margin: 0;
-  background-color: #eaeaea;
   font-family: 'Lato';
 
 }
@@ -24,17 +23,13 @@ a{
 figcaption{
   color: ${props => props.theme.primary};
 }
-::-webkit-scrollbar{
-width: 0;
-display: none;  
-}
+
 
 `;
 
 const Container = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Open+Sans:800|Lato");
   width: 100vw;
-  /* overflow: hidden; */
   background-color: ${props => props.theme.primary};
 `;
 
@@ -51,14 +46,17 @@ class App extends Component {
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
+    window.addEventListener("resize", this.onResize);
   };
   componentWillUnmount() {
     window.removeEventListener("scroll");
+    window.removeEventListener("resize");
   }
+  onResize = () => {
+    console.log(window.innerWidth);
+  };
 
-  // shouldComponentUpdate = (nextProps, nextState) => {};
-
-  onScroll = async () => {
+  onScroll = () => {
     const about = this.aboutMeRef.current.getBoundingClientRect();
     const portfolio = this.portfolioRef.current.getBoundingClientRect();
     let currentView = "";

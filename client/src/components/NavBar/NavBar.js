@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div.attrs(({ view, theme }) => {
+const Container = styled.nav.attrs(({ view, theme }) => {
   if (view === "hero") return { bgc: theme.primary };
   if (view === "about") return { bgc: theme.secondary };
   if (view === "portfolio") return { bgc: theme.tertiary };

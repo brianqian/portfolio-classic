@@ -1,14 +1,5 @@
 import React, { Component } from "react";
-import styled, { keyframes } from "styled-components";
-
-const fadeIn = keyframes`
-from{opacity: 0}
-to{opacity: 1}
-`;
-const fadeOut = keyframes`
-from{opacity: 1}
-to{opacity: 0}
-`;
+import styled from "styled-components";
 
 const Container = styled.div`
   margin: 1rem;
@@ -19,8 +10,8 @@ const Container = styled.div`
   background-color: ${props => props.theme.primary};
   overflow: hidden;
   align-self: ${props => props.alignment};
-  /* border-left: 1px solid ${props => props.theme.accent};
-  border-bottom: 1px solid ${props => props.theme.accent}; */
+  border-left: 1px solid ${props => props.theme.accent};
+  border-bottom: 1px solid ${props => props.theme.accent};
 `;
 
 const Image = styled.img`
@@ -40,7 +31,6 @@ export default class ImagePanel extends Component {
   };
 
   componentDidMount = () => {
-    console.log(window.scrollX);
     this.rotateImages();
   };
 

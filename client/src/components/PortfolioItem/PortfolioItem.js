@@ -4,25 +4,16 @@ import styled from "styled-components";
 const Container = styled.div`
   position: relative;
   width: 100%;
-  margin: 3rem 0;
   overflow: hidden;
-  height: 70vh;
+  height: 80vh;
   display: flex;
   flex-direction: ${props => (props.reverse ? "row-reverse" : "row")};
   align-items: center;
-  justify-content: center;
-  /* background-color: #f5d6a7; */
-`;
-
-const DetailsContainer = styled.div`
-  flex: 4;
-  display: flex;
-  flex-direction: column;
-  line-height: 40px;
-  padding: 2rem;
-  > * {
-    color: ${props => props.theme.text};
-    font-size: 1.5em;
+  text-align: ${props => (props.reverse ? "left" : "right")};
+  @media all and (max-width: 900px) {
+    flex-direction: column-reverse;
+    font-size: 0.8em;
+    height: 100vh;
   }
 `;
 
@@ -33,34 +24,71 @@ const Figure = styled.figure`
   position: relative;
   width: auto;
   transition: all ease-in 0.75s;
+  text-align: center;
   > * {
     color: ${props => props.theme.text};
   }
 `;
 
 const Image = styled.img`
-  max-height: 60vh;
   max-width: 100%;
-  border-radius: 8px;
-  box-shadow: -20px 20px 30px 5px ${props => props.theme.accent}22,
-    10px -10px 30px 15px ${props => props.theme.accent}11,
-    -10px -10px 30px 15px ${props => props.theme.accent}11,
-    10px 0px 30px 15px ${props => props.theme.accent}11;
+  border-radius: 20px;
+  opacity: 0.9;
+  box-shadow: -15px 20px 30px 5px ${props => props.theme.text}22,
+    10px -5px 30px 10px ${props => props.theme.text}22;
+  :hover {
+    opacity: 1;
+  }
 `;
+
+const DetailsContainer = styled.div`
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  line-height: 40px;
+  height: 80%;
+  justify-content: space-evenly;
+  @media all and (max-width: 900px) {
+    flex: 7;
+    justify-content: space-evenly;
+  }
+  > * {
+    color: ${props => props.theme.text};
+    font-size: 1.2em;
+  }
+`;
+
+const Title = styled.header`
+  display: flex;
+  flex-direction: column;
+  > h2 {
+    color: ${props => props.theme.text};
+    border-bottom: 2px solid white;
+    height: 100%;
+    margin: 0;
+    font-size: 2em;
+    padding-bottom: 2rem;
+    font-family: ${props => props.theme.heroFont};
+  }
+`;
+
 const ButtonsDiv = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-evenly;
-  margin: auto;
 `;
 const InterfaceButton = styled.div`
   border: 1px solid lightgray;
   background-color: ${props => props.theme.text};
   font-size: 0.75em;
   padding: 4px 8px;
-  width: 30%;
+  width: 160px;
+  max-height: 60px;
   box-shadow: 5px 5px ${props => props.theme.secondary};
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   :hover {
     background-color: white;
   }
@@ -76,16 +104,6 @@ const InterfaceButton = styled.div`
     align-items: center;
     justify-content: space-evenly;
   }
-`;
-
-const Title = styled.h2`
-  margin: 0;
-  font-size: 2em;
-  color: ${props => props.theme.text};
-  font-family: ${props => props.theme.heroFont};
-  width: auto;
-  margin: auto;
-  border-bottom: 3px solid ${props => props.theme.text};
 `;
 
 export default class PortfolioItem extends Component {
@@ -115,7 +133,9 @@ export default class PortfolioItem extends Component {
           <figcaption>Built with: {stack.join(", ")}</figcaption>
         </Figure>
         <DetailsContainer onClick={this.onClick} ref={this.projectRef}>
-          <Title>{title}</Title>
+          <Title>
+            <h2>{title}</h2>
+          </Title>
           <p>{description}</p>
           <ButtonsDiv>
             <InterfaceButton>
