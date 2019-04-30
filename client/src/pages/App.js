@@ -9,7 +9,7 @@ import AboutMeMain from "../components/AboutMe/AboutMeMain";
 const GlobalStyle = createGlobalStyle`
 body, html{
   margin: 0;
-  font-family: 'Lato';
+  font-family: ${props => props.theme.textFont};
 
 }
 a{
@@ -28,7 +28,7 @@ figcaption{
 `;
 
 const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Open+Sans:800|Lato");
+  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:400,900");
   width: 100vw;
   background-color: ${props => props.theme.primary};
 `;

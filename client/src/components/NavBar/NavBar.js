@@ -10,13 +10,12 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   position: fixed;
   width: 100vw;
   height: ${props => props.theme.headerHeight};
-  /* border-bottom: 1px solid #ffffff22; */
   top: 0;
   right: 0;
   background-color: ${({ bgc }) => bgc};
   transition: all ease-in 0.2s;
   z-index: 2;
-  font-family: "Open Sans", Geneva, Tahoma, sans-serif;
+  font-family: ${props => props.theme.textFont};
 `;
 
 const NavContent = styled.div`
@@ -25,6 +24,7 @@ const NavContent = styled.div`
   justify-content: flex-end;
   align-items: center;
   font-weight: 800;
+  font-size: 1.2em;
   > * {
     color: ${({ theme, view }) => (view === "portfolio" ? theme.primary : "white")};
     user-select: none;

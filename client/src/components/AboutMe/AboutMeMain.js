@@ -11,6 +11,17 @@ const Container = styled.section`
   align-items: center;
   font-size: 1.2em;
   line-height: 2em;
+  white-space: pre-wrap;
+  > p {
+    font-size: 1.1em;
+    padding: 0 3rem;
+    @media all and (max-width: 900px) {
+      padding: 0 1rem;
+    }
+    > span {
+      color: ${props => props.theme.accent};
+    }
+  }
   > h1 {
     border-bottom: 3px solid ${props => props.theme.tertiary};
     padding-bottom: 2rem;
@@ -48,12 +59,12 @@ const AboutMeMain = props => (
     <h2>Developer. Problem Solver. Entertainment Industry Survivor. </h2>
     <p>
       I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life
-      I worked at a talent agency but made a sharp left turn into web development. I'm a self-taught
-      developer thanks to a bootcamp that got me started. All of my experience has been from
-      building things from scratch, testing them, and learning from the process. Ever since learning
-      React I've used it for every project and hopefully for my next job. <br />
-      I'm also comfortable using jQuery, Redux, Node, SQL, MongoDB and testing frameworks like Jest
-      and Enzyme.
+      I worked at a talent agency but made a sharp left turn into computer engineering. I'm mostly a
+      self-taught developer after taking UC Berkeley's bootcamp and I've been addicted ever since.
+      Building things from scratch, testing them, and learning from the process is a dream job for
+      me. Although nowadays I try to build everything in <span>React</span>, I'm also comfortable
+      using <span>jQuery, Redux, Node, SQL, MongoDB</span> and testing frameworks like{" "}
+      <span>Jest</span> and <span>Enzyme</span>.
     </p>
   </Container>
 );
