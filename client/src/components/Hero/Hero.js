@@ -15,7 +15,7 @@ const Container = styled.div`
   background-repeat: no-repeat;
   align-items: center;
   @media all and (max-width: 600px) {
-    height: 80vh;
+    height: 70vh;
   }
 `;
 
@@ -29,21 +29,39 @@ const HeroText = styled.div`
   padding-right: 3rem;
   text-align: right;
   font-size: 2em;
+  @media all and (max-width: 900px) {
+    font-size: 1.5em;
+  }
 `;
 
 const HeroLine = styled.h1`
   color: white;
   width: 100%;
-  white-space: nowrap;
   opacity: ${props => (props.load ? "1" : "0")};
-  transition: all 1s linear ${props => props.delay};
+  transition: opacity 1s linear ${props => props.delay};
   > span {
     color: ${props => props.theme.accent};
   }
 `;
 
+const Buttons = styled.div`
+  display: grid;
+  margin-top: 4rem;
+  grid-template-columns: 3fr 2fr 1fr 2fr;
+`;
 const NavButton = styled.div`
   padding: 5px 8px;
+  background-color: ${props => props.theme.tertiary};
+  color: ${props => props.theme.primary};
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7em;
+  font-family: ${props => props.theme.textFont};
+  font-weight: 400;
+  grid-column: ${props => props.column};
 `;
 
 const ImageContainer = styled.div`
@@ -54,12 +72,25 @@ const ImageContainer = styled.div`
   width: 100%;
 `;
 
+// ===FOR TESTING===
+ImageContainer.displayName = "ImageContainer";
+
 class Hero extends Component {
   state = {
     loaded: false,
   };
   componentDidMount = () => {
-    this.setState({ loaded: true });
+    this.setLoadedState();
+  };
+
+  setLoadedState = () => {
+    this.timeout = setTimeout(() => {
+      this.setState({ loaded: true });
+    }, 0);
+  };
+
+  componentWillUnmount = () => {
+    clearTimeout(this.timeout);
   };
 
   render() {
@@ -94,6 +125,10 @@ class Hero extends Component {
           <HeroLine load={this.state.loaded} delay="1.5s">
             and I'm a <span>Web Developer</span>
           </HeroLine>
+          {/* <Buttons>
+            <NavButton column={2}>ABOUT ME</NavButton>
+            <NavButton column={4}>PORTFOLIO</NavButton>
+          </Buttons> */}
         </HeroText>
       </Container>
     );

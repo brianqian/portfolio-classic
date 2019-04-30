@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Container = styled.div`
   margin: 1rem;
   position: relative;
-  /* min-height: 400px; */
   width: 250px;
   height: 500px;
   background-color: ${props => props.theme.primary};
@@ -25,21 +24,23 @@ const Image = styled.img`
   transition: all 1s linear ${props => props.delay}s;
 `;
 
+//===FOR TESTING===
+Container.displayName = "Container";
+
 export default class ImagePanel extends Component {
   state = {
     showImage: [true, false, false],
   };
 
   componentDidMount = () => {
-    this.rotateImages();
+    // this.rotateImages();
+    this.intervalID = setInterval(this.rotateImages, 6000);
   };
 
   rotateImages = () => {
     const showImage = this.state.showImage;
-    this.intervalID = setInterval(() => {
-      showImage.push(showImage.shift());
-      this.setState({ showImage });
-    }, 6000);
+    showImage.push(showImage.shift());
+    this.setState({ showImage });
   };
   componentWillUnmount = () => {
     clearInterval(this.intervalID);
@@ -49,24 +50,28 @@ export default class ImagePanel extends Component {
     const { showImage } = this.state;
     return (
       <Container alignment={alignment}>
-        <Image
-          delay={order / 3}
-          show={showImage[0]}
-          src={`${path}/${titles[0] + order}.jpg`}
-          alt="hero"
-        />
-        <Image
-          delay={order / 3}
-          show={showImage[1]}
-          src={`${path}/${titles[1] + order}.jpg`}
-          alt="hero"
-        />
-        <Image
-          delay={order / 3}
-          show={showImage[2]}
-          src={`${path}/${titles[2] + order}.jpg`}
-          alt="hero"
-        />
+        {titles.length && (
+          <>
+            <Image
+              delay={order / 3}
+              show={showImage[0]}
+              src={`${path}/${titles[0] + order}.jpg`}
+              alt="hero"
+            />
+            <Image
+              delay={order / 3}
+              show={showImage[1]}
+              src={`${path}/${titles[1] + order}.jpg`}
+              alt="hero"
+            />
+            <Image
+              delay={order / 3}
+              show={showImage[2]}
+              src={`${path}/${titles[2] + order}.jpg`}
+              alt="hero"
+            />
+          </>
+        )}
       </Container>
     );
   }
