@@ -9,8 +9,7 @@ import AboutMeMain from "../components/AboutMe/AboutMeMain";
 const GlobalStyle = createGlobalStyle`
 body, html{
   margin: 0;
-  background-color: #eaeaea;
-  font-family: 'Lato';
+  font-family: ${props => props.theme.textFont};
 
 }
 a{
@@ -24,26 +23,21 @@ a{
 figcaption{
   color: ${props => props.theme.primary};
 }
-::-webkit-scrollbar{
-width: 0;
-display: none;  
-}
+
 
 `;
 
 const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Open+Sans:800|Lato");
+  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:400,900");
   width: 100vw;
-  /* overflow: hidden; */
   background-color: ${props => props.theme.primary};
 `;
 
 class App extends Component {
   state = {
     portfolioIndex: null,
-    contentOverflow: "hidden",
-    portfolioOverflow: "hidden",
     currentView: "hero",
+    desktopView: true,
   };
 
   aboutMeRef = React.createRef();
@@ -51,14 +45,23 @@ class App extends Component {
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
+    window.addEventListener("resize", this.updateViewport);
+    this.updateViewport();
   };
   componentWillUnmount() {
     window.removeEventListener("scroll");
+    window.removeEventListener("resize");
   }
 
-  // shouldComponentUpdate = (nextProps, nextState) => {};
+  updateViewport = () => {
+    if (window.innerWidth > 900 && !this.state.desktopView) {
+      this.setState({ desktopView: true });
+    } else if (window.innerWidth <= 900 && this.state.desktopView) {
+      this.setState({ desktopView: false });
+    }
+  };
 
-  onScroll = async () => {
+  onScroll = () => {
     const about = this.aboutMeRef.current.getBoundingClientRect();
     const portfolio = this.portfolioRef.current.getBoundingClientRect();
     let currentView = "";
@@ -70,8 +73,7 @@ class App extends Component {
       currentView = "portfolio";
     }
     if (currentView !== this.state.currentView) {
-      await this.setState({ currentView });
-      console.log(this.state.currentView);
+      this.setState({ currentView });
     }
   };
 
@@ -85,7 +87,7 @@ class App extends Component {
         <Container>
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
-          <Hero />
+          <Hero desktopView={this.state.desktopView} />
           <AboutMeMain innerRef={this.aboutMeRef} />
           <PortfolioContainer
             overflow={this.state.portfolioOverflow}

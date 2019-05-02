@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div.attrs(({ view, theme }) => {
+const Container = styled.nav.attrs(({ view, theme }) => {
   if (view === "hero") return { bgc: theme.primary };
   if (view === "about") return { bgc: theme.secondary };
   if (view === "portfolio") return { bgc: theme.tertiary };
@@ -9,14 +9,13 @@ const Container = styled.div.attrs(({ view, theme }) => {
   display: flex;
   position: fixed;
   width: 100vw;
-  height: 50px;
-  border-bottom: 1px solid #ffffff22;
+  height: ${props => props.theme.headerHeight};
   top: 0;
   right: 0;
   background-color: ${({ bgc }) => bgc};
   transition: all ease-in 0.2s;
   z-index: 2;
-  font-family: "Open Sans", Geneva, Tahoma, sans-serif;
+  font-family: ${props => props.theme.textFont};
 `;
 
 const NavContent = styled.div`
@@ -25,6 +24,7 @@ const NavContent = styled.div`
   justify-content: flex-end;
   align-items: center;
   font-weight: 800;
+  font-size: 1.2em;
   > * {
     color: ${({ theme, view }) => (view === "portfolio" ? theme.primary : "white")};
     user-select: none;
@@ -34,7 +34,8 @@ const NavContent = styled.div`
     margin: 0 1rem;
     height: 100%;
     :hover {
-      border-bottom: 1px solid ${({ theme }) => theme.accent};
+      border-bottom: 1px solid
+        ${({ theme, view }) => (view === "portfolio" ? theme.primary : theme.accent)};
     }
   }
 `;
