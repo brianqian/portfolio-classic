@@ -5,7 +5,6 @@ const Container = styled.div`
   width: 100vw;
   height: 90vh;
   position: relative;
-  /* top: ${props => props.theme.headerHeight}; */
   background-color: black;
   font-family: "Source Sans Pro";
   min-height: 600px;
@@ -15,23 +14,32 @@ const Container = styled.div`
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
-  ::before {
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-image: url("./img/HeroImages/cityscape-shanghai.jpg");
-    background-size: cover;
-    z-index: 1;
-    opacity: ${props => (props.loaded ? 0.2 : 0.8)};
-    transition: opacity ease-out 2s;
-  }
 
   @media all and (max-width: 600px) {
     height: 70vh;
   }
+`;
+
+const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
+  let srcSet = widths.reduce((acc, width) => {
+    return acc + `${path}/${imgTitle}-${width}.jpg ${width}w, `;
+  }, "");
+  srcSet += `${path}/${imgTitle}.jpg 2000w`;
+  return {
+    src: `${path}/${imgTitle}.jpg`,
+    srcSet,
+  };
+})`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* background-image: url("./img/HeroImages/cityscape-shanghai.jpg"); */
+  /* background-size: cover; */
+  z-index: 1;
+  opacity: ${props => (props.loaded ? 0.2 : 0.8)};
+  transition: opacity ease-out 2s;
 `;
 
 const Name = styled.h1`
@@ -97,8 +105,20 @@ export default class NewHero extends Component {
   };
 
   render() {
+    const imgPath = "./img/HeroImages";
     return (
-      <Container loaded={this.state.loaded}>
+      <Container>
+        <BackgroundImage
+          loaded={this.state.loaded}
+          path="./img/HeroImages"
+          imgTitle="cityscape-shanghai"
+          widths={[800, 1024, 1920]}
+          // src={`${imgPath}/cityscape-shanghai.jpg`}
+          // srcSet={`${imgPath}/cityscape-shanghai-800.jpg 500w`}
+          // srcSet="./img/HeroImages/cityscape-shanghai-800.jpg 800w, ./img/HeroImages/cityscape-shanghai-1024.jpg 1024w, ./img/HeroImages/cityscape-shanghai-1920.jpg 1920w, ./img/HeroImages/cityscape-shanghai.jpg 2000w"
+          sizes="100vw"
+          alt="hero"
+        />
         <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
         <LinkContainer loaded={this.state.loaded}>
           <Link>ABOUT</Link>
