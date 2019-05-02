@@ -3,7 +3,7 @@ const theme = {
   titleFont: "",
   textFont: "Source Sans Pro",
   text: "#EFEFF9",
-  accent: "#02FCF8",
+  accent: "#9cf1e5",
   primary: "#22223a",
   secondary: "#373767",
   tertiary: "#D3D3D3",

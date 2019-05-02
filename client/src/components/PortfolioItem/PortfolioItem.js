@@ -35,8 +35,6 @@ const Image = styled.img`
   max-width: 100%;
   border-radius: 20px;
   opacity: 0.9;
-  box-shadow: -15px 20px 30px 5px ${props => props.theme.text}22,
-    10px -5px 30px 10px ${props => props.theme.text}22;
   :hover {
     opacity: 1;
   }
@@ -139,7 +137,7 @@ export default class PortfolioItem extends Component {
       <Container reverse={this.props.index % 2}>
         <Figure showImage={this.state.scrolledIntoView}>
           <Image src={img1} />
-          <figcaption>Built with: {stack.join(", ")}</figcaption>
+          <figcaption style={{ fontStyle: "italic" }}>Built with: {stack.join(", ")}</figcaption>
         </Figure>
         <DetailsContainer onClick={this.onClick} ref={this.projectRef}>
           <Title>

@@ -1,81 +1,95 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import ImagePanel from "./ImagePanel";
 
 const Container = styled.div`
   width: 100vw;
-  height: 85vh;
+  height: 100vh;
+  position: relative;
+  background-color: black;
+  font-family: "Source Sans Pro";
   min-height: 600px;
   display: flex;
-  position: relative;
-  z-index: 1;
-  border-bottom: 1px solid gray;
-  overflow: visible;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
-  align-items: center;
+  overflow: hidden;
   @media all and (max-width: 600px) {
     height: 70vh;
   }
 `;
 
-const HeroText = styled.div`
-  display: flex;
-  justify-items: flex-start;
-  flex-direction: column;
-  font-family: ${props => props.theme.heroFont};
-  font-weight: 800;
+const AspectRatioContainer = styled.div`
+  height: 0;
   width: 100%;
-  padding-right: 3rem;
-  text-align: right;
-  font-size: 2em;
-  @media all and (max-width: 900px) {
-    font-size: 1.5em;
-  }
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  background-color: #000;
+  position: absolute;
 `;
 
-const HeroLine = styled.h1`
-  color: white;
-  width: 100%;
-  opacity: ${props => (props.load ? "1" : "0")};
-  transition: opacity 1s linear ${props => props.delay};
-  > span {
-    color: ${props => props.theme.accent};
-  }
+const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
+  //creates the srcSet tag and makes it easily configurable in props
+  let srcSet = widths.reduce((acc, width) => {
+    return acc + `${path}/${imgTitle}-${width}.jpg ${width}w, `;
+  }, "");
+  srcSet += `${path}/${imgTitle}.jpg 6800w`;
+  return {
+    src: `${path}/${imgTitle}.jpg`,
+    srcSet,
+  };
+})`
+  height: 100%;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: ${props => (props.loaded ? 0.5 : 1)};
+  transition: opacity ease-out 2s;
 `;
 
-const Buttons = styled.div`
-  display: grid;
-  margin-top: 4rem;
-  grid-template-columns: 3fr 2fr 1fr 2fr;
+const Name = styled.h1`
+  font-size: 6em;
+  z-index: 5;
+  opacity: ${props => (props.loaded ? 1 : 0)};
+  transition: opacity ease-in 1s 1.25s;
+  position: relative;
+  bottom: 50px;
 `;
-const NavButton = styled.div`
-  padding: 5px 8px;
-  background-color: ${props => props.theme.tertiary};
-  color: ${props => props.theme.primary};
-  width: 200px;
-  height: 50px;
+
+const LinkContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.7em;
-  font-family: ${props => props.theme.textFont};
-  font-weight: 400;
-  grid-column: ${props => props.column};
+  z-index: 5;
+  opacity: ${props => (props.loaded ? 1 : 0)};
+  transition: opacity ease-in 0.5s 2.5s;
+  position: relative;
+  bottom: 50px;
+  height: 100px;
 `;
 
-const ImageContainer = styled.div`
+const Link = styled.p`
+  font-size: 1.1em;
+  margin: 0 2rem;
+  transition: opacity ease-in 1s;
+  user-select: none;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 50px;
+  height: 90px;
+  width: 90px;
   display: flex;
-  margin-top: ${props => props.theme.headerHeight};
-  min-height: 90%;
-  overflow: hidden;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
+  :hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: orange;
+  }
 `;
 
-// ===FOR TESTING===
-ImageContainer.displayName = "ImageContainer";
-
-class Hero extends Component {
+export default class NewHero extends Component {
   state = {
     loaded: false,
   };
@@ -96,43 +110,39 @@ class Hero extends Component {
   render() {
     return (
       <Container>
-        {this.props.desktopView && (
-          <ImageContainer>
-            <ImagePanel
-              order="1"
-              path="./img/HeroImages"
-              titles={["sf", "computer", "city"]}
-              alignment="flex-start"
-            />
-            <ImagePanel
-              order="2"
-              path="./img/HeroImages"
-              titles={["sf", "computer", "city"]}
-              alignment="center"
-            />
-            <ImagePanel
-              order="3"
-              path="./img/HeroImages"
-              titles={["sf", "computer", "city"]}
-              alignment="flex-end"
-            />
-          </ImageContainer>
-        )}
-        <HeroText>
-          <HeroLine load={this.state.loaded} delay="0.5s">
-            Hi I'm <span>Brian Qian</span>
-          </HeroLine>
-          {/* <HeroLine load={this.state.loaded} delay="1.5s">
-            and I'm a <span>Web Developer</span>
-          </HeroLine> */}
-          <Buttons>
-            <NavButton column={2}>ABOUT ME</NavButton>
-            <NavButton column={4}>PORTFOLIO</NavButton>
-          </Buttons>
-        </HeroText>
+        <AspectRatioContainer>
+          <BackgroundImage
+            loaded={this.state.loaded}
+            path="./img/HeroImages"
+            imgTitle="cityscape-shanghai"
+            widths={[800, 1024, 1920]}
+            sizes="100vw"
+            alt="hero"
+          />
+        </AspectRatioContainer>
+        <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
+        <LinkContainer loaded={this.state.loaded}>
+          <Link onClick={() => this.props.scrollFn("aboutMeRef")}>ABOUT</Link>
+          <Link onClick={() => this.props.scrollFn("portfolioRef")}>WORK</Link>
+          <Link>
+            <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
+              <img src={`./img/social_icons/GitHub-Light-64px.png`} height="35px" alt="" />
+            </a>
+          </Link>
+          <Link>
+            <a
+              href="https://www.linkedin.com/in/brian-qian/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img src={`./img/social_icons/linkedin-brands.svg`} height="35px" alt="" />
+            </a>
+          </Link>
+          <Link>
+            <img src={`./img/mail-white.svg`} height="35px" alt="" />
+          </Link>
+        </LinkContainer>
       </Container>
     );
   }
 }
-
-export default Hero;

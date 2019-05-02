@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import Hero from "../components/Hero/NewHero";
+import Hero from "../components/Hero/Hero";
 import PortfolioContainer from "./Content/PortfolioContainer";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../data/cssTheme";
@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 body, html{
   margin: 0;
   font-family: ${props => props.theme.textFont};
+  height: 100%;
 
 }
 a{
@@ -87,7 +88,7 @@ class App extends Component {
         <Container>
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
-          <Hero desktopView={this.state.desktopView} />
+          <Hero scrollFn={this.scrollTo} desktopView={this.state.desktopView} />
           <AboutMeMain innerRef={this.aboutMeRef} />
           <PortfolioContainer
             overflow={this.state.portfolioOverflow}
