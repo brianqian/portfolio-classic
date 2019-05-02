@@ -26,7 +26,6 @@ const NavContent = styled.div`
   font-weight: 800;
   font-size: 1.2em;
   > * {
-    /* color: ${({ theme, view }) => (view === "portfolio" ? theme.primary : "white")}; */
     color: ${props => props.theme.text};
     user-select: none;
     cursor: pointer;
@@ -35,8 +34,7 @@ const NavContent = styled.div`
     margin: 0 1rem;
     height: 100%;
     :hover {
-      border-bottom: 1px solid
-        ${({ theme, view }) => (view === "portfolio" ? theme.primary : theme.accent)};
+      border-bottom: 1px solid ${props => props.theme.accent};
     }
   }
 `;
@@ -49,20 +47,10 @@ function NavBar({ currentView, scrollFn }) {
         <p onClick={() => scrollFn("portfolioRef")}>Portfolio</p>
         {/* <p>Contact</p> */}
         <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
-          <img
-            src={`./img/social_icons/GitHub-${
-              currentView === "portfolio" ? "Dark" : "Light"
-            }-64px.png`}
-            height="25px"
-            alt=""
-          />
+          <img src={`./img/social_icons/GitHub-Light-64px.png`} height="25px" alt="" />
         </a>
         <a href="https://www.linkedin.com/in/brian-qian/" rel="noopener noreferrer" target="_blank">
-          <img
-            src={`./img/social_icons/In-${currentView === "portfolio" ? "" : "White-"}41px.png`}
-            height="25px"
-            alt=""
-          />
+          <img src={`./img/social_icons/In-White-41px.png`} height="25px" alt="" />
         </a>
       </NavContent>
     </Container>
