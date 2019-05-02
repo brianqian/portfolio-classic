@@ -16,6 +16,7 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   transition: all ease-in 0.2s;
   z-index: 2;
   font-family: ${props => props.theme.textFont};
+  opacity: ${props => (props.view === "hero" ? 0 : 1)};
 `;
 
 const NavContent = styled.div`

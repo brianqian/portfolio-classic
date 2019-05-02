@@ -85,7 +85,8 @@ const Link = styled.p`
   align-items: center;
   :hover {
     background-color: rgba(255, 255, 255, 0.15);
-    border-color: orange;
+    /* border-color: ${props => props.theme.accent}; */
+    border-color: darkorange;
   }
 `;
 
@@ -119,7 +120,7 @@ export default class NewHero extends Component {
           <BackgroundImage
             loaded={this.state.loaded}
             path="./img/HeroImages"
-            imgTitle="cityscape-shanghai"
+            imgTitle="cityscape-sf"
             widths={[800, 1024, 1920]}
             sizes="100vw"
             alt="hero"
