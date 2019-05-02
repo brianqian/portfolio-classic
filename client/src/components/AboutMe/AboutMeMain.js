@@ -60,10 +60,10 @@ const AboutMeMain = props => (
     <p>
       I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life
       I worked at a talent agency but made a sharp left turn into computer engineering. I'm mostly a
-      self-taught developer after taking UC Berkeley's bootcamp and I've been addicted ever since.
-      Building things from scratch, testing them, and learning from the process is a dream job for
-      me. Although nowadays I try to build everything in <span>React</span>, I'm also comfortable
-      using <span>jQuery, Redux, Node, SQL, MongoDB</span> and testing frameworks like{" "}
+      self-taught developer after taking UC Berkeley's bootcamp where I found a passion in
+      programming. Building things from scratch, testing them, and learning from the process is a
+      dream job for me. Although nowadays I try to build everything in <span>React</span>, I'm also
+      comfortable using <span>jQuery, Redux, Node, SQL, MongoDB</span> and testing frameworks like{" "}
       <span>Jest</span> and <span>Enzyme</span>.
     </p>
   </Container>
