@@ -5,6 +5,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   overflow: hidden;
+  min-height: 80vh;
   height: 80vh;
   display: flex;
   flex-direction: ${props => (props.reverse ? "row-reverse" : "row")};
@@ -24,7 +25,7 @@ const Figure = styled.figure`
   opacity: ${props => (props.showImage ? 1 : 0)};
   position: relative;
   width: auto;
-  transition: all ease-in 0.75s;
+  transition: bottom ease-in 0.75s, opacity ease-in 1s;
   text-align: center;
   > * {
     color: ${props => props.theme.text};
@@ -57,13 +58,16 @@ const DetailsContainer = styled.div`
   }
   > * {
     color: ${props => props.theme.text};
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
+    font-size: 1.5vw;
   }
 `;
 
 const Title = styled.header`
   display: flex;
   flex-direction: column;
+  min-height: 50px;
+  flex-shrink: 0;
   > h2 {
     color: ${props => props.theme.text};
     border-bottom: 2px solid white;
@@ -81,6 +85,7 @@ const ButtonsDiv = styled.div`
   justify-content: space-evenly;
 `;
 const InterfaceButton = styled.div`
+  flex-shrink: 0;
   border: 1px solid lightgray;
   background-color: ${props => props.theme.text};
   font-size: 0.75em;
