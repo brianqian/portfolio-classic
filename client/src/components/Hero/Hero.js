@@ -122,13 +122,13 @@ class Hero extends Component {
           <HeroLine load={this.state.loaded} delay="0.5s">
             Hi I'm <span>Brian Qian</span>
           </HeroLine>
-          <HeroLine load={this.state.loaded} delay="1.5s">
+          {/* <HeroLine load={this.state.loaded} delay="1.5s">
             and I'm a <span>Web Developer</span>
-          </HeroLine>
-          {/* <Buttons>
+          </HeroLine> */}
+          <Buttons>
             <NavButton column={2}>ABOUT ME</NavButton>
             <NavButton column={4}>PORTFOLIO</NavButton>
-          </Buttons> */}
+          </Buttons>
         </HeroText>
       </Container>
     );

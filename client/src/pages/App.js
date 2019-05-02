@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../components/NavBar/NavBar";
-import Hero from "../components/Hero/Hero";
+import Hero from "../components/Hero/NewHero";
 import PortfolioContainer from "./Content/PortfolioContainer";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../data/cssTheme";

@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.nav.attrs(({ view, theme }) => {
-  if (view === "hero") return { bgc: theme.primary };
+  if (view === "hero") return { bgc: "transparent" };
   if (view === "about") return { bgc: theme.secondary };
-  if (view === "portfolio") return { bgc: theme.tertiary };
+  if (view === "portfolio") return { bgc: theme.primary };
 })`
   display: flex;
   position: fixed;
@@ -26,7 +26,8 @@ const NavContent = styled.div`
   font-weight: 800;
   font-size: 1.2em;
   > * {
-    color: ${({ theme, view }) => (view === "portfolio" ? theme.primary : "white")};
+    /* color: ${({ theme, view }) => (view === "portfolio" ? theme.primary : "white")}; */
+    color: ${props => props.theme.text};
     user-select: none;
     cursor: pointer;
     display: flex;
