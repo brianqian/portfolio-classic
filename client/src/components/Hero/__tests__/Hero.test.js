@@ -41,8 +41,8 @@ describe("Image Panel", () => {
   fit("rotates images every 6 seconds", () => {
     jest.useFakeTimers();
     const rotateImages = jest.fn();
-    const cdm = wrapper.instance().componentDidMount;
-    cdm();
+    // const cdm = wrapper.instance().componentDidMount;
+    // cdm();
     jest.advanceTimersByTime(6000);
     expect(rotateImages).toHaveBeenCalledTimes(1);
     expect(rotateImages).toHaveBeenCalledWith(expect.any(Function), 6000);

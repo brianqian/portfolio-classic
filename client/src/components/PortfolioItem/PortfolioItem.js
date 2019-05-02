@@ -103,11 +103,15 @@ const InterfaceButton = styled.div`
     color: black;
   }
   > a {
-    color: ${props => props.theme.primary};
     text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+  }
+  > p {
+    box-sizing: content-box;
+
+    margin: 0 1rem;
+    color: ${props => props.theme.primary};
   }
 `;
 
@@ -146,14 +150,14 @@ export default class PortfolioItem extends Component {
             <InterfaceButton>
               <a href={gitURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/social_icons/GitHub-Dark-64px.png" height="20px" alt="" />
-                Code
               </a>
+              <p>Code</p>
             </InterfaceButton>
             <InterfaceButton>
               <a href={deployURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/internet.svg" height="20px" alt="" />
-                Website
               </a>
+              <p>Website</p>
             </InterfaceButton>
           </ButtonsDiv>
         </DetailsContainer>
