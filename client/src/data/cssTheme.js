@@ -1,5 +1,5 @@
 const theme = {
-  heroFont: "Playfair Display",
+  heroFont: "Source Sans Pro",
   titleFont: "",
   textFont: "Source Sans Pro",
   text: "#EFEFF9",
