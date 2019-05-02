@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   background-color: black;
   font-family: "Source Sans Pro";
@@ -14,31 +14,38 @@ const Container = styled.div`
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
-
+  overflow: hidden;
   @media all and (max-width: 600px) {
     height: 70vh;
   }
+`;
+
+const AspectRatioContainer = styled.div`
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  background-color: #000;
+  position: absolute;
 `;
 
 const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   let srcSet = widths.reduce((acc, width) => {
     return acc + `${path}/${imgTitle}-${width}.jpg ${width}w, `;
   }, "");
-  srcSet += `${path}/${imgTitle}.jpg 2000w`;
+  srcSet += `${path}/${imgTitle}.jpg 6800w`;
   return {
     src: `${path}/${imgTitle}.jpg`,
     srcSet,
   };
 })`
   height: 100%;
-  width: 100%;
+
   position: absolute;
   left: 0;
   top: 0;
-  /* background-image: url("./img/HeroImages/cityscape-shanghai.jpg"); */
-  /* background-size: cover; */
-  z-index: 1;
-  opacity: ${props => (props.loaded ? 0.2 : 0.8)};
+  /* object-fit: cover; */
+  opacity: ${props => (props.loaded ? 0.5 : 1)};
   transition: opacity ease-out 2s;
 `;
 
@@ -71,7 +78,7 @@ const Link = styled.p`
   padding: 1rem;
   user-select: none;
   cursor: pointer;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 50px;
   height: 90px;
   width: 90px;
@@ -80,9 +87,8 @@ const Link = styled.p`
   align-items: center;
   :hover {
     text-decoration: underline;
-    /* color: orange; */
-    background-color: rgba(255, 255, 255, 0.2);
-    /* border-bottom: 1px solid orange; */
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: orange;
   }
 `;
 
@@ -105,20 +111,18 @@ export default class NewHero extends Component {
   };
 
   render() {
-    const imgPath = "./img/HeroImages";
     return (
       <Container>
-        <BackgroundImage
-          loaded={this.state.loaded}
-          path="./img/HeroImages"
-          imgTitle="cityscape-shanghai"
-          widths={[800, 1024, 1920]}
-          // src={`${imgPath}/cityscape-shanghai.jpg`}
-          // srcSet={`${imgPath}/cityscape-shanghai-800.jpg 500w`}
-          // srcSet="./img/HeroImages/cityscape-shanghai-800.jpg 800w, ./img/HeroImages/cityscape-shanghai-1024.jpg 1024w, ./img/HeroImages/cityscape-shanghai-1920.jpg 1920w, ./img/HeroImages/cityscape-shanghai.jpg 2000w"
-          sizes="100vw"
-          alt="hero"
-        />
+        <AspectRatioContainer>
+          <BackgroundImage
+            loaded={this.state.loaded}
+            path="./img/HeroImages"
+            imgTitle="cityscape-shanghai"
+            widths={[800, 1024, 1920]}
+            sizes="100vw"
+            alt="hero"
+          />
+        </AspectRatioContainer>
         <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
         <LinkContainer loaded={this.state.loaded}>
           <Link>ABOUT</Link>
