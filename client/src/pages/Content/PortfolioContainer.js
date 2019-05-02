@@ -10,7 +10,7 @@ const Container = styled.section`
   flex-direction: column;
   text-align: center;
   font-size: 1.2em;
-  padding: ${props => props.theme.headerHeight};
+  padding: 7rem 2rem 7rem 3rem;
   @media all and (max-width: 900px) {
     text-align: center;
   }

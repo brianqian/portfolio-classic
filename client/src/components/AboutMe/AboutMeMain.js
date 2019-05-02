@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.section`
   background-color: ${props => props.theme.secondary};
-  padding: ${props => props.theme.headerHeight};
+  padding: 7rem 5rem;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,6 @@ const Container = styled.section`
   align-items: center;
   font-size: 1.2em;
   line-height: 2em;
-  white-space: pre-wrap;
   > p {
     font-size: 1.1em;
     padding: 0 3rem;
@@ -61,8 +60,7 @@ const AboutMeMain = props => (
       I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life
       I worked at a talent agency but made a sharp left turn into computer engineering. I'm mostly a
       self-taught developer after taking UC Berkeley's bootcamp where I found a passion in
-      programming. Building things from scratch, testing them, and learning from the process is a
-      dream job for me. Although nowadays I try to build everything in <span>React</span>, I'm also
+      programming. Although nowadays I try to build everything in <span>React</span>, I'm also
       comfortable using <span>jQuery, Redux, Node, SQL, MongoDB</span> and testing frameworks like{" "}
       <span>Jest</span> and <span>Enzyme</span>.
     </p>
