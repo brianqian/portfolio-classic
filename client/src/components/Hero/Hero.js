@@ -92,15 +92,20 @@ const Link = styled.p`
 export default class NewHero extends Component {
   state = {
     loaded: false,
+    imageLoaded: false,
   };
   componentDidMount = () => {
-    this.setLoadedState();
+    this.triggerHeroAnimation();
   };
 
-  setLoadedState = () => {
+  triggerHeroAnimation = () => {
     this.timeout = setTimeout(() => {
       this.setState({ loaded: true });
     }, 0);
+  };
+
+  triggerTextAnimation = () => {
+    this.setState({ imageLoaded: true });
   };
 
   componentWillUnmount = () => {
@@ -118,10 +123,11 @@ export default class NewHero extends Component {
             widths={[800, 1024, 1920]}
             sizes="100vw"
             alt="hero"
+            onLoad={this.triggerTextAnimation}
           />
         </AspectRatioContainer>
         <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
-        <LinkContainer loaded={this.state.loaded}>
+        <LinkContainer loaded={this.state.imageLoaded}>
           <Link onClick={() => this.props.scrollFn("aboutMeRef")}>ABOUT</Link>
           <Link onClick={() => this.props.scrollFn("portfolioRef")}>WORK</Link>
           <Link>
