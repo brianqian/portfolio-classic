@@ -42,6 +42,7 @@ class App extends Component {
 
   aboutMeRef = React.createRef();
   portfolioRef = React.createRef();
+  contactRef = React.createRef();
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
@@ -94,6 +95,7 @@ class App extends Component {
             updateFn={this.updatePortfolioIndex}
             innerRef={this.portfolioRef}
           />
+          <Contact innerRef={this.contactRef} />
         </Container>
       </ThemeProvider>
     );
