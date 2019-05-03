@@ -5,6 +5,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   overflow: hidden;
+  min-height: 80vh;
   height: 80vh;
   display: flex;
   flex-direction: ${props => (props.reverse ? "row-reverse" : "row")};
@@ -24,7 +25,7 @@ const Figure = styled.figure`
   opacity: ${props => (props.showImage ? 1 : 0)};
   position: relative;
   width: auto;
-  transition: all ease-in 0.75s;
+  transition: bottom ease-in 0.75s, opacity ease-in 1s;
   text-align: center;
   > * {
     color: ${props => props.theme.text};
@@ -35,8 +36,6 @@ const Image = styled.img`
   max-width: 100%;
   border-radius: 20px;
   opacity: 0.9;
-  box-shadow: -15px 20px 30px 5px ${props => props.theme.text}22,
-    10px -5px 30px 10px ${props => props.theme.text}22;
   :hover {
     opacity: 1;
   }
@@ -59,13 +58,16 @@ const DetailsContainer = styled.div`
   }
   > * {
     color: ${props => props.theme.text};
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
+    font-size: 1.5vw;
   }
 `;
 
 const Title = styled.header`
   display: flex;
   flex-direction: column;
+  min-height: 50px;
+  flex-shrink: 0;
   > h2 {
     color: ${props => props.theme.text};
     border-bottom: 2px solid white;
@@ -83,6 +85,7 @@ const ButtonsDiv = styled.div`
   justify-content: space-evenly;
 `;
 const InterfaceButton = styled.div`
+  flex-shrink: 0;
   border: 1px solid lightgray;
   background-color: ${props => props.theme.text};
   font-size: 0.75em;
@@ -103,11 +106,15 @@ const InterfaceButton = styled.div`
     color: black;
   }
   > a {
-    color: ${props => props.theme.primary};
     text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+  }
+  > p {
+    box-sizing: content-box;
+
+    margin: 0 1rem;
+    color: ${props => props.theme.primary};
   }
 `;
 
@@ -135,7 +142,7 @@ export default class PortfolioItem extends Component {
       <Container reverse={this.props.index % 2}>
         <Figure showImage={this.state.scrolledIntoView}>
           <Image src={img1} />
-          <figcaption>Built with: {stack.join(", ")}</figcaption>
+          <figcaption style={{ fontStyle: "italic" }}>Built with: {stack.join(", ")}</figcaption>
         </Figure>
         <DetailsContainer onClick={this.onClick} ref={this.projectRef}>
           <Title>
@@ -146,14 +153,14 @@ export default class PortfolioItem extends Component {
             <InterfaceButton>
               <a href={gitURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/social_icons/GitHub-Dark-64px.png" height="20px" alt="" />
-                Code
               </a>
+              <p>Code</p>
             </InterfaceButton>
             <InterfaceButton>
               <a href={deployURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/internet.svg" height="20px" alt="" />
-                Website
               </a>
+              <p>Website</p>
             </InterfaceButton>
           </ButtonsDiv>
         </DetailsContainer>

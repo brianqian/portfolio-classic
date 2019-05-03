@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 body, html{
   margin: 0;
   font-family: ${props => props.theme.textFont};
+  height: 100%;
 
 }
 a{
@@ -28,7 +29,7 @@ figcaption{
 `;
 
 const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro:400,900");
+  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900");
   width: 100vw;
   background-color: ${props => props.theme.primary};
 `;
@@ -87,7 +88,7 @@ class App extends Component {
         <Container>
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
-          <Hero desktopView={this.state.desktopView} />
+          <Hero scrollFn={this.scrollTo} desktopView={this.state.desktopView} />
           <AboutMeMain innerRef={this.aboutMeRef} />
           <PortfolioContainer
             overflow={this.state.portfolioOverflow}

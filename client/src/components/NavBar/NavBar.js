@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.nav.attrs(({ view, theme }) => {
-  if (view === "hero") return { bgc: theme.primary };
+  if (view === "hero") return { bgc: "transparent" };
   if (view === "about") return { bgc: theme.secondary };
-  if (view === "portfolio") return { bgc: theme.tertiary };
+  if (view === "portfolio") return { bgc: theme.primary };
 })`
   display: flex;
   position: fixed;
@@ -16,6 +16,7 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   transition: all ease-in 0.2s;
   z-index: 2;
   font-family: ${props => props.theme.textFont};
+  opacity: ${props => (props.view === "hero" ? 0 : 1)};
 `;
 
 const NavContent = styled.div`
@@ -26,7 +27,7 @@ const NavContent = styled.div`
   font-weight: 800;
   font-size: 1.2em;
   > * {
-    color: ${({ theme, view }) => (view === "portfolio" ? theme.primary : "white")};
+    color: ${props => props.theme.text};
     user-select: none;
     cursor: pointer;
     display: flex;
@@ -34,8 +35,7 @@ const NavContent = styled.div`
     margin: 0 1rem;
     height: 100%;
     :hover {
-      border-bottom: 1px solid
-        ${({ theme, view }) => (view === "portfolio" ? theme.primary : theme.accent)};
+      border-bottom: 1px solid ${props => props.theme.accent};
     }
   }
 `;
@@ -48,20 +48,10 @@ function NavBar({ currentView, scrollFn }) {
         <p onClick={() => scrollFn("portfolioRef")}>Portfolio</p>
         {/* <p>Contact</p> */}
         <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
-          <img
-            src={`./img/social_icons/GitHub-${
-              currentView === "portfolio" ? "Dark" : "Light"
-            }-64px.png`}
-            height="25px"
-            alt=""
-          />
+          <img src={`./img/social_icons/GitHub-Light-64px.png`} height="25px" alt="" />
         </a>
         <a href="https://www.linkedin.com/in/brian-qian/" rel="noopener noreferrer" target="_blank">
-          <img
-            src={`./img/social_icons/In-${currentView === "portfolio" ? "" : "White-"}41px.png`}
-            height="25px"
-            alt=""
-          />
+          <img src={`./img/social_icons/In-White-41px.png`} height="25px" alt="" />
         </a>
       </NavContent>
     </Container>
