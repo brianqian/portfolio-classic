@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import NavBar from "../components/NavBar/NavBar";
-import Hero from "../components/Hero/Hero";
-import PortfolioContainer from "./Content/PortfolioContainer";
+import NavBar from "../../components/NavBar/NavBar";
+import Hero from "../../components/Hero/Hero";
+import PortfolioContainer from "../Portfolio/PortfolioContainer";
+import Contact from "../Contact/Contact";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import theme from "../data/cssTheme";
-import AboutMeMain from "../components/AboutMe/AboutMeMain";
+import theme from "../../data/cssTheme";
+import AboutMeMain from "../../components/AboutMe/AboutMeMain";
 
 const GlobalStyle = createGlobalStyle`
 body, html{
@@ -21,10 +22,6 @@ a{
   color: ${props => props.theme.text}
 }
 
-figcaption{
-  color: ${props => props.theme.primary};
-}
-
 
 `;
 
@@ -32,6 +29,8 @@ const Container = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900");
   width: 100vw;
   background-color: ${props => props.theme.primary};
+  display: flex;
+  flex-direction: column;
 `;
 
 class App extends Component {
