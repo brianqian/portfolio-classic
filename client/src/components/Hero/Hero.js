@@ -50,7 +50,7 @@ const Name = styled.h1`
   font-size: 6em;
   z-index: 5;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  transition: opacity ease-in 1s 1.25s;
+  transition: opacity ease-in 1s 1s;
   position: relative;
   bottom: 50px;
 `;
@@ -61,7 +61,7 @@ const LinkContainer = styled.div`
   align-items: center;
   z-index: 5;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  transition: opacity ease-in 0.5s 2.5s;
+  transition: opacity ease-in 0.5s 2.25s;
   position: relative;
   bottom: 50px;
   height: 100px;
@@ -141,7 +141,7 @@ export default class NewHero extends Component {
                 <img src={`./img/social_icons/linkedin-brands.svg`} height="35px" alt="" />
               </a>
             </Link>
-            <Link>
+            <Link onClick={() => this.props.scrollFn("contactRef")}>
               <img src={`./img/mail-white.svg`} height="35px" alt="" />
             </Link>
           </LinkContainer>
