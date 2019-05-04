@@ -13,6 +13,7 @@ const Container = styled.section`
   padding: 7rem 1rem;
   @media all and (max-width: 900px) {
     text-align: center;
+    padding: 2rem;
   }
   > h1 {
     border-bottom: 3px solid ${props => props.theme.tertiary};

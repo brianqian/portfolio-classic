@@ -12,11 +12,16 @@ const Container = styled.div`
   flex-direction: ${props => (props.reverse ? "row-reverse" : "row")};
   align-items: center;
   text-align: ${props => (props.reverse ? "left" : "right")};
+  justify-content: space-between;
   @media all and (max-width: 900px) {
+    width: 100%;
     flex-direction: column-reverse;
     font-size: 0.8em;
-    height: 100vh;
+    /* height: 100vh; */
+    height: auto;
     text-align: center;
+    margin: 3rem 0;
+    max-height: 200vh;
   }
 `;
 
@@ -28,6 +33,9 @@ const Figure = styled.figure`
   width: auto;
   transition: bottom ease-in 0.75s, opacity ease-in 1s;
   text-align: center;
+  @media all and (max-width: 900px) {
+    bottom: 0;
+  }
   > * {
     color: ${props => props.theme.text};
   }
@@ -53,14 +61,18 @@ const DetailsContainer = styled.div`
   line-height: 40px;
   height: 80%;
   justify-content: space-evenly;
+  width: 100%;
   @media all and (max-width: 900px) {
     flex: 7;
-    justify-content: space-evenly;
   }
   > * {
     color: ${props => props.theme.text};
     /* font-size: 1.2em; */
     font-size: 1.5vw;
+    @media all and (max-width: 900px) {
+      font-size: 15px;
+      line-height: 25px;
+    }
   }
 `;
 
@@ -77,6 +89,9 @@ const Title = styled.header`
     font-size: 2em;
     padding-bottom: 2rem;
     font-family: ${props => props.theme.heroFont};
+    @media all and (max-width: 900px) {
+      padding: 0;
+    }
   }
 `;
 
@@ -89,10 +104,11 @@ const InterfaceButton = styled.div`
   flex-shrink: 0;
   border: 1px solid lightgray;
   background-color: ${props => props.theme.text};
-  font-size: 0.75em;
+
   padding: 4px 8px;
   width: 160px;
   max-height: 60px;
+  min-height: 40px;
   box-shadow: 5px 5px ${props => props.theme.secondary};
   user-select: none;
   display: flex;
@@ -112,8 +128,8 @@ const InterfaceButton = styled.div`
     align-items: center;
   }
   > p {
+    font-size: 14px;
     box-sizing: content-box;
-
     margin: 0 1rem;
     color: ${props => props.theme.primary};
   }
