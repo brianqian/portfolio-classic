@@ -90,7 +90,7 @@ const Title = styled.header`
     padding-bottom: 2rem;
     font-family: ${props => props.theme.heroFont};
     @media all and (max-width: 900px) {
-      padding: 0;
+      /* padding: 0; */
     }
   }
 `;
