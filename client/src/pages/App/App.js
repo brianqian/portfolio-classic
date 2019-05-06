@@ -37,7 +37,7 @@ class App extends Component {
   state = {
     portfolioIndex: null,
     currentView: "hero",
-    desktopView: true,
+    // desktopView: true,
   };
 
   aboutMeRef = React.createRef();
@@ -46,21 +46,21 @@ class App extends Component {
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
-    window.addEventListener("resize", this.updateViewport);
-    this.updateViewport();
+    // window.addEventListener("resize", this.updateViewport);
+    // this.updateViewport();
   };
   componentWillUnmount() {
     window.removeEventListener("scroll");
-    window.removeEventListener("resize");
+    // window.removeEventListener("resize");
   }
 
-  updateViewport = () => {
-    if (window.innerWidth > 900 && !this.state.desktopView) {
-      this.setState({ desktopView: true });
-    } else if (window.innerWidth <= 900 && this.state.desktopView) {
-      this.setState({ desktopView: false });
-    }
-  };
+  // updateViewport = () => {
+  //   if (window.innerWidth > 900 && !this.state.desktopView) {
+  //     this.setState({ desktopView: true });
+  //   } else if (window.innerWidth <= 900 && this.state.desktopView) {
+  //     this.setState({ desktopView: false });
+  //   }
+  // };
 
   onScroll = () => {
     const about = this.aboutMeRef.current.getBoundingClientRect();
@@ -88,7 +88,7 @@ class App extends Component {
         <Container>
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
-          <Hero scrollFn={this.scrollTo} desktopView={this.state.desktopView} />
+          <Hero scrollFn={this.scrollTo} />
           <AboutMeMain innerRef={this.aboutMeRef} />
           <PortfolioContainer
             overflow={this.state.portfolioOverflow}
