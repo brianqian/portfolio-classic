@@ -75,7 +75,7 @@ function Contact(props) {
         <label htmlFor="contact-name">Name:</label>
         <UserInfo type="text" name="name" id="contact-name" />
         <label htmlFor="contact-email">Email:</label>
-        <UserInfo type="text" name="email" id="contact-email" placeholder />
+        <UserInfo type="text" name="email" id="contact-email" />
         <label htmlFor="contact-message">Message:</label>
         <textarea name="message" id="contact-message" rows="10" />
         <button type="submit">Submit</button>

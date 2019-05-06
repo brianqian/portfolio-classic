@@ -7,14 +7,13 @@ const Container = styled.div`
   position: absolute;
   background-color: black;
   font-family: "Source Sans Pro";
-  /* min-height: 600px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  @media all and (max-width: 600px) {
-    height: 70vh;
+  @media all and (max-width: 900px) {
+    height: 80vh;
   }
 `;
 
@@ -25,6 +24,11 @@ const AspectRatioContainer = styled.div`
   padding-bottom: 56.25%;
   background-color: #000;
   position: relative;
+  @media all and (max-width: 900px) {
+    overflow: visible;
+    padding-bottom: 0;
+    height: 80vh;
+  }
 `;
 
 const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
@@ -53,6 +57,7 @@ const Name = styled.h1`
   transition: opacity ease-in 1s 1s;
   position: relative;
   bottom: 50px;
+  text-align: center;
 `;
 
 const LinkContainer = styled.div`
@@ -82,8 +87,17 @@ const Link = styled.p`
   align-items: center;
   :hover {
     background-color: rgba(255, 255, 255, 0.15);
-    /* border-color: ${props => props.theme.accent}; */
-    border-color: darkorange;
+    border-color: rgba(255, 140, 0);
+  }
+  @media all and (max-width: 900px) {
+    margin: 0;
+    height: 50px;
+    width: 50px;
+    font-size: 2.3vw;
+    border: none;
+    :active {
+      background-color: rgba(255, 140, 0, 0.25);
+    }
   }
 `;
 
