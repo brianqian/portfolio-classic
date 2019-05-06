@@ -8,6 +8,9 @@ const Container = styled.div`
   width: 100vw;
   background-color: ${props => props.theme.secondary};
   padding: 3rem 7rem;
+  @media all and (max-width: 900px) {
+    padding: 2rem 1rem;
+  }
   > h1 {
     width: 100%;
     text-align: center;
@@ -65,6 +68,9 @@ const UserInfo = styled.input`
   background-color: rgba(0, 0, 0, 0.8);
   font-size: 15px;
   outline: 0px none transparent;
+  @media all and (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 function Contact(props) {

@@ -17,10 +17,9 @@ const Container = styled.div`
     width: 100%;
     flex-direction: column-reverse;
     font-size: 0.8em;
-    /* height: 100vh; */
     height: auto;
     text-align: center;
-    margin: 3rem 0;
+    margin: 2rem 0;
     max-height: 200vh;
   }
 `;
@@ -35,6 +34,8 @@ const Figure = styled.figure`
   text-align: center;
   @media all and (max-width: 900px) {
     bottom: 0;
+    flex: 4;
+    margin: 0;
   }
   > * {
     color: ${props => props.theme.text};

@@ -11,6 +11,9 @@ const Container = styled.section`
   align-items: center;
   font-size: 1.2em;
   line-height: 2em;
+  @media all and (max-width: 900px) {
+    padding: 2rem 0;
+  }
   > p {
     font-size: 1.1em;
     padding: 0 3rem;
@@ -33,6 +36,7 @@ const Container = styled.section`
     @media all and (max-width: 900px) {
       text-align: center;
       border: none;
+      padding: 0;
     }
   }
 `;
