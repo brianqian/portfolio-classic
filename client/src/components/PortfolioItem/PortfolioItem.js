@@ -83,14 +83,14 @@ const Title = styled.header`
   flex-shrink: 0;
   > h2 {
     color: ${props => props.theme.text};
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid ${props => props.theme.accent};
     height: 100%;
     margin: 0;
     font-size: 2em;
     padding-bottom: 2rem;
     font-family: ${props => props.theme.heroFont};
     @media all and (max-width: 900px) {
-      padding: 0;
+      /* padding: 0; */
     }
   }
 `;

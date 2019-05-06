@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 100vw;
   background-color: ${props => props.theme.secondary};
   padding: 3rem 7rem;
@@ -14,34 +16,50 @@ const Container = styled.div`
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: repeat(6, 1fr);
   justify-content: center;
   align-items: center;
-
-  width: 100%;
+  @media all and (max-width: 900px) {
+    width: 100%;
+  }
   > label {
-    width: 50%;
-    min-height: 50px;
+    grid-column: 1;
     font-size: 20px;
-
-    > textarea {
-      border-radius: 15px;
-      border-color: white;
-      background-color: rgba(0, 0, 0, 0.8);
+    align-self: center;
+  }
+  > textarea {
+    border-radius: 15px;
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 500px;
+    padding: 1rem;
+    font-size: 15px;
+    outline: 0px none transparent;
+    grid-column: 2/3;
+    grid-row: 3/6;
+    @media all and (max-width: 900px) {
       width: 100%;
-      padding: 1rem;
-      font-size: 15px;
-      outline: 0px none transparent;
     }
+  }
+  > button {
+    color: white;
+    border: 1px solid white;
+    grid-row: 6;
+    grid-column: 2/3;
+    width: 300px;
+    background-color: ${props => props.theme.primary};
+    border-radius: 15px;
+    justify-self: center;
   }
 `;
 
 const UserInfo = styled.input`
+  grid-column: 2/3;
   border-radius: 10px;
-  width: 30%;
+  width: 250px;
   min-height: 25px;
-  margin: 0 2rem;
   padding: 0 0.5rem;
   border-color: white;
   background-color: rgba(0, 0, 0, 0.8);
@@ -53,27 +71,14 @@ function Contact(props) {
   return (
     <Container ref={props.innerRef}>
       <h1>Leave a message!</h1>
-      <Form action="https://formspree.io/qian.brian@gmail.com" method="POST">
-        <label htmlFor="contact-name">
-          Name:
-          <UserInfo type="text" name="name" id="contact-name" />
-        </label>
-
-        <label htmlFor="contact-email">
-          Email:
-          <UserInfo type="text" name="email" id="contact-email" placeholder />
-        </label>
-        <label htmlFor="contact-message">
-          Message:
-          <textarea name="message" id="contact-message" rows="10" />
-        </label>
-        <input
-          type="submit"
-          name="submit"
-          id="contact-submit"
-          value="Submit"
-          style={{ color: "black" }}
-        />
+      <Form action="https://formspree.io/qian.brian@gmail.com" method="POST" target="_blank">
+        <label htmlFor="contact-name">Name:</label>
+        <UserInfo type="text" name="name" id="contact-name" />
+        <label htmlFor="contact-email">Email:</label>
+        <UserInfo type="text" name="email" id="contact-email" placeholder />
+        <label htmlFor="contact-message">Message:</label>
+        <textarea name="message" id="contact-message" rows="10" />
+        <button type="submit">Submit</button>
       </Form>
     </Container>
   );
