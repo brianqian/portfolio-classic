@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Container = styled.section`
   background-color: ${props => props.theme.secondary};
@@ -51,14 +51,24 @@ const ProfilePic = styled.div`
   background-image: url(./img/BrianQian.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: left;
 `;
 
 const AboutMeMain = props => (
   <Container ref={props.innerRef}>
     <h1>About Me</h1>
     <ProfilePic />
-    <h2>Developer. Problem Solver. Front-end specialist. </h2>
+    <h2>
+      Developer.{" "}
+      <span
+        css={`
+          color: ${props => props.theme.accent};
+        `}
+      >
+        Problem Solver.
+      </span>{" "}
+      Front-end specialist.{" "}
+    </h2>
     <p>
       I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life
       I worked at a talent agency. While I've always had a passion for film, my need for logical

@@ -70,10 +70,14 @@ const LinkContainer = styled.div`
   position: relative;
   bottom: 50px;
   height: 100px;
+  width: 100%;
+  @media all and (max-width: 900px) {
+    justify-content: space-around;
+  }
 `;
 
 const Link = styled.p`
-  font-size: 1.1em;
+  font-size: 20px;
   margin: 0 2rem;
   transition: opacity ease-in 1s;
   user-select: none;
@@ -89,15 +93,15 @@ const Link = styled.p`
     background-color: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 140, 0);
   }
+  :active {
+    background-color: rgba(255, 140, 0, 0.25);
+  }
   @media all and (max-width: 900px) {
     margin: 0;
-    height: 50px;
-    width: 50px;
-    font-size: 2.3vw;
-    border: none;
-    :active {
-      background-color: rgba(255, 140, 0, 0.25);
-    }
+    padding: 1rem;
+    height: 75px;
+    width: 75px;
+    font-size: 20px;
   }
 `;
 
