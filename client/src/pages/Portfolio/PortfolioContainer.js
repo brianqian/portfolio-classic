@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import portfolioData from "../../data/PortfolioData";
 import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
 

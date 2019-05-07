@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Container = styled.nav.attrs(({ view, theme }) => {
   if (view === "hero") return { bgc: "transparent" };
@@ -26,6 +26,9 @@ const NavContent = styled.div`
   align-items: center;
   font-weight: 800;
   font-size: 1.2em;
+  @media all and (max-width: 400px) {
+    justify-content: space-around;
+  }
   > * {
     color: ${props => props.theme.text};
     user-select: none;
@@ -36,6 +39,9 @@ const NavContent = styled.div`
     height: 100%;
     :hover {
       border-bottom: 1px solid ${props => props.theme.accent};
+    }
+    @media all and (max-width: 400px) {
+      margin: 0;
     }
   }
 `;

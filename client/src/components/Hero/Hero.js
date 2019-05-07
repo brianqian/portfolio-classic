@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Container = styled.div`
   width: 100vw;
@@ -102,6 +102,10 @@ const Link = styled.p`
     height: 75px;
     width: 75px;
     font-size: 20px;
+  }
+  @media all and (max-width: 400px) {
+    border: none;
+    padding: 0;
   }
 `;
 

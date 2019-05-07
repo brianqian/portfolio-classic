@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Container = styled.div`
   display: flex;
@@ -24,8 +24,13 @@ const Form = styled.form`
   grid-template-rows: repeat(6, 1fr);
   justify-content: center;
   align-items: center;
+  max-width: 100vw;
   @media all and (max-width: 900px) {
     width: 100%;
+  }
+  @media all and (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
   }
   > label {
     grid-column: 1;
@@ -44,6 +49,7 @@ const Form = styled.form`
     grid-row: 3/6;
     @media all and (max-width: 900px) {
       width: 100%;
+      max-width: 100%;
     }
   }
   > button {
@@ -55,6 +61,10 @@ const Form = styled.form`
     background-color: ${props => props.theme.primary};
     border-radius: 15px;
     justify-self: center;
+    font-size: 1.2em;
+    @media all and (max-width: 900px) {
+      height: 50px;
+    }
   }
 `;
 
@@ -69,7 +79,8 @@ const UserInfo = styled.input`
   font-size: 15px;
   outline: 0px none transparent;
   @media all and (max-width: 900px) {
-    width: 100%;
+    max-width: 100%;
+    /* width: 100%; */
   }
 `;
 

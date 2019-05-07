@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Container = styled.div`
   position: relative;
@@ -105,7 +105,6 @@ const InterfaceButton = styled.div`
   flex-shrink: 0;
   border: 1px solid lightgray;
   background-color: ${props => props.theme.text};
-
   padding: 4px 8px;
   width: 160px;
   max-height: 60px;
@@ -115,6 +114,7 @@ const InterfaceButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   :hover {
     background-color: white;
   }
@@ -159,7 +159,7 @@ export default class PortfolioItem extends Component {
     return (
       <Container reverse={this.props.index % 2}>
         <Figure showImage={this.state.scrolledIntoView}>
-          <Image src={img1} />
+          <Image src={img1} alt={title} />
           <figcaption style={{ fontStyle: "italic" }}>Built with: {stack.join(", ")}</figcaption>
         </Figure>
         <DetailsContainer onClick={this.onClick} ref={this.projectRef}>
