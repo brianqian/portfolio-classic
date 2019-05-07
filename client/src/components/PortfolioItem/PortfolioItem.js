@@ -46,7 +46,7 @@ const Image = styled.img`
   max-width: 100%;
   border-radius: 20px;
   opacity: 0.9;
-  transition: all linear .5s;
+  transition: all linear 0.5s;
   :hover {
     opacity: 1;
   }
@@ -116,7 +116,7 @@ const InterfaceButton = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color linear .25s;
+  transition: background-color linear 0.25s;
   :hover {
     background-color: white;
   }
@@ -129,12 +129,17 @@ const InterfaceButton = styled.div`
     text-decoration: none;
     display: flex;
     align-items: center;
-  }
-  > p {
-    font-size: 14px;
-    box-sizing: content-box;
-    margin: 0 1rem;
-    color: ${props => props.theme.primary};
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    > p {
+      font-size: 14px;
+      box-sizing: content-box;
+      color: ${props => props.theme.primary};
+    }
+    > * {
+      margin: 0 0.5rem;
+    }
   }
 `;
 
@@ -173,14 +178,14 @@ export default class PortfolioItem extends Component {
             <InterfaceButton>
               <a href={gitURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/social_icons/GitHub-Dark-64px.png" height="20px" alt="" />
+                <p>Code</p>
               </a>
-              <p>Code</p>
             </InterfaceButton>
             <InterfaceButton>
               <a href={deployURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/internet.svg" height="20px" alt="" />
+                <p>Website</p>
               </a>
-              <p>Website</p>
             </InterfaceButton>
           </ButtonsDiv>
         </DetailsContainer>
