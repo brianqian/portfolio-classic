@@ -3,20 +3,17 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
-  position: relative;
+  height: 100%;
+  position: absolute;
   background-color: black;
   font-family: "Source Sans Pro";
-  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   overflow: hidden;
-  @media all and (max-width: 600px) {
-    height: 70vh;
+  @media all and (max-width: 900px) {
+    height: 80vh;
   }
 `;
 
@@ -26,13 +23,18 @@ const AspectRatioContainer = styled.div`
   overflow: hidden;
   padding-bottom: 56.25%;
   background-color: #000;
-  position: absolute;
+  position: relative;
+  @media all and (max-width: 900px) {
+    overflow: visible;
+    padding-bottom: 0;
+    height: 80vh;
+  }
 `;
 
 const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   //creates the srcSet tag and makes it easily configurable in props
   let srcSet = widths.reduce((acc, width) => {
-    return acc + `${path}/${imgTitle}-${width}.jpg ${width}w, `;
+    return acc + `${path}/${imgTitle}-${width}.jpg ${width / 2}w, `;
   }, "");
   srcSet += `${path}/${imgTitle}.jpg 6800w`;
   return {
@@ -41,7 +43,6 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   };
 })`
   height: 100%;
-
   position: absolute;
   left: 0;
   top: 0;
@@ -53,9 +54,10 @@ const Name = styled.h1`
   font-size: 6em;
   z-index: 5;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  transition: opacity ease-in 1s 1.25s;
+  transition: opacity ease-in 1s 1s;
   position: relative;
   bottom: 50px;
+  text-align: center;
 `;
 
 const LinkContainer = styled.div`
@@ -64,7 +66,7 @@ const LinkContainer = styled.div`
   align-items: center;
   z-index: 5;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  transition: opacity ease-in 0.5s 2.5s;
+  transition: opacity ease-in 0.5s 2.25s;
   position: relative;
   bottom: 50px;
   height: 100px;
@@ -85,8 +87,17 @@ const Link = styled.p`
   align-items: center;
   :hover {
     background-color: rgba(255, 255, 255, 0.15);
-    /* border-color: ${props => props.theme.accent}; */
-    border-color: darkorange;
+    border-color: rgba(255, 140, 0);
+  }
+  @media all and (max-width: 900px) {
+    margin: 0;
+    height: 50px;
+    width: 50px;
+    font-size: 2.3vw;
+    border: none;
+    :active {
+      background-color: rgba(255, 140, 0, 0.25);
+    }
   }
 `;
 
@@ -115,8 +126,8 @@ export default class NewHero extends Component {
 
   render() {
     return (
-      <Container>
-        <AspectRatioContainer>
+      <AspectRatioContainer>
+        <Container>
           <BackgroundImage
             loaded={this.state.loaded}
             path="./img/HeroImages"
@@ -126,30 +137,30 @@ export default class NewHero extends Component {
             alt="hero"
             onLoad={this.triggerTextAnimation}
           />
-        </AspectRatioContainer>
-        <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
-        <LinkContainer loaded={this.state.imageLoaded}>
-          <Link onClick={() => this.props.scrollFn("aboutMeRef")}>ABOUT</Link>
-          <Link onClick={() => this.props.scrollFn("portfolioRef")}>WORK</Link>
-          <Link>
-            <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
-              <img src={`./img/social_icons/GitHub-Light-64px.png`} height="35px" alt="" />
-            </a>
-          </Link>
-          <Link>
-            <a
-              href="https://www.linkedin.com/in/brian-qian/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <img src={`./img/social_icons/linkedin-brands.svg`} height="35px" alt="" />
-            </a>
-          </Link>
-          <Link>
-            <img src={`./img/mail-white.svg`} height="35px" alt="" />
-          </Link>
-        </LinkContainer>
-      </Container>
+          <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
+          <LinkContainer loaded={this.state.imageLoaded}>
+            <Link onClick={() => this.props.scrollFn("aboutMeRef")}>ABOUT</Link>
+            <Link onClick={() => this.props.scrollFn("portfolioRef")}>WORK</Link>
+            <Link>
+              <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
+                <img src={`./img/social_icons/GitHub-Light-64px.png`} height="35px" alt="" />
+              </a>
+            </Link>
+            <Link>
+              <a
+                href="https://www.linkedin.com/in/brian-qian/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <img src={`./img/social_icons/linkedin-brands.svg`} height="35px" alt="" />
+              </a>
+            </Link>
+            <Link onClick={() => this.props.scrollFn("contactRef")}>
+              <img src={`./img/mail-white.svg`} height="35px" alt="" />
+            </Link>
+          </LinkContainer>
+        </Container>
+      </AspectRatioContainer>
     );
   }
 }

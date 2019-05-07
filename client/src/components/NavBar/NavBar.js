@@ -46,7 +46,7 @@ function NavBar({ currentView, scrollFn }) {
       <NavContent view={currentView}>
         <p onClick={() => scrollFn("aboutMeRef")}>About</p>
         <p onClick={() => scrollFn("portfolioRef")}>Portfolio</p>
-        {/* <p>Contact</p> */}
+        <p onClick={() => scrollFn("contactRef")}>Contact </p>
         <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
           <img src={`./img/social_icons/GitHub-Light-64px.png`} height="25px" alt="" />
         </a>

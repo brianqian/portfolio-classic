@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import NavBar from "../components/NavBar/NavBar";
-import Hero from "../components/Hero/Hero";
-import PortfolioContainer from "./Content/PortfolioContainer";
+import NavBar from "../../components/NavBar/NavBar";
+import Hero from "../../components/Hero/Hero";
+import PortfolioContainer from "../Portfolio/PortfolioContainer";
+import Contact from "../Contact/Contact";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import theme from "../data/cssTheme";
-import AboutMeMain from "../components/AboutMe/AboutMeMain";
+import theme from "../../data/cssTheme";
+import AboutMeMain from "../../components/AboutMe/AboutMeMain";
 
 const GlobalStyle = createGlobalStyle`
 body, html{
@@ -21,10 +22,6 @@ a{
   color: ${props => props.theme.text}
 }
 
-figcaption{
-  color: ${props => props.theme.primary};
-}
-
 
 `;
 
@@ -32,35 +29,38 @@ const Container = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900");
   width: 100vw;
   background-color: ${props => props.theme.primary};
+  display: flex;
+  flex-direction: column;
 `;
 
 class App extends Component {
   state = {
     portfolioIndex: null,
     currentView: "hero",
-    desktopView: true,
+    // desktopView: true,
   };
 
   aboutMeRef = React.createRef();
   portfolioRef = React.createRef();
+  contactRef = React.createRef();
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
-    window.addEventListener("resize", this.updateViewport);
-    this.updateViewport();
+    // window.addEventListener("resize", this.updateViewport);
+    // this.updateViewport();
   };
   componentWillUnmount() {
     window.removeEventListener("scroll");
-    window.removeEventListener("resize");
+    // window.removeEventListener("resize");
   }
 
-  updateViewport = () => {
-    if (window.innerWidth > 900 && !this.state.desktopView) {
-      this.setState({ desktopView: true });
-    } else if (window.innerWidth <= 900 && this.state.desktopView) {
-      this.setState({ desktopView: false });
-    }
-  };
+  // updateViewport = () => {
+  //   if (window.innerWidth > 900 && !this.state.desktopView) {
+  //     this.setState({ desktopView: true });
+  //   } else if (window.innerWidth <= 900 && this.state.desktopView) {
+  //     this.setState({ desktopView: false });
+  //   }
+  // };
 
   onScroll = () => {
     const about = this.aboutMeRef.current.getBoundingClientRect();
@@ -88,13 +88,14 @@ class App extends Component {
         <Container>
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
-          <Hero scrollFn={this.scrollTo} desktopView={this.state.desktopView} />
+          <Hero scrollFn={this.scrollTo} />
           <AboutMeMain innerRef={this.aboutMeRef} />
           <PortfolioContainer
             overflow={this.state.portfolioOverflow}
             updateFn={this.updatePortfolioIndex}
             innerRef={this.portfolioRef}
           />
+          <Contact innerRef={this.contactRef} />
         </Container>
       </ThemeProvider>
     );
