@@ -46,6 +46,7 @@ const Image = styled.img`
   max-width: 100%;
   border-radius: 20px;
   opacity: 0.9;
+  transition: all linear .5s;
   :hover {
     opacity: 1;
   }
@@ -115,6 +116,7 @@ const InterfaceButton = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: background-color linear .25s;
   :hover {
     background-color: white;
   }
