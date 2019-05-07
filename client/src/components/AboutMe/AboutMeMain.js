@@ -30,7 +30,6 @@ const Container = styled.section`
     padding-bottom: 2rem;
     text-align: left;
     width: 100%;
-    margin: 1rem;
     color: ${props => props.theme.text};
     font-family: ${props => props.theme.heroFont};
     font-size: 4em;
@@ -72,13 +71,14 @@ const AboutMeMain = props => (
     </h2>
     <p>
       I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life
-      I worked at a talent agency. There I learned how to effectively multi-task and quickly prioritize in high pressure situations. Although the non-stop pace of entertainment was fun,
-       my need for logical
-      problem solving and creativity were left unfulfilled. I decided to make a sharp left turn into
-      computer engineering. I'm mostly a self-taught developer after taking UC Berkeley's bootcamp
-      where I found a passion in programming. Nowadays I build everything I can in{" "}
-      <span>React</span>, but I'm also comfortable using <span>jQuery, Redux, Node, SQL, MongoDB</span>{" "}
-      and testing frameworks like <span>Jest</span> and <span>Enzyme</span>.
+      I worked at a talent agency. There I learned how to effectively multi-task and quickly
+      prioritize in high pressure situations. Although the non-stop pace of entertainment was fun,
+      my need for logical problem solving and creativity were left unfulfilled. I decided to make a
+      sharp left turn into computer engineering. I'm mostly a self-taught developer after taking UC
+      Berkeley's bootcamp where I found a passion in programming. Nowadays I build everything I can
+      in <span>React</span>, but I'm also comfortable using{" "}
+      <span>jQuery, Redux, Node, SQL, MongoDB</span> and testing frameworks like <span>Jest</span>{" "}
+      and <span>Enzyme</span>.
     </p>
   </Container>
 );

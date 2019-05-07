@@ -49,14 +49,14 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   top: 0;
   min-width: 100vw;
   opacity: ${props => (props.loaded ? 0.4 : 1)};
-  transition: opacity ease-out 2s;
+  transition: opacity ease-out 2.2s;
 `;
 
 const Name = styled.h1`
   font-size: 6em;
   z-index: 5;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  transition: opacity ease-in 1s 1s;
+  transition: opacity ease-in 1s 0.6s;
   position: relative;
   bottom: 50px;
   text-align: center;
@@ -80,7 +80,7 @@ const LinkContainer = styled.div`
   align-items: center;
   z-index: 5;
   opacity: ${props => (props.loaded ? 1 : 0)};
-  transition: opacity ease-in 0.5s 2.25s;
+  transition: opacity ease-in 0.5s 1.6s;
   position: relative;
   bottom: 50px;
   height: 100px;

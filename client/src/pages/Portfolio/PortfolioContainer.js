@@ -10,7 +10,7 @@ const Container = styled.section`
   flex-direction: column;
   text-align: center;
   font-size: 1.2em;
-  padding: 7rem 2rem;
+  padding: 7rem 1rem;
   z-index: 10;
   @media all and (max-width: 900px) {
     text-align: center;
@@ -18,7 +18,7 @@ const Container = styled.section`
   }
   > h1 {
     border-bottom: 3px solid ${props => props.theme.tertiary};
-    width: 100%;
+
     text-align: left;
     color: ${props => props.theme.text};
     font-family: ${props => props.theme.heroFont};

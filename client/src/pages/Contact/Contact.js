@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,6 +16,11 @@ const Container = styled.div`
   > h1 {
     width: 100%;
     text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2em;
+  }
+  > h3 {
+    margin: 0;
     margin-bottom: 2rem;
   }
 `;
@@ -99,6 +104,18 @@ function Contact(props) {
   return (
     <Container ref={props.innerRef}>
       <h1>Leave a message!</h1>
+      <h3>
+        Email me{" "}
+        <a
+          css={`
+            color: ${props => props.theme.accent};
+          `}
+          href="mailto:qian.brian@gmail.com"
+        >
+          here
+        </a>{" "}
+        or drop me a line below!
+      </h3>
       <Form action="https://formspree.io/qian.brian@gmail.com" method="POST" target="_blank">
         <label htmlFor="contact-name">Name:</label>
         <UserInfo type="text" name="name" id="contact-name" />

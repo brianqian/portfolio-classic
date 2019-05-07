@@ -3,13 +3,13 @@ import styled from "styled-components/macro";
 
 const Container = styled.article`
   position: relative;
-  width: 95%;
-  margin: auto;
+  width: 100%;
   overflow: hidden;
   min-height: 80vh;
   height: 80vh;
   display: flex;
   flex-direction: ${props => (props.reverse ? "row-reverse" : "row")};
+  flex-shrink: 0;
   align-items: center;
   text-align: ${props => (props.reverse ? "left" : "right")};
   justify-content: space-between;
@@ -26,16 +26,19 @@ const Container = styled.article`
 
 const Figure = styled.figure`
   flex: 6;
-  bottom: ${props => (props.showImage ? "0" : "-100%")};
-  opacity: ${props => (props.showImage ? 1 : 0)};
+  margin: 0;
+  padding: 2rem;
   position: relative;
   width: auto;
-  transition: bottom ease-in 0.75s, opacity ease-in 1s;
+  /* bottom: ${props => (props.showImage ? "0" : "-100%")}; */
+  opacity: ${props => (props.showImage ? 1 : 0)};
+  transition: bottom ease-in 1s, opacity ease-in 1.5s;
   text-align: center;
   @media all and (max-width: 900px) {
     bottom: 0;
     flex: 4;
-    margin: 0;
+    padding: 0;
+    padding-top: 1rem;
   }
   > * {
     color: ${props => props.theme.text};
@@ -62,18 +65,20 @@ const DetailsContainer = styled.section`
   flex-direction: column;
   line-height: 40px;
   height: 80%;
+  padding: 2rem;
   justify-content: space-evenly;
-  width: 100%;
   @media all and (max-width: 900px) {
     flex: 7;
+    padding: 0;
+    padding-bottom: 1rem;
   }
   > * {
     color: ${props => props.theme.text};
     /* font-size: 1.2em; */
     font-size: 1.5vw;
     @media all and (max-width: 900px) {
-      font-size: 15px;
-      line-height: 25px;
+      font-size: 19px;
+      line-height: 30px;
     }
   }
 `;
@@ -105,6 +110,7 @@ const ButtonsDiv = styled.div`
 const InterfaceButton = styled.div`
   flex-shrink: 0;
   border: 1px solid lightgray;
+  border-radius: 15px;
   background-color: ${props => props.theme.text};
   padding: 4px 8px;
   width: 160px;
