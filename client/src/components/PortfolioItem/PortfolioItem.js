@@ -46,6 +46,7 @@ const Image = styled.img`
   max-width: 100%;
   border-radius: 20px;
   opacity: 0.9;
+  transition: opacity linear 1s;
   :hover {
     opacity: 1;
   }

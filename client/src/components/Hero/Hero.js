@@ -57,7 +57,7 @@ const Name = styled.h1`
   opacity: ${props => (props.loaded ? 1 : 0)};
   transition: opacity ease-in 1s 1s;
   position: relative;
-  bottom: 50px;
+  bottom: ${props => parseInt(props.offset) + 50}px;
   text-align: center;
 `;
 
@@ -69,7 +69,7 @@ const LinkContainer = styled.div`
   opacity: ${props => (props.loaded ? 1 : 0)};
   transition: opacity ease-in 0.5s 2.25s;
   position: relative;
-  bottom: 50px;
+  bottom: ${props => parseInt(props.offset) + 50}px;
   height: 100px;
   width: 100%;
   @media all and (max-width: 900px) {
@@ -114,9 +114,20 @@ export default class NewHero extends Component {
   state = {
     loaded: false,
     imageLoaded: false,
+    offsetTextBottomBy: 0,
   };
+
+  heightRef = React.createRef();
   componentDidMount = () => {
     this.triggerHeroAnimation();
+    window.onresize = this.logHeight;
+  };
+
+  logHeight = () => {
+    const style = window.getComputedStyle(this.heightRef.current).getPropertyValue("height");
+    const offset = 750 - style.slice(0, style.indexOf("p"));
+    console.log(offset);
+    if (offset > 0 && offset < 240) this.setState({ offsetTextBottomBy: offset });
   };
 
   triggerHeroAnimation = () => {
@@ -135,7 +146,7 @@ export default class NewHero extends Component {
 
   render() {
     return (
-      <AspectRatioContainer>
+      <AspectRatioContainer ref={this.heightRef}>
         <Container>
           <BackgroundImage
             loaded={this.state.loaded}
@@ -146,8 +157,10 @@ export default class NewHero extends Component {
             alt="hero"
             onLoad={this.triggerTextAnimation}
           />
-          <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
-          <LinkContainer loaded={this.state.imageLoaded}>
+          <Name offset={this.state.offsetTextBottomBy} loaded={this.state.loaded}>
+            BRIAN QIAN
+          </Name>
+          <LinkContainer offset={this.state.offsetTextBottomBy} loaded={this.state.imageLoaded}>
             <Link onClick={() => this.props.scrollFn("aboutMeRef")}>ABOUT</Link>
             <Link onClick={() => this.props.scrollFn("portfolioRef")}>WORK</Link>
             <Link>
