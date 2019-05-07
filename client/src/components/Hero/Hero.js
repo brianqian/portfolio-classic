@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 const Container = styled.div`
   width: 100vw;
   height: 100%;
-  position: absolute;
+  position: fixed;
   background-color: black;
   font-family: "Source Sans Pro";
   display: flex;
@@ -12,6 +12,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: 0;
   @media all and (max-width: 900px) {
     height: 80vh;
   }

@@ -11,6 +11,7 @@ const Container = styled.section`
   align-items: center;
   font-size: 1.2em;
   line-height: 2em;
+  z-index: 10;
   @media all and (max-width: 900px) {
     padding: 2rem 0;
   }

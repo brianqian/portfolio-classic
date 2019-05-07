@@ -14,7 +14,7 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   right: 0;
   background-color: ${({ bgc }) => bgc};
   transition: all ease-in 0.2s;
-  z-index: 2;
+  z-index: 20;
   font-family: ${props => props.theme.textFont};
   opacity: ${props => (props.view === "hero" ? 0 : 1)};
 `;
