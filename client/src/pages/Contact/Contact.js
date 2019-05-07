@@ -9,7 +9,7 @@ const Container = styled.div`
   background-color: ${props => props.theme.secondary};
   padding: 3rem 7rem;
   z-index: 10;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   @media all and (max-width: 900px) {
     padding: 2rem 1rem;
   }
