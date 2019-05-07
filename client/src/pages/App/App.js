@@ -35,9 +35,7 @@ const Container = styled.div`
 
 class App extends Component {
   state = {
-    portfolioIndex: null,
     currentView: "hero",
-    // desktopView: true,
   };
 
   aboutMeRef = React.createRef();
@@ -90,11 +88,7 @@ class App extends Component {
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
           <Hero scrollFn={this.scrollTo} />
           <AboutMeMain innerRef={this.aboutMeRef} />
-          <PortfolioContainer
-            overflow={this.state.portfolioOverflow}
-            updateFn={this.updatePortfolioIndex}
-            innerRef={this.portfolioRef}
-          />
+          <PortfolioContainer innerRef={this.portfolioRef} />
           <Contact innerRef={this.contactRef} />
         </Container>
       </ThemeProvider>
