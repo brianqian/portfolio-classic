@@ -48,7 +48,7 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   left: 0;
   top: 0;
   min-width: 100vw;
-  opacity: ${props => (props.loaded ? 0.5 : 1)};
+  opacity: ${props => (props.loaded ? 0.4 : 1)};
   transition: opacity ease-out 2s;
 `;
 

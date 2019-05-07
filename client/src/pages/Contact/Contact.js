@@ -41,14 +41,17 @@ const Form = styled.form`
   }
   > textarea {
     border-radius: 15px;
-    border-color: white;
-    background-color: rgba(0, 0, 0, 0.8);
+    border-color: rgba(0, 0, 0, 0.2);
+    background-color: ${props => props.theme.primary};
     width: 500px;
     padding: 1rem;
     font-size: 15px;
     outline: 0px none transparent;
     grid-column: 2/3;
     grid-row: 3/6;
+    :focus {
+      border-color: ${props => props.theme.accent};
+    }
     @media all and (max-width: 900px) {
       width: 100%;
       max-width: 100%;
@@ -56,7 +59,7 @@ const Form = styled.form`
   }
   > button {
     color: white;
-    border: 1px solid white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
     grid-row: 6;
     grid-column: 2/3;
     width: 300px;
@@ -64,6 +67,9 @@ const Form = styled.form`
     border-radius: 15px;
     justify-self: center;
     font-size: 1.2em;
+    :active {
+      border-color: ${props => props.theme.accent};
+    }
     @media all and (max-width: 900px) {
       height: 50px;
     }
@@ -76,10 +82,13 @@ const UserInfo = styled.input`
   width: 250px;
   min-height: 25px;
   padding: 0 0.5rem;
-  border-color: white;
-  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(0, 0, 0, 0.2);
+  background-color: ${props => props.theme.primary};
   font-size: 15px;
   outline: 0px none transparent;
+  :focus {
+    border-color: ${props => props.theme.accent};
+  }
   @media all and (max-width: 900px) {
     max-width: 100%;
     /* width: 100%; */
