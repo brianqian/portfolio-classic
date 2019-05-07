@@ -66,4 +66,8 @@ describe("When Portfolio Item mounts", () => {
 //   //   expect(wrapper.exists()).toBe(true);
 //   // });
 // });
+<<<<<<< HEAD
 >>>>>>> a70dccb... changed about me, started testing for portfolioItem
+=======
+>>>>>>> a70dccb313ac5ebc5bdcf2d4c1c61e821e112edd
+>>>>>>> 87aafdbe88ad8014497478a6198af1c8cb2b47d4
