@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components/macro";
 
-const Container = styled.div`
+const Container = styled.article`
   position: relative;
   width: 95%;
   margin: auto;
@@ -55,7 +55,7 @@ const Image = styled.img`
   }
 `;
 
-const DetailsContainer = styled.div`
+const DetailsContainer = styled.section`
   flex: 4;
   display: flex;
   flex-direction: column;

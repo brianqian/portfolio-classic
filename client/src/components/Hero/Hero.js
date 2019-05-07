@@ -47,6 +47,7 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   position: absolute;
   left: 0;
   top: 0;
+  min-width: 100vw;
   opacity: ${props => (props.loaded ? 0.5 : 1)};
   transition: opacity ease-out 2s;
 `;
@@ -59,6 +60,18 @@ const Name = styled.h1`
   position: relative;
   bottom: 50px;
   text-align: center;
+  @media all and (max-width: 1300px) {
+    bottom: 100px;
+  }
+  @media all and (max-width: 1200px) {
+    bottom: 150px;
+  }
+  @media all and (max-width: 1000px) {
+    bottom: 225px;
+  }
+  @media all and (max-width: 900px) {
+    bottom: 50px;
+  }
 `;
 
 const LinkContainer = styled.div`
@@ -72,8 +85,18 @@ const LinkContainer = styled.div`
   bottom: 50px;
   height: 100px;
   width: 100%;
+  @media all and (max-width: 1300px) {
+    bottom: 100px;
+  }
+  @media all and (max-width: 1200px) {
+    bottom: 150px;
+  }
+  @media all and (max-width: 1000px) {
+    bottom: 225px;
+  }
   @media all and (max-width: 900px) {
     justify-content: space-around;
+    bottom: 50px;
   }
 `;
 
