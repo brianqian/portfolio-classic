@@ -5,7 +5,7 @@ const Container = styled.article`
   position: relative;
   width: 100%;
   overflow: hidden;
-  min-height: 80vh;
+  min-height: 550px;
   height: 80vh;
   display: flex;
   flex-direction: ${props => (props.reverse ? "row-reverse" : "row")};

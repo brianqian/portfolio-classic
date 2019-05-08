@@ -76,9 +76,11 @@ const AboutMeMain = props => (
       my need for logical problem solving and creativity were left unfulfilled. I decided to make a
       sharp left turn into computer engineering. I'm mostly a self-taught developer after taking UC
       Berkeley's bootcamp where I found a passion in programming. Nowadays I build everything I can
-      in <span>React</span>, but I'm also comfortable using{" "}
-      <span>jQuery, Redux, Node, SQL, MongoDB</span> and testing frameworks like <span>Jest</span>{" "}
-      and <span>Enzyme</span>.
+      in <span>React</span>, but I'm also comfortable using vanilla <span>Javascript</span> and{" "}
+      <span>jQuery</span> for the front-end. As for backend technologies I'm most comfortable using{" "}
+      <span>Node/Express</span> and <span>MySQL</span> but I'm also capable of using{" "}
+      <span>MongoDB</span>. Beyond that I use <span>Redux</span> for state management and run
+      testing with <span>Jest</span> and <span>Enzyme</span>.
     </p>
   </Container>
 );

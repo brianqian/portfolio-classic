@@ -35,9 +35,9 @@ const AspectRatioContainer = styled.div`
 const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   //creates the srcSet tag and makes it easily configurable in props
   let srcSet = widths.reduce((acc, width) => {
-    return acc + `${path}/${imgTitle}-${width}.jpg ${width / 2}w, `;
+    return acc + `${path}/${imgTitle}-${width}.jpg ${width}w, `;
   }, "");
-  srcSet += `${path}/${imgTitle}.jpg 6800w`;
+  srcSet += `${path}/${imgTitle}.jpg 2000w`;
   return {
     src: `${path}/${imgTitle}.jpg`,
     srcSet,

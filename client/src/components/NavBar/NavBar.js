@@ -37,9 +37,25 @@ const NavContent = styled.div`
     align-items: center;
     margin: 0 1rem;
     height: 100%;
-    :hover {
-      border-bottom: 1px solid ${props => props.theme.accent};
+    position: relative;
+    ::before{
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      transform-origin: center;
+      transform: translate(-50%, 0) scaleX(0);
+      transition: transform 0.1s ease-out;
+      background-color: ${props => props.theme.accent};
     }
+    :hover ::before{
+      transform: translate(-50%, 0) scaleX(1);
+    }
+    /* :hover {
+      border-bottom: 2.5px solid ${props => props.theme.accent};
+    } */
     @media all and (max-width: 400px) {
       margin: 0;
     }
