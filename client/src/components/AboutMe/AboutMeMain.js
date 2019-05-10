@@ -15,15 +15,15 @@ const Container = styled.section`
   @media all and (max-width: 900px) {
     padding: 2rem 0;
   }
-  > p {
+  p {
     font-size: 1.1em;
     padding: 0 3rem;
     @media all and (max-width: 900px) {
       padding: 0 1rem;
     }
-    > span {
-      color: ${props => props.theme.accent};
-    }
+  }
+  span {
+    color: ${props => props.theme.accent};
   }
   > h1 {
     border-bottom: 3px solid ${props => props.theme.tertiary};
@@ -33,6 +33,7 @@ const Container = styled.section`
     color: ${props => props.theme.text};
     font-family: ${props => props.theme.heroFont};
     font-size: 4em;
+    margin: 1rem 0;
     @media all and (max-width: 900px) {
       text-align: center;
       border: none;
@@ -59,15 +60,7 @@ const AboutMeMain = props => (
     <h1>About Me</h1>
     <ProfilePic />
     <h2>
-      Developer.{" "}
-      <span
-        css={`
-          color: ${props => props.theme.accent};
-        `}
-      >
-        Problem Solver.
-      </span>{" "}
-      Front-end specialist.{" "}
+      Developer. <span>Problem Solver.</span> Front-end specialist.
     </h2>
     <p>
       I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life

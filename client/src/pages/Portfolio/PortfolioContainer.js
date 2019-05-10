@@ -18,15 +18,16 @@ const Container = styled.section`
   }
   > h1 {
     border-bottom: 3px solid ${props => props.theme.tertiary};
-
     text-align: left;
     color: ${props => props.theme.text};
     font-family: ${props => props.theme.heroFont};
     font-size: 4em;
     margin: 1rem;
+    padding: 0 3rem;
     @media all and (max-width: 900px) {
       text-align: center;
       border: none;
+      padding: 0;
     }
   }
 `;
