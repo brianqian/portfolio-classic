@@ -181,13 +181,13 @@ export default class PortfolioItem extends Component {
           </Title>
           <p>{description}</p>
           <ButtonsDiv>
-            <InterfaceButton>
+            <InterfaceButton className={`${title}-github`}>
               <a href={gitURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/social_icons/GitHub-Dark-64px.png" height="20px" alt="" />
                 <p>Code</p>
               </a>
             </InterfaceButton>
-            <InterfaceButton>
+            <InterfaceButton className={`${title}-deploy`}>
               <a href={deployURL} rel="noopener noreferrer" target="_blank">
                 <img src="./img/internet.svg" height="20px" alt="" />
                 <p>Website</p>
