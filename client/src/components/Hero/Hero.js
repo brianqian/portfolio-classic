@@ -113,6 +113,14 @@ const Link = styled.p`
   display: flex;
   justify-content: center;
   align-items: center;
+  a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+  }
   :hover {
     background-color: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 140, 0);

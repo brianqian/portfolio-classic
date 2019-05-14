@@ -9,7 +9,7 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   display: flex;
   position: fixed;
   width: 100vw;
-  height: ${props => props.theme.headerHeight};
+  /* height: ${props => props.theme.headerHeight}; */
   top: 0;
   right: 0;
   background-color: ${({ bgc }) => bgc};
@@ -17,6 +17,8 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   z-index: 20;
   font-family: ${props => props.theme.textFont};
   opacity: ${props => (props.view === "hero" ? 0 : 1)};
+  overflow:hidden;
+  height: ${props => (props.view === "hero" ? 0 : props.theme.headerHeight)}
 `;
 
 const NavContent = styled.div`
