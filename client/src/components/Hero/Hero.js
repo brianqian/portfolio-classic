@@ -37,7 +37,7 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   let srcSet = widths.reduce((acc, width) => {
     return acc + `${path}/${imgTitle}-${width}.jpg ${width}w, `;
   }, "");
-  srcSet += `${path}/${imgTitle}.jpg 2000w`;
+  srcSet += `${path}/${imgTitle}.jpg 12000w`;
   return {
     src: `${path}/${imgTitle}.jpg`,
     srcSet,

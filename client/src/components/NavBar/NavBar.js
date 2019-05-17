@@ -9,7 +9,6 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   display: flex;
   position: fixed;
   width: 100vw;
-  /* height: ${props => props.theme.headerHeight}; */
   top: 0;
   right: 0;
   background-color: ${({ bgc }) => bgc};
