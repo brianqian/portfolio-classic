@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import NavBar from "../../components/NavBar/NavBar";
 import Hero from "../../components/Hero/Hero";
 import PortfolioContainer from "../Portfolio/PortfolioContainer";
 import Contact from "../Contact/Contact";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../../data/cssTheme";
 import AboutMeMain from "../../components/AboutMe/AboutMeMain";
+import ContentWrapper from "../../components/MainContentWrapper/MainContentWrapper";
 
 const GlobalStyle = createGlobalStyle`
 body, html{
@@ -87,7 +88,9 @@ class App extends Component {
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
           <Hero scrollFn={this.scrollTo} />
+          {/* <ContentWrapper title='About Me' color={}> */}
           <AboutMeMain innerRef={this.aboutMeRef} />
+          {/* </ContentWrapper> */}
           <PortfolioContainer innerRef={this.portfolioRef} />
           <Contact innerRef={this.contactRef} />
         </Container>
