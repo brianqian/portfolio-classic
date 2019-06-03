@@ -103,7 +103,7 @@ const LinkContainer = styled.div`
 const Link = styled.p`
   font-size: 20px;
   margin: 0 2rem;
-  transition: opacity ease-in 1s;
+  transition: all ease-in 0.15s;
   user-select: none;
   cursor: pointer;
   border: 2px solid white;
@@ -119,15 +119,26 @@ const Link = styled.p`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50px;
   }
   :hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(0, 0, 0, 0.45);
     border-color: rgba(255, 140, 0);
+    box-shadow: 0px 20px 50px #222;
+    transform: translateY(-3px);
   }
   :active {
     background-color: rgba(255, 140, 0, 0.25);
   }
+  /* &::before {
+    content: "";
+    position: absolute;
+    background-color: pink;
+    border: 2px solid pink;
+    left: 0;
+    top: 0;
+    height: 90px;
+    width: 90px;
+  } */
   @media all and (max-width: 900px) {
     margin: 0;
     padding: 1rem;
