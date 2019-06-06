@@ -2,28 +2,30 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.section`
-  background-color: ${props => props.theme.primary};
+  background-color: ${props => props.theme[props.bgColor]};
   width: 100vw;
-  padding: 7rem 1rem;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   text-align: center;
-  font-size: 1.2em;
   z-index: 10;
   @media all and (max-width: 900px) {
     text-align: center;
     padding: 2rem;
   }
+  h1 {
+    margin: 0 2rem;
+    font-size: 64px;
+  }
 `;
 
 const Title = styled.header`
   border-bottom: 3px solid ${props => props.theme.tertiary};
-  text-align: left;
-  width: 100%;
+  text-align: right;
+  width: 95%;
   color: ${props => props.theme.text};
   font-family: ${props => props.theme.heroFont};
-  font-size: 4em;
-  margin: 1rem 0;
+  margin: 3rem auto;
   padding-bottom: 2rem;
   @media all and (max-width: 900px) {
     text-align: center;

@@ -129,16 +129,7 @@ const Link = styled.p`
   :active {
     background-color: rgba(255, 140, 0, 0.25);
   }
-  /* &::before {
-    content: "";
-    position: absolute;
-    background-color: pink;
-    border: 2px solid pink;
-    left: 0;
-    top: 0;
-    height: 90px;
-    width: 90px;
-  } */
+
   @media all and (max-width: 900px) {
     margin: 0;
     padding: 1rem;

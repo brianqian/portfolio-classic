@@ -96,7 +96,6 @@ const UserInfo = styled.input`
   }
   @media all and (max-width: 900px) {
     max-width: 100%;
-    /* width: 100%; */
   }
 `;
 

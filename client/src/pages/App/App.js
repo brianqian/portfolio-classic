@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import NavBar from "../../components/NavBar/NavBar";
-import Hero from "../../components/Hero/Hero";
-import PortfolioContainer from "../Portfolio/PortfolioContainer";
+import Hero from "../Hero/Hero";
 import Contact from "../Contact/Contact";
-import theme from "../../data/cssTheme";
-import AboutMeMain from "../../components/AboutMe/AboutMeMain";
+import AboutMeMain from "../AboutMe/AboutMe";
 import ContentWrapper from "../../components/MainContentWrapper/MainContentWrapper";
+import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
+import portfolioData from "../../data/PortfolioData";
+import theme from "../../data/cssTheme";
 
 const GlobalStyle = createGlobalStyle`
 body, html{
@@ -27,7 +28,7 @@ a{
 `;
 
 const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900");
+  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900&display=swap");
   width: 100vw;
   background-color: ${props => props.theme.primary};
   display: flex;
@@ -82,16 +83,21 @@ class App extends Component {
   };
 
   render() {
+    const items = portfolioData.map((project, i) => {
+      return <PortfolioItem key={`project-${i}`} index={i} {...project} />;
+    });
     return (
       <ThemeProvider theme={theme}>
         <Container>
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
           <Hero scrollFn={this.scrollTo} />
-          {/* <ContentWrapper title='About Me' color={}> */}
-          <AboutMeMain innerRef={this.aboutMeRef} />
-          {/* </ContentWrapper> */}
-          <PortfolioContainer innerRef={this.portfolioRef} />
+          <ContentWrapper title="About Me" bgColor={"secondary"} innerRef={this.aboutMeRef}>
+            <AboutMeMain />
+          </ContentWrapper>
+          <ContentWrapper title="Work" bgColor={"primary"} innerRef={this.portfolioRef}>
+            {items}
+          </ContentWrapper>
           <Contact innerRef={this.contactRef} />
         </Container>
       </ThemeProvider>
