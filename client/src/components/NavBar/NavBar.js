@@ -5,6 +5,7 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   if (view === "hero") return { bgc: "transparent" };
   if (view === "about") return { bgc: theme.secondary };
   if (view === "portfolio") return { bgc: theme.primary };
+  if (view === "contact") return { bgc: theme.secondary };
 })`
   display: flex;
   position: fixed;
@@ -16,8 +17,8 @@ const Container = styled.nav.attrs(({ view, theme }) => {
   z-index: 20;
   font-family: ${props => props.theme.textFont};
   opacity: ${props => (props.view === "hero" ? 0 : 1)};
-  overflow:hidden;
-  height: ${props => (props.view === "hero" ? 0 : props.theme.headerHeight)}
+  overflow: hidden;
+  height: ${props => (props.view === "hero" ? 0 : props.theme.headerHeight)};
 `;
 
 const NavContent = styled.div`

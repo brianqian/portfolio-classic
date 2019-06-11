@@ -11,7 +11,7 @@ const Container = styled.section`
   z-index: 10;
   @media all and (max-width: 900px) {
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 0.25rem;
   }
   h1 {
     margin: 0 2rem;

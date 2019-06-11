@@ -14,13 +14,12 @@ const Container = styled.article`
   text-align: ${props => (props.reverse ? "left" : "right")};
   justify-content: space-between;
   @media all and (max-width: 900px) {
-    width: 100%;
+    height: auto;
     flex-direction: column-reverse;
     font-size: 0.8em;
-    height: auto;
-    text-align: center;
     margin: 2rem 0;
     max-height: 200vh;
+    width: 100vw;
   }
 `;
 
@@ -30,7 +29,6 @@ const Figure = styled.figure`
   padding: 2rem;
   position: relative;
   width: auto;
-  /* bottom: ${props => (props.showImage ? "0" : "-100%")}; */
   opacity: ${props => (props.showImage ? 1 : 0)};
   transition: bottom ease-in 1s, opacity ease-in 1s;
   text-align: center;
@@ -40,8 +38,9 @@ const Figure = styled.figure`
     padding: 0;
     padding-top: 1rem;
   }
-  > * {
+  > figcaption {
     color: ${props => props.theme.text};
+    font-size: 18px;
   }
 `;
 
@@ -76,8 +75,11 @@ const DetailsContainer = styled.section`
     color: ${props => props.theme.text};
     font-size: 1.5vw;
     @media all and (max-width: 900px) {
+      width: 100vw;
       font-size: 19px;
       line-height: 30px;
+      text-align: center;
+      padding: 0 0.5rem;
     }
   }
 `;
@@ -96,7 +98,7 @@ const Title = styled.header`
     padding-bottom: 2rem;
     font-family: ${props => props.theme.heroFont};
     @media all and (max-width: 900px) {
-      /* padding: 0; */
+      text-align: center;
     }
   }
 `;

@@ -46,8 +46,6 @@ class App extends Component {
 
   componentDidMount = () => {
     window.addEventListener("scroll", this.onScroll);
-    // window.addEventListener("resize", this.updateViewport);
-    // this.updateViewport();
   };
   componentWillUnmount() {
     window.removeEventListener("scroll");
@@ -62,19 +60,22 @@ class App extends Component {
   //   }
   // };
 
-  onScroll = () => {
+  onScroll = async () => {
     const about = this.aboutMeRef.current.getBoundingClientRect();
     const portfolio = this.portfolioRef.current.getBoundingClientRect();
+    const contact = this.contactRef.current.getBoundingClientRect();
     let currentView = "";
     if (about.top > 0 && portfolio.top > 0) {
       currentView = "hero";
     } else if (about.top <= 0 && portfolio.top > 0) {
       currentView = "about";
-    } else if (about.top <= 0 && portfolio.top <= 0) {
+    } else if (about.top <= 0 && portfolio.top <= 0 && contact.top > 0) {
       currentView = "portfolio";
+    } else if (contact.top <= 0) {
+      currentView = "contact";
     }
     if (currentView !== this.state.currentView) {
-      this.setState({ currentView });
+      await this.setState({ currentView });
     }
   };
 
