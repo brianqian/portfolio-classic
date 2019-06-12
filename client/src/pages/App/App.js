@@ -14,6 +14,7 @@ body, html{
   margin: 0;
   font-family: ${props => props.theme.textFont};
   height: 100%;
+  max-width: 100vw;
 
 }
 a{
