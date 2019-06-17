@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
+import { slideIn, popUp } from "../../data/keyframes";
 
 const Container = styled.article`
   position: relative;
@@ -26,12 +27,18 @@ const Container = styled.article`
 const Figure = styled.figure`
   flex: 6;
   margin: 0;
+  opacity: ${props => (props.showImage ? 1 : 0)};
   padding: 2rem;
   position: relative;
-  width: auto;
-  opacity: ${props => (props.showImage ? 1 : 0)};
-  transition: bottom ease-in 1s, opacity ease-in 1s;
   text-align: center;
+  transition: bottom ease-in 1s, opacity ease-in 0.5s;
+  width: auto;
+  &.slide-from-left {
+    animation: ${slideIn("-200px")} 0.4s ease-out;
+  }
+  &.slide-from-right {
+    animation: ${slideIn("200px")} 0.4s ease-out;
+  }
   @media all and (max-width: 900px) {
     bottom: 0;
     flex: 4;
@@ -71,17 +78,6 @@ const DetailsContainer = styled.section`
     padding: 0;
     padding-bottom: 1rem;
   }
-  > * {
-    color: ${props => props.theme.text};
-    font-size: 1.5vw;
-    @media all and (max-width: 900px) {
-      width: 100vw;
-      font-size: 19px;
-      line-height: 30px;
-      text-align: center;
-      padding: 0 0.5rem;
-    }
-  }
 `;
 
 const Title = styled.header`
@@ -89,17 +85,47 @@ const Title = styled.header`
   flex-direction: column;
   min-height: 50px;
   flex-shrink: 0;
+  border-bottom: 2px solid ${props => props.theme.accent};
+  padding-bottom: 2rem;
   > h2 {
     color: ${props => props.theme.text};
-    border-bottom: 2px solid ${props => props.theme.accent};
     height: 100%;
     margin: 0;
     font-size: 2em;
-    padding-bottom: 2rem;
     font-family: ${props => props.theme.heroFont};
+    opacity: 0;
+    &.slide-from-left {
+      opacity: 1;
+      animation-fill-mode: backwards;
+      animation: ${slideIn("-500px")} 0.4s ease-out;
+    }
+    &.slide-from-right {
+      opacity: 1;
+      animation-fill-mode: backwards;
+      animation: ${slideIn("500px")} 0.4s ease-out;
+    }
     @media all and (max-width: 900px) {
       text-align: center;
     }
+  }
+`;
+
+const Details = styled.p`
+  color: ${props => props.theme.text};
+  font-size: 1.5vw;
+  opacity: 0;
+  &.popUp {
+    opacity: 1;
+    transition: opacity 0.7s ease-out 0.6s;
+    animation-fill-mode: forwards;
+    animation: ${popUp} 0.4s ease-in 0.6s;
+  }
+  @media all and (max-width: 900px) {
+    width: 100vw;
+    font-size: 19px;
+    line-height: 30px;
+    text-align: center;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -153,6 +179,7 @@ const InterfaceButton = styled.div`
 export default class PortfolioItem extends Component {
   state = {
     scrolledIntoView: false,
+    reverseLayout: false,
   };
   projectRef = React.createRef();
 
@@ -160,6 +187,7 @@ export default class PortfolioItem extends Component {
     const options = { rootMargin: "0px", threshold: 0.3 };
     const observer = new IntersectionObserver(this.observerFn, options);
     observer.observe(this.projectRef.current);
+    this.setState({ reverseLayout: this.props.index % 2 });
   };
 
   observerFn = entries => {
@@ -169,18 +197,23 @@ export default class PortfolioItem extends Component {
 
   render() {
     const { title, description, gitURL, deployURL, stack, img1 } = this.props;
-
+    const { reverseLayout, scrolledIntoView } = this.state;
     return (
-      <Container reverse={this.props.index % 2}>
-        <Figure showImage={this.state.scrolledIntoView}>
+      <Container reverse={reverseLayout}>
+        <Figure
+          showImage={scrolledIntoView}
+          className={scrolledIntoView && `slide-from-${reverseLayout ? "right" : "left"}`}
+        >
           <Image src={img1} alt={title} />
           <figcaption style={{ fontStyle: "italic" }}>Built with: {stack.join(", ")}</figcaption>
         </Figure>
         <DetailsContainer onClick={this.onClick} ref={this.projectRef}>
           <Title>
-            <h2>{title}</h2>
+            <h2 className={scrolledIntoView && `slide-from-${reverseLayout ? "left" : "right"}`}>
+              {title}
+            </h2>
           </Title>
-          <p>{description}</p>
+          <Details className={scrolledIntoView && "popUp"}>{description}</Details>
           <ButtonsDiv>
             <InterfaceButton>
               <a href={gitURL} rel="noopener noreferrer" target="_blank">
