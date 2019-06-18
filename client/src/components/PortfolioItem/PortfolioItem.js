@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { slideIn, popUp } from "../../data/keyframes";
 
 const Container = styled.article`
@@ -46,7 +46,6 @@ const Figure = styled.figure`
     padding-top: 1rem;
   }
   > figcaption {
-    color: ${props => props.theme.text};
     font-size: 18px;
   }
 `;
@@ -81,6 +80,7 @@ const DetailsContainer = styled.section`
 `;
 
 const Title = styled.header`
+  color: ${props => props.theme.text};
   display: flex;
   flex-direction: column;
   min-height: 50px;
@@ -88,7 +88,6 @@ const Title = styled.header`
   border-bottom: 2px solid ${props => props.theme.accent};
   padding-bottom: 2rem;
   > h2 {
-    color: ${props => props.theme.text};
     height: 100%;
     margin: 0;
     font-size: 2em;
@@ -111,14 +110,13 @@ const Title = styled.header`
 `;
 
 const Details = styled.p`
-  color: ${props => props.theme.text};
+  color: ${props => props.theme.pText};
   font-size: 1.5vw;
   opacity: 0;
   &.popUp {
     opacity: 1;
-    transition: opacity 0.7s ease-out 0.6s;
-    animation-fill-mode: forwards;
-    animation: ${popUp} 0.4s ease-in 0.6s;
+    transition: opacity 0.5s ease-out 0.6s;
+    animation: ${popUp} 0.35s ease-in 0.55s;
   }
   @media all and (max-width: 900px) {
     width: 100vw;
@@ -209,7 +207,11 @@ export default class PortfolioItem extends Component {
         </Figure>
         <DetailsContainer onClick={this.onClick} ref={this.projectRef}>
           <Title>
-            <h2 className={scrolledIntoView && `slide-from-${reverseLayout ? "left" : "right"}`}>
+            <h2
+              className={
+                scrolledIntoView ? `slide-from-${reverseLayout ? "left" : "right"}` : undefined
+              }
+            >
               {title}
             </h2>
           </Title>

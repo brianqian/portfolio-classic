@@ -12,7 +12,7 @@ to{
 
 export const popUp = keyframes`
 from{
-  transform: translateY(300px)
+  transform: translateY(200px)
 }
 to{
   transform: translate(0)

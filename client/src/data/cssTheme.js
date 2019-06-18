@@ -1,9 +1,8 @@
 const theme = {
   heroFont: "Source Sans Pro",
-  titleFont: "",
   textFont: "Source Sans Pro",
   text: "#EFEFF9",
-  // accent: "#9cf1e5",
+  pText: "hsl(240, 32%, 90%)",
   accent: "darkorange",
   primary: "#22223a",
   secondary: "#373767",

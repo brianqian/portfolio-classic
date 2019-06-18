@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Container = styled.section`
   display: grid;
@@ -27,6 +27,7 @@ const Container = styled.section`
 `;
 
 const Content = styled.p`
+  color: ${props => props.theme.pText};
   grid-column: 5/11;
   grid-row: 1/3;
   padding: 0 3rem;

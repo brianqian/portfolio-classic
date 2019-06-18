@@ -15,7 +15,7 @@ app.get("/test/test", (req, res) => {
 
 app.get("*", (req, res) => {
   console.log("sending file", source);
-  res.sendFile(path.resolve(__dirname + `client/${source}/index.html`));
+  res.sendFile(path.resolve(__dirname + `/client/${source}/index.html`));
 });
 
 app.listen(PORT, () => {

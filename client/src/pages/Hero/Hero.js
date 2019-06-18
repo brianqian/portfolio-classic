@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const Container = styled.div`
   width: 100vw;
@@ -74,7 +74,7 @@ const Name = styled.h1`
   }
 `;
 
-const LinkContainer = styled.div`
+const HeroIcons = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -180,7 +180,7 @@ export default class NewHero extends Component {
             onLoad={this.triggerTextAnimation}
           />
           <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
-          <LinkContainer loaded={this.state.imageLoaded}>
+          <HeroIcons loaded={this.state.imageLoaded}>
             <Link onClick={() => this.props.scrollFn("aboutMeRef")}>ABOUT</Link>
             <Link onClick={() => this.props.scrollFn("portfolioRef")}>WORK</Link>
             <Link>
@@ -200,7 +200,7 @@ export default class NewHero extends Component {
             <Link onClick={() => this.props.scrollFn("contactRef")}>
               <img src={`./img/mail-white.svg`} height="35px" alt="" />
             </Link>
-          </LinkContainer>
+          </HeroIcons>
         </Container>
       </AspectRatioContainer>
     );
