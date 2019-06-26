@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const Container = styled.section`
   display: grid;
@@ -63,19 +63,17 @@ const AboutMeMain = () => (
       Developer. <Accent>Problem Solver.</Accent> Front-end specialist.
     </h2>
     <Content>
-      I'm a full-stack dev originally from the Bay Area, now based in New York. In a different life
-      I worked at a talent agency where I learned how to effectively multi-task and quickly
-      prioritize in high pressure situations. Although the non-stop pace of entertainment was fun,
-      my need for logical problem solving and creativity were left unfulfilled. I decided to take a
-      sharp left into computer engineering.
+      I'm a full-stack dev that loves everything about programming, but especially React and the
+      front-end.
       <br />
-      <br /> I'm mostly a self-taught developer after taking UC Berkeley's bootcamp where I found a
-      passion in programming. Nowadays I build everything I can in <Accent>React</Accent>, but I'm
-      also comfortable using vanilla <Accent>Javascript</Accent> and <Accent>jQuery</Accent> for the
-      front-end. As for backend technologies I'm most comfortable using{" "}
-      <Accent>Node/Express</Accent> and <Accent>MySQL</Accent> but I'm also capable of using{" "}
+      <br /> After finishing UC Berkeley's bootcamp, I haven't stopped picking up new skills to make
+      me a more well-rounded developer. Currently I build everything I can in <Accent>React</Accent>
+      , but I'm also comfortable using vanilla <Accent>Javascript</Accent> and{' '}
+      <Accent>jQuery</Accent> for the front-end. As for backend technologies I'm most comfortable
+      using <Accent>Node</Accent> and <Accent>MySQL</Accent> but I'm also capable of using{' '}
       <Accent>MongoDB</Accent>. Beyond that I use <Accent>Redux</Accent> for state management and
-      run testing with <Accent>Jest</Accent> and <Accent>Enzyme</Accent>.
+      run testing with <Accent>Jest</Accent> and <Accent>Enzyme</Accent>. I'm also familiar with
+      build tools like <Accent>Weback</Accent> and <Accent>Babel</Accent>. Most recently I've been working with the <Accent>Next.js</Accent> framework and <Accent>Typescript</Accent>.
     </Content>
   </Container>
 );

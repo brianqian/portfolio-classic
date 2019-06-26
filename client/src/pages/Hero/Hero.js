@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import styled from "styled-components/macro";
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100%;
-  position: fixed;
+  align-items: center;
   background-color: black;
-  font-family: "Source Sans Pro";
   display: flex;
   flex-direction: column;
+  font-family: ${props => props.theme.heroFont};
+  height: 100%;
   justify-content: center;
-  align-items: center;
   overflow: hidden;
+  position: fixed;
+  width: 100vw;
   z-index: 0;
   @media all and (max-width: 900px) {
     height: 80vh;
@@ -19,12 +19,12 @@ const Container = styled.div`
 `;
 
 const AspectRatioContainer = styled.div`
+  background-color: #000;
   height: 0;
-  width: 100%;
   overflow: hidden;
   padding-bottom: 56.25%;
-  background-color: #000;
   position: relative;
+  width: 100%;
   @media all and (max-width: 900px) {
     overflow: visible;
     padding-bottom: 0;
@@ -49,7 +49,7 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   top: 0;
   min-width: 100vw;
   opacity: ${props => (props.loaded ? 0.4 : 1)};
-  transition: opacity ease-out 2.2s;
+  transition: opacity ease-out 2s;
 `;
 
 const Name = styled.h1`
