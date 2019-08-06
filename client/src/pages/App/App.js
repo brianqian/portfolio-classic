@@ -53,14 +53,6 @@ class App extends Component {
     // window.removeEventListener("resize");
   }
 
-  // updateViewport = () => {
-  //   if (window.innerWidth > 900 && !this.state.desktopView) {
-  //     this.setState({ desktopView: true });
-  //   } else if (window.innerWidth <= 900 && this.state.desktopView) {
-  //     this.setState({ desktopView: false });
-  //   }
-  // };
-
   onScroll = async () => {
     const about = this.aboutMeRef.current.getBoundingClientRect();
     const portfolio = this.portfolioRef.current.getBoundingClientRect();

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const Container = styled.section`
   display: flex;
@@ -103,15 +103,10 @@ function Contact(props) {
     <Container ref={props.innerRef}>
       <h1>Leave a message!</h1>
       <h3>
-        Email me{" "}
-        <a
-          css={`
-            color: ${props => props.theme.accent};
-          `}
-          href="mailto:qian.brian@gmail.com"
-        >
+        Email me{' '}
+        <a style={{ color: 'darkorange' }} href="mailto:qian.brian@gmail.com">
           here
-        </a>{" "}
+        </a>{' '}
         or drop me a line below!
       </h3>
       <Form action="https://formspree.io/qian.brian@gmail.com" method="POST" target="_blank">

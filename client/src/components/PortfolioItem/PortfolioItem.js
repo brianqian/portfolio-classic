@@ -178,15 +178,24 @@ export default class PortfolioItem extends Component {
   state = {
     scrolledIntoView: false,
     reverseLayout: false,
+    observer: null
   };
   projectRef = React.createRef();
 
   componentDidMount = () => {
     const options = { rootMargin: "0px", threshold: 0.3 };
     const observer = new IntersectionObserver(this.observerFn, options);
+    this.setState({observer});
     observer.observe(this.projectRef.current);
     this.setState({ reverseLayout: this.props.index % 2 });
   };
+
+  componentWillUnmount() {
+    const {observer} = this.state;
+    observer.disconnect();
+    this.setState({observer: null})
+
+  }
 
   observerFn = entries => {
     if (this.state.scrolledIntoView === true) return;

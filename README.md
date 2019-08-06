@@ -8,10 +8,11 @@ Hi welcome to my portfolio page. I'm a web developer based in Brooklyn, New York
 - Typescript
 - Webpack
 - Babel
+- Next.js
 
 Take a look at my deployed site here: https://brianqian.com
 
-## New things learned
+## Learning points
 
 - Intersection Observer API to trigger scroll animations and change navbar color on scroll
 - Using 56.25% padding on an outside container to retain a 16:9 aspect ratio on the hero image
