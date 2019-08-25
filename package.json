@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "cd client && yarn start"
+    "start": "cd client && yarn install && yarn start"
   },
   "dependencies": {
     "concurrently": "^4.1.0",

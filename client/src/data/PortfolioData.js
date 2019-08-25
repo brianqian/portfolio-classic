@@ -4,7 +4,7 @@ const PortfolioData = [
     stack: ['HTML/CSS (styled-components), React, NextJS, Node/Express, SQL, Jest', 'Enzyme'],
     description:
       "Eventspotter is a platform that syncs with a user's Spotify account to find their top artists and generate a calendar using the SeatGeek API. Evenspotter is a server-side rendered app using the NextJS framework. The app is separated into two repositories for the frontend and a backend API. Currently the project uses JWTs in cookies to authenticate the user across logins. This project also features a custom data structure (LRU Cache) to cache users on the server side. The majority of the application uses functional components and React Hooks where necessary.",
-    img1: './img/screenshots/websocketio-full.png',
+    img1: './img/screenshots/eventspotter-full.png',
     gitURL: 'https://github.com/brianqian/eventspotter-react',
     deployURL: 'http://eventspotter.herokuapp.com'
   },
