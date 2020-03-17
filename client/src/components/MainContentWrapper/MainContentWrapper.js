@@ -1,9 +1,10 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const Container = styled.section`
-  background-color: ${props => props.theme[props.bgColor]};
+  background-color: ${(props) => props.theme[props.bgColor]};
   width: 100vw;
+  max-width: 100%;
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
@@ -20,11 +21,11 @@ const Container = styled.section`
 `;
 
 const Title = styled.header`
-  border-bottom: 3px solid ${props => props.theme.tertiary};
+  border-bottom: 3px solid ${(props) => props.theme.tertiary};
   text-align: right;
   width: 95%;
-  color: ${props => props.theme.text};
-  font-family: ${props => props.theme.heroFont};
+  color: ${(props) => props.theme.text};
+  font-family: ${(props) => props.theme.heroFont};
   margin: 3rem auto;
   padding-bottom: 2rem;
   @media all and (max-width: 900px) {

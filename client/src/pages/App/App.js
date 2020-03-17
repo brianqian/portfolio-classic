@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import NavBar from "../../components/NavBar/NavBar";
-import Hero from "../Hero/Hero";
-import Contact from "../Contact/Contact";
-import AboutMeMain from "../AboutMe/AboutMe";
-import ContentWrapper from "../../components/MainContentWrapper/MainContentWrapper";
-import PortfolioItem from "../../components/PortfolioItem/PortfolioItem";
-import portfolioData from "../../data/PortfolioData";
-import theme from "../../data/cssTheme";
+import React, { Component } from 'react';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import NavBar from '../../components/NavBar/NavBar';
+import Hero from '../Hero/Hero';
+import Contact from '../Contact/Contact';
+import AboutMeMain from '../AboutMe/AboutMe';
+import ContentWrapper from '../../components/MainContentWrapper/MainContentWrapper';
+import PortfolioItem from '../../components/PortfolioItem/PortfolioItem';
+import portfolioData from '../../data/PortfolioData';
+import theme from '../../data/cssTheme';
 
 const GlobalStyle = createGlobalStyle`
 body, html{
   margin: 0;
-  font-family: ${props => props.theme.textFont};
-  height: 100%;
+  font-family: ${(props) => props.theme.textFont};
   max-width: 100vw;
+  overflow-x: hidden;
 
 }
 a{
@@ -22,23 +22,24 @@ a{
 }
 *{
   box-sizing: border-box;
-  color: ${props => props.theme.text}
+  color: ${(props) => props.theme.text}
 }
 
 
 `;
 
 const Container = styled.div`
-  @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900&display=swap");
-  width: 100vw;
-  background-color: ${props => props.theme.primary};
+  @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900&display=swap');
+  width: 100%;
+  max-width: 100%;
+  background-color: ${(props) => props.theme.primary};
   display: flex;
   flex-direction: column;
 `;
 
 class App extends Component {
   state = {
-    currentView: "hero",
+    currentView: 'hero',
   };
 
   aboutMeRef = React.createRef();
@@ -46,10 +47,10 @@ class App extends Component {
   contactRef = React.createRef();
 
   componentDidMount = () => {
-    window.addEventListener("scroll", this.onScroll);
+    window.addEventListener('scroll', this.onScroll);
   };
   componentWillUnmount() {
-    window.removeEventListener("scroll");
+    window.removeEventListener('scroll');
     // window.removeEventListener("resize");
   }
 
@@ -57,23 +58,23 @@ class App extends Component {
     const about = this.aboutMeRef.current.getBoundingClientRect();
     const portfolio = this.portfolioRef.current.getBoundingClientRect();
     const contact = this.contactRef.current.getBoundingClientRect();
-    let currentView = "";
+    let currentView = '';
     if (about.top > 0 && portfolio.top > 0) {
-      currentView = "hero";
+      currentView = 'hero';
     } else if (about.top <= 0 && portfolio.top > 0) {
-      currentView = "about";
+      currentView = 'about';
     } else if (about.top <= 0 && portfolio.top <= 0 && contact.top > 0) {
-      currentView = "portfolio";
+      currentView = 'portfolio';
     } else if (contact.top <= 0) {
-      currentView = "contact";
+      currentView = 'contact';
     }
     if (currentView !== this.state.currentView) {
       await this.setState({ currentView });
     }
   };
 
-  scrollTo = section => {
-    this[section].current.scrollIntoView({ behavior: "smooth" });
+  scrollTo = (section) => {
+    this[section].current.scrollIntoView({ behavior: 'smooth' });
   };
 
   render() {
@@ -86,10 +87,10 @@ class App extends Component {
           <GlobalStyle />
           <NavBar scrollFn={this.scrollTo} currentView={this.state.currentView} />
           <Hero scrollFn={this.scrollTo} />
-          <ContentWrapper title="About Me" bgColor={"secondary"} innerRef={this.aboutMeRef}>
+          <ContentWrapper title="About Me" bgColor={'secondary'} innerRef={this.aboutMeRef}>
             <AboutMeMain />
           </ContentWrapper>
-          <ContentWrapper title="Work" bgColor={"primary"} innerRef={this.portfolioRef}>
+          <ContentWrapper title="Work" bgColor={'primary'} innerRef={this.portfolioRef}>
             {items}
           </ContentWrapper>
           <Contact innerRef={this.contactRef} />

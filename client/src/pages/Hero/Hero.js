@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import styled from "styled-components/macro";
+import React, { Component } from 'react';
+import styled from 'styled-components/macro';
 
 const Container = styled.div`
   align-items: center;
   background-color: black;
   display: flex;
   flex-direction: column;
-  font-family: ${props => props.theme.heroFont};
+  font-family: ${(props) => props.theme.heroFont};
   height: 100%;
   justify-content: center;
   overflow: hidden;
@@ -25,6 +25,7 @@ const AspectRatioContainer = styled.div`
   padding-bottom: 56.25%;
   position: relative;
   width: 100%;
+  max-width: 100vw;
   @media all and (max-width: 900px) {
     overflow: visible;
     padding-bottom: 0;
@@ -36,7 +37,7 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   //creates the srcSet tag and makes it easily configurable in props
   let srcSet = widths.reduce((acc, width) => {
     return acc + `${path}/${imgTitle}-${width}.jpg ${width}w, `;
-  }, "");
+  }, '');
   srcSet += `${path}/${imgTitle}.jpg 12000w`;
   return {
     src: `${path}/${imgTitle}.jpg`,
@@ -48,14 +49,14 @@ const BackgroundImage = styled.img.attrs(({ widths, imgTitle, path }) => {
   left: 0;
   top: 0;
   min-width: 100vw;
-  opacity: ${props => (props.loaded ? 0.4 : 1)};
+  opacity: ${(props) => (props.loaded ? 0.4 : 1)};
   transition: opacity ease-out 2s;
 `;
 
 const Name = styled.h1`
   font-size: 6em;
   z-index: 5;
-  opacity: ${props => (props.loaded ? 1 : 0)};
+  opacity: ${(props) => (props.loaded ? 1 : 0)};
   transition: opacity ease-in 1s 0.6s;
   position: relative;
   bottom: 50px;
@@ -79,7 +80,7 @@ const HeroIcons = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 5;
-  opacity: ${props => (props.loaded ? 1 : 0)};
+  opacity: ${(props) => (props.loaded ? 1 : 0)};
   transition: opacity ease-in 0.5s 1.6s;
   position: relative;
   bottom: 50px;
@@ -181,8 +182,8 @@ export default class NewHero extends Component {
           />
           <Name loaded={this.state.loaded}>BRIAN QIAN</Name>
           <HeroIcons loaded={this.state.imageLoaded}>
-            <Link onClick={() => this.props.scrollFn("aboutMeRef")}>ABOUT</Link>
-            <Link onClick={() => this.props.scrollFn("portfolioRef")}>WORK</Link>
+            <Link onClick={() => this.props.scrollFn('aboutMeRef')}>ABOUT</Link>
+            <Link onClick={() => this.props.scrollFn('portfolioRef')}>WORK</Link>
             <Link>
               <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
                 <img src={`./img/social_icons/GitHub-Light-64px.png`} height="35px" alt="" />
@@ -197,7 +198,7 @@ export default class NewHero extends Component {
                 <img src={`./img/social_icons/linkedin-brands.svg`} height="35px" alt="" />
               </a>
             </Link>
-            <Link onClick={() => this.props.scrollFn("contactRef")}>
+            <Link onClick={() => this.props.scrollFn('contactRef')}>
               <img src={`./img/mail-white.svg`} height="35px" alt="" />
             </Link>
           </HeroIcons>
